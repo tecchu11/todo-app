@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: local
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-handlers-package: com.example.todo.configuration.typeHandler

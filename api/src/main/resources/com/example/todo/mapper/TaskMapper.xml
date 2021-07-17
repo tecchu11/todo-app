@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.todo.mapper.TaskMapper">
+    <select id="selectAll" parameterType="int" resultType="com.example.todo.model.TaskModel">
+        select
+            task_id,
+            task_summary,
+            task_description,
+            user_id,
+            status_id,
+            registered_at,
+            updated_at
+        from
+            task
+        where user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterType="com.example.todo.model.TaskModel">
+        insert into task(
+            task_summary,
+            task_description,
+            user_id,
+            status_id
+        )
+        values
+        (
+            #{taskSummary},
+            #{taskDescription},
+            #{userId},
+            #{taskStatus}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.example.todo.model.TaskModel">
+        update task
+        set
+            task_summary = #{taskSummary},
+            task_description = #{taskDescription},
+            status_id = #{taskStatus}
+        where
+            user_id = #{userId}
+        and task_id = #{taskId}
+    </update>
+</mapper>
