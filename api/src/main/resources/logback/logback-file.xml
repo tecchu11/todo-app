@@ -3,18 +3,22 @@
 <included>
     <springProperty scope="context" name="LOG_DIR" source="app.logging.log-dir"/>
     <springProperty scope="context" name="LOG_NAME" source="app.logging.log-name"/>
-    <springProperty scope="context" name="MAX_HISTORY" source="app.logging.max-history"/>
 
     <property name="OUTPUT_DIR" value="${LOG_DIR:-${java.io.tmpdir:-/tmp}}"/>
     <property name="LOG_PATH" value="${OUTPUT_DIR}/${LOG_NAME:-app.log}"/>
 
     <appender name="FILE_WITH_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         <file>${LOG_PATH}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.gz</fileNamePattern>
-            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <maxHistory>31</maxHistory>
         </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <fieldNames class="net.logstash.logback.fieldnames.ShortenedFieldNames">
+                <timestamp>timestamp</timestamp>
+                <version>version</version>
+            </fieldNames>
+        </encoder>
     </appender>
 
     <appender name="FILE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">

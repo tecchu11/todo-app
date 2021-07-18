@@ -3,16 +3,16 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="logback/logback-file.xml"/>
 
-    <springProfile name="local">
+    <springProfile name="">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
         </root>
         <logger name="com.example.todo" level="TRACE"/>
     </springProfile>
 
-    <springProfile name="env to output log file">
-        <include resource="logback/logback-file.xml"/>
+    <springProfile name="local">
         <root level="INFO">
             <appender-ref ref="FILE_ASYNC"/>
         </root>
