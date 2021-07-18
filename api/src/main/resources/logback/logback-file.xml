@@ -8,7 +8,7 @@
     <property name="OUTPUT_DIR" value="${LOG_DIR:-${java.io.tmpdir:-/tmp}}"/>
     <property name="LOG_PATH" value="${OUTPUT_DIR}/${LOG_NAME:-app.log}"/>
 
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE_WITH_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
         <file>${LOG_PATH}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
