@@ -7,12 +7,12 @@
 
     <property name="OUTPUT_DIR" value="${LOG_DIR:-${java.io.tmpdir:-/tmp}}"/>
     <property name="LOG_PATH" value="${OUTPUT_DIR}/${LOG_NAME:-app.log}"/>
-    <property name="FILE_PATTERN"
+    <property name="LOG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %t %logger{45}:%L - %mdc - %msg %n"/>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder>
-            <pattern>${FILE_PATTERN}</pattern>
+            <pattern>${LOG_PATTERN}</pattern>
         </encoder>
         <file>${LOG_PATH}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
