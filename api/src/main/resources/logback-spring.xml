@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <springProfile name="local">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+        <logger name="com.example.todo" level="TRACE"/>
+    </springProfile>
+
+    <springProfile name="env to output log file">
+        <include resource="logback/logback-file.xml"/>
+        <root level="INFO">
+            <appender-ref ref="FILE_ASYNC"/>
+        </root>
+    </springProfile>
+</configuration>

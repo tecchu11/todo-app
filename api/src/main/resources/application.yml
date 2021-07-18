@@ -6,3 +6,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   type-handlers-package: com.example.todo.configuration.typeHandler
+
+app:
+  logging:
+    log-dir: ${user.home}/logs/app/
+    log-name: todo-api.log
+    max-history: 31
