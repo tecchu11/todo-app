@@ -4,7 +4,7 @@ import com.example.todo.domain.entity.Task
 import com.example.todo.domain.entity.TaskEntity
 import com.example.todo.domain.enumration.TaskStatus
 import com.github.guepardoapps.kulid.ULID
-import java.time.Instant
+import java.time.ZonedDateTime
 
 data class TaskForm(
     val taskId: String,
@@ -12,8 +12,8 @@ data class TaskForm(
     val taskDescription: String?,
     val userId: Int,
     val status: TaskStatus,
-    val registeredAt: Instant,
-    val updatedAt: Instant
+    val registeredAt: ZonedDateTime,
+    val updatedAt: ZonedDateTime
 ) {
     constructor(task: TaskEntity) : this(
         task.taskId,

@@ -1,7 +1,7 @@
 package com.example.todo.domain.entity
 
 import com.example.todo.domain.enumration.TaskStatus
-import java.time.Instant
+import java.time.ZonedDateTime
 
 data class TaskEntity(
     val taskId: String,
@@ -9,8 +9,8 @@ data class TaskEntity(
     val taskDescription: String?,
     val userId: Int,
     val status: TaskStatus,
-    val registeredAt: Instant,
-    val updatedAt: Instant
+    val registeredAt: ZonedDateTime,
+    val updatedAt: ZonedDateTime
 )
 
 data class Task(
