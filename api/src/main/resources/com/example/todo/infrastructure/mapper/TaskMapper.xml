@@ -40,7 +40,7 @@
         set
             task_summary = #{taskSummary},
             task_description = #{taskDescription},
-            status_id = #{taskStatus}
+            status_id = #{status}
         where
             user_id = #{userId}
         and task_id = #{taskId}
