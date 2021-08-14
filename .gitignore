@@ -37,3 +37,6 @@ out/
 
 ### docker ###
 docker/volumes/mysql/todo/data/
+
+### misc ###
+.DS_Store
