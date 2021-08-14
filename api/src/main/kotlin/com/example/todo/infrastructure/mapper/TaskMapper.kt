@@ -12,5 +12,4 @@ interface TaskMapper {
     fun insert(task: Task)
 
     fun update(task: Task): Boolean
-
 }

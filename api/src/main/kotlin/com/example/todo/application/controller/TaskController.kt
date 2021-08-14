@@ -30,7 +30,6 @@ class TaskController(
     fun register(@RequestBody taskRegistrationForm: TaskRegistrationForm): ResponseData<TaskRegistrationForm> {
         taskService.register(taskRegistrationForm.toTask())
         return ResponseData("Register Success", taskRegistrationForm)
-
     }
 
     @PutMapping("/")

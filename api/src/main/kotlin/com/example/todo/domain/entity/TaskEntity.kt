@@ -20,5 +20,3 @@ data class Task(
     val userId: Int,
     val status: TaskStatus
 )
-
-
