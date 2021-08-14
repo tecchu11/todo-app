@@ -41,9 +41,6 @@ internal class TaskMapperTest {
         val tasks = taskMapper.selectAll(userId)
 
         assertThat(tasks).isNotEmpty
-            .usingRecursiveComparison()
-            .ignoringFields("taskDescription")
-            .isNotNull
     }
 
     @Test
