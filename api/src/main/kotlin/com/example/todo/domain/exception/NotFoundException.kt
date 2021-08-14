@@ -1,6 +1,6 @@
-package com.example.todo.exception
+package com.example.todo.domain.exception
 
-import java.lang.RuntimeException
+import kotlin.RuntimeException
 
 class NotFoundException (message: String): RuntimeException(message){
 }

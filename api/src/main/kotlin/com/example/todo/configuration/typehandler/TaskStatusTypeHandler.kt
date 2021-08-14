@@ -1,6 +1,6 @@
 package com.example.todo.configuration.typehandler
 
-import com.example.todo.enumration.TaskStatus
+import com.example.todo.domain.enumration.TaskStatus
 import org.apache.ibatis.type.BaseTypeHandler
 import org.apache.ibatis.type.JdbcType
 import java.sql.CallableStatement
