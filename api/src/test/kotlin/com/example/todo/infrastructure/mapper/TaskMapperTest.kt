@@ -12,7 +12,7 @@ import org.springframework.test.context.jdbc.Sql
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class TaskMapperTest {
+internal class TaskMapperTest {
 
     @Autowired
     lateinit var taskMapper: TaskMapper
