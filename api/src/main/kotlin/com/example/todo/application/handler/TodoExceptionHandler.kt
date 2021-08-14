@@ -1,4 +1,4 @@
-package com.example.todo.application.controller
+package com.example.todo.application.handler
 
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.domain.exception.NotFoundException
