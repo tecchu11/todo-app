@@ -1,4 +1,4 @@
-package com.example.todo.reponse
+package com.example.todo.application.reponse
 
 data class ResponseData<T>(
     val message: String,

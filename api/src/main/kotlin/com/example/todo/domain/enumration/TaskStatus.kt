@@ -1,10 +1,10 @@
-package com.example.todo.enumration
+package com.example.todo.domain.enumration
 
 import kotlin.IllegalArgumentException
 
 enum class TaskStatus(val statusId: String?) {
 
-    BACKLOG("1"), OPEN("2"), DONE("3");
+    OPEN("1"), WIP("2"), CLOSE("3");
 
     companion object {
         fun of(result: String?): TaskStatus = values().find { it.statusId == result }

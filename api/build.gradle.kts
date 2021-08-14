@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "2.5.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.2"
+    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
     kotlin("jvm") version "1.5.20"
     kotlin("plugin.spring") version "1.5.20"
 }
@@ -24,6 +25,7 @@ jib {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -34,6 +36,7 @@ dependencies {
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.8")
     implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+    implementation("com.github.guepardoapps:kulid:2.0.0.0")
 
     runtimeOnly("mysql:mysql-connector-java")
 
@@ -49,4 +52,11 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.compileKotlin {
+    dependsOn("ktlintFormat")
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
