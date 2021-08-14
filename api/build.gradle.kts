@@ -24,6 +24,7 @@ jib {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -34,6 +35,7 @@ dependencies {
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.8")
     implementation("net.logstash.logback:logstash-logback-encoder:6.6")
+    implementation("com.github.guepardoapps:kulid:2.0.0.0")
 
     runtimeOnly("mysql:mysql-connector-java")
 
