@@ -4,3 +4,8 @@ spring:
     username: root
     passsword:
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-handlers-package: com.example.todo.configuration.typeHandler
