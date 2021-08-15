@@ -1,6 +1,5 @@
 package com.example.todo.infrastructure.mapper
 
-import org.junit.ClassRule
 import org.springframework.boot.test.util.TestPropertyValues
 import org.springframework.context.ApplicationContextInitializer
 import org.springframework.context.ConfigurableApplicationContext
@@ -11,7 +10,6 @@ import org.testcontainers.utility.DockerImageName
 class MysqlContainerContextInitializer : ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     companion object {
-        @ClassRule
         private val MYSQL = MySQLContainer<Nothing>(DockerImageName.parse("mysql:5.7"))
             .apply {
                 withDatabaseName("testdb")
@@ -24,7 +22,6 @@ class MysqlContainerContextInitializer : ApplicationContextInitializer<Configura
                     BindMode.READ_WRITE
                 )
             }
-
         init {
             MYSQL.start()
         }
