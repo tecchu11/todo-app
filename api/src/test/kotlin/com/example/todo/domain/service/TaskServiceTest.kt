@@ -17,7 +17,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.time.ZonedDateTime
 
-class TaskServiceTest {
+internal class TaskServiceTest {
 
     @MockK
     private lateinit var taskMapper: TaskMapper
