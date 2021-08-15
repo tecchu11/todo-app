@@ -26,19 +26,39 @@ data class TaskForm(
     )
 }
 
+data class TaskResponseForm(
+    val taskId: String,
+    val taskSummary: String,
+    val taskDescription: String?,
+    val userId: Int,
+    val status: TaskStatus
+) {
+    companion object {
+        fun fromTask(task: Task): TaskResponseForm = TaskResponseForm(
+            task.taskId,
+            task.taskSummary,
+            task.taskDescription,
+            task.userId,
+            task.status
+        )
+    }
+}
+
 data class TaskRegistrationForm(
     val taskSummary: String,
     val taskDescription: String?,
     val userId: Int,
     val status: TaskStatus
 ) {
-    fun toTask(): Task = Task(
-        ULID.random(),
-        this.taskSummary,
-        this.taskDescription,
-        this.userId,
-        this.status
-    )
+    companion object {
+        fun toTask(taskRegistrationForm: TaskRegistrationForm): Task = Task(
+            ULID.random(),
+            taskRegistrationForm.taskSummary,
+            taskRegistrationForm.taskDescription,
+            taskRegistrationForm.userId,
+            taskRegistrationForm.status
+        )
+    }
 }
 
 data class TaskUpdateForm(
@@ -48,11 +68,13 @@ data class TaskUpdateForm(
     val userId: Int,
     val status: TaskStatus
 ) {
-    fun toTask(): Task = Task(
-        this.taskId,
-        this.taskSummary,
-        this.taskDescription,
-        this.userId,
-        this.status
-    )
+    companion object {
+        fun toTask(taskUpdateForm: TaskUpdateForm): Task = Task(
+            taskUpdateForm.taskId,
+            taskUpdateForm.taskSummary,
+            taskUpdateForm.taskDescription,
+            taskUpdateForm.userId,
+            taskUpdateForm.status
+        )
+    }
 }

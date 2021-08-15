@@ -10,19 +10,18 @@ import org.springframework.stereotype.Service
 class TaskService(private val taskMapper: TaskMapper) {
 
     fun findAll(userId: Int): List<TaskEntity> {
-
-        val taskRecords = taskMapper.selectAll(userId)
-        if (taskRecords.isEmpty()) throw NotFoundException("task not found")
-        return taskRecords
+        taskMapper.selectAll(userId)
+            .run {
+                if (this.isEmpty()) throw NotFoundException("task not found")
+                return this
+            }
     }
 
     fun register(task: Task) {
-
         taskMapper.insert(task)
     }
 
     fun update(task: Task) {
-
         if (!taskMapper.update(task)) throw NotFoundException("Update target not found")
     }
 }
