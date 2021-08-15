@@ -48,6 +48,7 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
+    dependsOn("ktlintFormat")
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
@@ -56,11 +57,4 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks.compileKotlin {
-    dependsOn("ktlintFormat")
-    kotlinOptions {
-        jvmTarget = "11"
-    }
 }
