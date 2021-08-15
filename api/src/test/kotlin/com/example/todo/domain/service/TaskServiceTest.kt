@@ -5,27 +5,24 @@ import com.example.todo.domain.entity.TaskEntity
 import com.example.todo.domain.enumration.TaskStatus
 import com.example.todo.domain.exception.NotFoundException
 import com.example.todo.infrastructure.mapper.TaskMapper
-import com.ninjasquad.springmockk.MockkBean
+import io.mockk.MockKAnnotations
 import io.mockk.every
+import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.ZonedDateTime
 
-@ExtendWith(SpringExtension::class)
-@SpringBootTest
 class TaskServiceTest {
 
-    @MockkBean
+    @MockK
     private lateinit var taskMapper: TaskMapper
 
-    @Autowired
+    @InjectMockKs
     private lateinit var taskService: TaskService
 
     companion object {
@@ -46,6 +43,11 @@ class TaskServiceTest {
             ZonedDateTime.now(),
             ZonedDateTime.now()
         )
+    }
+
+    @BeforeEach
+    fun setUp() {
+        MockKAnnotations.init(this)
     }
 
     @Test
