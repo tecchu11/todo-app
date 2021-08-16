@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.RequestDispatcher.ERROR_EXCEPTION
+import javax.servlet.RequestDispatcher.ERROR_REQUEST_URI
 import javax.servlet.RequestDispatcher.ERROR_STATUS_CODE
 import javax.servlet.http.HttpServletRequest
 
@@ -24,7 +26,11 @@ class DefaultErrorHandleController : ErrorController {
             HttpStatus.UNAUTHORIZED -> "Request is not allowed. Please check your credentials."
             else -> "Something happened on the server. Please retry to request after few minute."
         }.run {
-            log.warn("Requested to ${request.contextPath}. And status code is ${request.getAttribute(ERROR_STATUS_CODE)}")
+            log.warn(
+                "Requested is failed. code:${request.getAttribute(ERROR_STATUS_CODE)} " +
+                    "path: ${request.getAttribute(ERROR_REQUEST_URI)} " +
+                    "exception: ${request.getAttribute(ERROR_EXCEPTION)} "
+            )
             return ResponseEntity
                 .status(httpStatus)
                 .body(ResponseData(this, httpStatus.name))
