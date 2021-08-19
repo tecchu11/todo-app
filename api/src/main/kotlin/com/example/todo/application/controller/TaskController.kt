@@ -22,30 +22,30 @@ class TaskController(
 
     @GetMapping("/{userId}")
     fun findAll(@PathVariable userId: Int): ResponseData<List<TaskForm>> {
-        taskService
+        return taskService
             .findAll(userId)
             .run {
-                return ResponseData("Success", this.map { TaskForm(it) })
+                ResponseData("Success", this.map { TaskForm(it) })
             }
     }
 
     @PostMapping("/")
     fun register(@RequestBody taskRegistrationForm: TaskRegistrationForm): ResponseData<TaskResponseForm> {
-        TaskRegistrationForm
+        return TaskRegistrationForm
             .toTask(taskRegistrationForm)
             .run {
                 taskService.register(this)
-                return ResponseData("Register Success", TaskResponseForm.fromTask(this))
+                ResponseData("Register Success", TaskResponseForm.fromTask(this))
             }
     }
 
     @PutMapping("/")
     fun update(@RequestBody taskUpdateForm: TaskUpdateForm): ResponseData<TaskResponseForm> {
-        TaskUpdateForm
+        return TaskUpdateForm
             .toTask(taskUpdateForm)
             .run {
                 taskService.update(this)
-                return ResponseData("Update Success", TaskResponseForm.fromTask(this))
+                ResponseData("Update Success", TaskResponseForm.fromTask(this))
             }
     }
 }
