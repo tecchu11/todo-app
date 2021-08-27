@@ -28,12 +28,11 @@ class DefaultErrorHandleController : ErrorController {
         }
         log.warn(
             "Requested is failed. code:${request.getAttribute(ERROR_STATUS_CODE)} " +
-                    "path: ${request.getAttribute(ERROR_REQUEST_URI)} " +
-                    "exception: ${request.getAttribute(ERROR_EXCEPTION)} "
+                "path: ${request.getAttribute(ERROR_REQUEST_URI)} " +
+                "exception: ${request.getAttribute(ERROR_EXCEPTION)} "
         )
         return ResponseEntity
             .status(httpStatus)
             .body(ResponseData(message, httpStatus.name))
-
     }
 }
