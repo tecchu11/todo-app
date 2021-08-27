@@ -1,5 +1,6 @@
 package com.example.todo.commons
 
+import com.example.todo.extentions.httpStatus
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -11,7 +12,7 @@ import org.springframework.http.HttpStatus
 import javax.servlet.RequestDispatcher
 import javax.servlet.http.HttpServletRequest
 
-internal class UtilKtTest {
+internal class ExtensionsKtTest {
 
     @MockK
     lateinit var httpServletRequest: HttpServletRequest
