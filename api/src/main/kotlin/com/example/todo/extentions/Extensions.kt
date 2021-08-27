@@ -1,4 +1,4 @@
-package com.example.todo.commons
+package com.example.todo.extentions
 
 import mu.KotlinLogging
 import org.springframework.http.HttpStatus
