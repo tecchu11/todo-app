@@ -3,46 +3,51 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.todo.infrastructure.mapper.TaskMapper">
-    <select id="selectAll" parameterType="int" resultType="com.example.todo.domain.entity.TaskEntity">
+    <select id="selectAll" parameterType="int" resultMap="taskMap">
         select
-            task_id,
-            task_summary,
-            task_description,
-            user_id,
-            status_id,
-            registered_at,
-            updated_at
+        task_id,
+        task_summary,
+        task_description,
+        user_id,
+        status_id,
+        registered_at,
+        updated_at
         from
-            tasks
+        tasks
         where user_id = #{userId}
     </select>
 
     <insert id="insert" parameterType="com.example.todo.domain.entity.Task">
         insert into tasks(
-            task_id,
-            task_summary,
-            task_description,
-            user_id,
-            status_id
+        task_id,
+        task_summary,
+        task_description,
+        user_id,
+        status_id
         )
         values
         (
-            #{taskId},
-            #{taskSummary},
-            #{taskDescription},
-            #{userId},
-            #{status}
+        #{taskId},
+        #{taskSummary},
+        #{taskDescription},
+        #{userId},
+        #{status,typeHandler=com.example.todo.configuration.typehandler.TaskStatusTypeHandler}
         )
     </insert>
 
     <update id="update" parameterType="com.example.todo.domain.entity.Task">
         update tasks
         set
-            task_summary = #{taskSummary},
-            task_description = #{taskDescription},
-            status_id = #{status}
+        task_summary = #{taskSummary},
+        task_description = #{taskDescription},
+        status_id = #{status,typeHandler=com.example.todo.configuration.typehandler.TaskStatusTypeHandler}
         where
-            user_id = #{userId}
+        user_id = #{userId}
         and task_id = #{taskId}
     </update>
+
+    <resultMap id="taskMap" type="com.example.todo.domain.entity.TaskEntity">
+        <result column="status_id" property="status"
+                typeHandler="com.example.todo.configuration.typehandler.TaskStatusTypeHandler"/>
+    </resultMap>
 </mapper>
