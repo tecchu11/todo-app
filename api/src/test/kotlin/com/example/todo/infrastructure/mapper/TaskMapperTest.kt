@@ -1,5 +1,6 @@
 package com.example.todo.infrastructure.mapper
 
+import com.example.todo.configuration.typehandler.TaskStatusTypeHandler
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.enumration.TaskStatus
 import org.assertj.core.api.Assertions.assertThat
@@ -8,11 +9,13 @@ import org.junit.jupiter.api.Test
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.context.annotation.Import
 import org.springframework.test.context.ContextConfiguration
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ContextConfiguration(initializers = [MysqlContainerContextInitializer::class])
+@Import(TaskStatusTypeHandler::class)
 internal class TaskMapperTest {
 
     @Autowired
