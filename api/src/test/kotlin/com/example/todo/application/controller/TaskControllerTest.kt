@@ -109,7 +109,7 @@ internal class TaskControllerTest {
     private fun postTask(): ResultActions = mockMvc.perform(
         MockMvcRequestBuilders
             .post("$BASE_PATH/")
-            .content(objectMapper.writeValueAsString(taskUpdateForm))
+            .content(objectMapper.writeValueAsString(taskRegistrationForm))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON)
     )
