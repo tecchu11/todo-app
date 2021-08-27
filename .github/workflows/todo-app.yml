@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -17,5 +17,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+          cache: 'gradle'
       - name: Build with Gradle  
         run: ./gradlew build --stacktrace --info
