@@ -1,8 +1,8 @@
 package com.example.todo.application.handler
 
 import com.example.todo.application.reponse.ResponseData
-import com.example.todo.commons.httpStatus
-import com.example.todo.commons.log
+import com.example.todo.extentions.httpStatus
+import com.example.todo.extentions.log
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
