@@ -3,7 +3,6 @@ package com.example.todo.infrastructure.mapper
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.enumration.TaskStatus
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Ignore
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
