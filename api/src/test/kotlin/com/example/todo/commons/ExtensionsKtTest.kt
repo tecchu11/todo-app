@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus
 import javax.servlet.RequestDispatcher
 import javax.servlet.http.HttpServletRequest
 
-internal class UtilKtTest {
+internal class ExtensionsKtTest {
 
     @MockK
     lateinit var httpServletRequest: HttpServletRequest

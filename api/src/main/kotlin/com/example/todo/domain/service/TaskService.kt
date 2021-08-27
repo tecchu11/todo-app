@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service
 class TaskService(private val taskMapper: TaskMapper) {
 
     fun findAll(userId: Int): List<TaskEntity> {
-        taskMapper.selectAll(userId)
-            .run {
+        return taskMapper.selectAll(userId)
+            .apply {
                 if (this.isEmpty()) throw NotFoundException("task not found")
-                return this
             }
     }
 
