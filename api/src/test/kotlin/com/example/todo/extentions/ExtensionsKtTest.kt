@@ -1,6 +1,5 @@
-package com.example.todo.commons
+package com.example.todo.extentions
 
-import com.example.todo.extentions.httpStatus
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
