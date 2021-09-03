@@ -1,11 +1,8 @@
 package com.example.todo.extentions
 
-import mu.KotlinLogging
 import org.springframework.http.HttpStatus
 import javax.servlet.RequestDispatcher
 import javax.servlet.http.HttpServletRequest
-
-val log = KotlinLogging.logger { }
 
 fun HttpServletRequest.httpStatus(): HttpStatus {
     val code = this.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) as? Int?

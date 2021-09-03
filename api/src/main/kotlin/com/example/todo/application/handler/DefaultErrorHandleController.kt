@@ -2,7 +2,7 @@ package com.example.todo.application.handler
 
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.extentions.httpStatus
-import com.example.todo.extentions.log
+import mu.KotlinLogging
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,6 +12,8 @@ import javax.servlet.RequestDispatcher.ERROR_EXCEPTION
 import javax.servlet.RequestDispatcher.ERROR_REQUEST_URI
 import javax.servlet.RequestDispatcher.ERROR_STATUS_CODE
 import javax.servlet.http.HttpServletRequest
+
+private val log = KotlinLogging.logger { }
 
 @RestController
 @RequestMapping("/error")
