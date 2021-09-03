@@ -23,7 +23,7 @@ class TodoExceptionHandler {
     @ExceptionHandler(NotFoundException::class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun notFoundHandler(e: NotFoundException): ResponseData<String> {
-        log.info("not found exception is thrown", e)
+        log.info(e) { "not found exception is thrown" }
         return ResponseData(HttpStatus.NOT_FOUND.name, "Please check request parameter is correct.")
     }
 }
