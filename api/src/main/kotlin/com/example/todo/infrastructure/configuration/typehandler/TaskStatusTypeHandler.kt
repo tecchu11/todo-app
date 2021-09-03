@@ -1,4 +1,4 @@
-package com.example.todo.configuration.typehandler
+package com.example.todo.infrastructure.configuration.typehandler
 
 import com.example.todo.domain.enumration.TaskStatus
 import org.apache.ibatis.type.BaseTypeHandler

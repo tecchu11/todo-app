@@ -5,7 +5,7 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  type-handlers-package: com.example.todo.configuration.typehandler
+  type-handlers-package: com.example.todo.infrastructure.configuration.typehandler
 
 app:
   logging:
