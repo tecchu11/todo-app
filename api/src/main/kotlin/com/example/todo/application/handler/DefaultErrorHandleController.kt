@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.RequestDispatcher.ERROR_EXCEPTION
 import javax.servlet.RequestDispatcher.ERROR_REQUEST_URI
 import javax.servlet.RequestDispatcher.ERROR_STATUS_CODE
 import javax.servlet.http.HttpServletRequest
@@ -28,9 +27,8 @@ class DefaultErrorHandleController : ErrorController {
             else -> "Something happened on the server. Please retry to request after few minute."
         }
         log.warn(
-            "Requested is failed. code:${request.getAttribute(ERROR_STATUS_CODE)} " +
-                "path: ${request.getAttribute(ERROR_REQUEST_URI)} " +
-                "exception: ${request.getAttribute(ERROR_EXCEPTION)} "
+            "Requested is failed. status code:${request.getAttribute(ERROR_STATUS_CODE)}, " +
+                "path: ${request.getAttribute(ERROR_REQUEST_URI)} "
         )
         return ResponseEntity
             .status(httpStatus)
