@@ -1,4 +1,4 @@
-package com.example.todo.configuration.typehandler
+package com.example.todo.infrastructure.configuration.typehandler
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
