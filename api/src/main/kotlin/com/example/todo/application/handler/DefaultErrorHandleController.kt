@@ -24,7 +24,6 @@ class DefaultErrorHandleController : ErrorController {
         val httpStatus = request.httpStatus()
         val message = when (httpStatus) {
             HttpStatus.NOT_FOUND, HttpStatus.BAD_REQUEST -> "Request is not correct. Please confirm request method and parameter, body"
-            HttpStatus.INTERNAL_SERVER_ERROR -> "Unknown error happened. Please retry after few minute."
             HttpStatus.UNAUTHORIZED -> "Request is not allowed. Please check your credentials."
             else -> "Something happened on the server. Please retry to request after few minute."
         }
