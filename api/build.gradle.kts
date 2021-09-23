@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,6 +6,7 @@ plugins {
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+    id("io.gitlab.arturbosch.detekt").version("1.18.1")
     kotlin("jvm") version "1.5.31"
     kotlin("plugin.spring") version "1.5.31"
 }
@@ -21,6 +23,20 @@ jib {
         }
     }
     to.image = "tecchu11/todo-app"
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = true
+    config = files("$rootDir/config/detekt/detekt.yml")
+    reports {
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/detekt/detekt.html")
+        }
+        xml.enabled = false
+        txt.enabled = false
+    }
 }
 
 repositories {
@@ -54,6 +70,10 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
     }
+}
+
+tasks.withType<Detekt>().configureEach {
+    jvmTarget = "11"
 }
 
 tasks.withType<Test> {
