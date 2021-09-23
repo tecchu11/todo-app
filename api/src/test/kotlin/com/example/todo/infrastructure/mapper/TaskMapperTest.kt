@@ -26,7 +26,7 @@ internal class TaskMapperTest {
 
     companion object {
         private const val USER_ID = 1
-        private val zoneJst: ZoneId = ZoneId.of("Asia/Tokyo")
+        private val systemDefaultZoneId: ZoneId = ZoneId.systemDefault()
         private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
         private val initialData = TaskEntity(
@@ -35,8 +35,8 @@ internal class TaskMapperTest {
             null,
             1,
             TaskStatus.OPEN,
-            ZonedDateTime.of(LocalDateTime.parse("2021-01-01 12:00:00", formatter), zoneJst),
-            ZonedDateTime.of(LocalDateTime.parse("2021-01-01 13:00:00", formatter), zoneJst)
+            ZonedDateTime.of(LocalDateTime.parse("2021-01-01 12:00:00", formatter), systemDefaultZoneId),
+            ZonedDateTime.of(LocalDateTime.parse("2021-01-01 13:00:00", formatter), systemDefaultZoneId)
         )
 
         private val task1 = Task(
