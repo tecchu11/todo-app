@@ -16,16 +16,12 @@ class TodoAuthenticationUserDetailService(
 ) : AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {
 
     override fun loadUserDetails(token: PreAuthenticatedAuthenticationToken?): UserDetails {
-        val key = token?.credentials ?: ""
-
-        if (key.toString().isEmpty()) throw UsernameNotFoundException("credentials not found from header")
-
-        return when (key) {
+        return when (token?.credentials ?: "") {
             todoAppApiKey.userKey
-            -> User("User", "", AuthorityUtils.createAuthorityList(UserRole.USER.name))
+            -> User("User", "", AuthorityUtils.createAuthorityList("USER"))
             todoAppApiKey.adminKey
-            -> User("Admin", "", AuthorityUtils.createAuthorityList(UserRole.USER.name))
-            else -> User("NO Auth User", "", AuthorityUtils.NO_AUTHORITIES)
+            -> User("Admin", "", AuthorityUtils.createAuthorityList("ADMIN"))
+            else -> throw UsernameNotFoundException("Invalid token is provided from client authentication key")
         }
     }
 }
