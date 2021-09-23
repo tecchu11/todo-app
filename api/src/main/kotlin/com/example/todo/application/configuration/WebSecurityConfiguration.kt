@@ -18,6 +18,8 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
         http
+            ?.httpBasic()?.disable()
+            ?.csrf()?.disable()
             ?.authorizeRequests()
             ?.antMatchers("/v1/todo**")?.hasAnyRole(UserRole.USER.name, UserRole.ADMIN.name)
             ?.antMatchers("/admin/**")?.hasRole(UserRole.ADMIN.name)
@@ -25,9 +27,8 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
             ?.authenticated()
             ?.and()
             ?.addFilter(preAuthenticatedProcessingFilter())
+            ?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
-        http?.sessionManagement()
-            ?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
     }
 
     @Bean
