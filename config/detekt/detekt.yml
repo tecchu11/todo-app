@@ -1,0 +1,7 @@
+performance:
+  SpreadOperator:
+    excludes: ['**/TodoApplication.kt']
+
+empty-blocks:
+  EmptyFunctionBlock:
+    excludes: ['**/TodoApplicationTests.kt']
