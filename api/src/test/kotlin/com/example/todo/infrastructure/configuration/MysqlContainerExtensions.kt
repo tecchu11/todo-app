@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtensionContext
 import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.utility.DockerImageName
+import java.time.ZoneId
 
 class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
 
@@ -17,7 +18,7 @@ class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
                 withDatabaseName("testdb")
                 withUsername("test")
                 withPassword("test")
-                withEnv("TZ", "Asia/Tokyo")
+                withEnv("TZ", ZoneId.systemDefault().id)
                 withClasspathResourceMapping(
                     "docker-entrypoint-initdb.d",
                     "/docker-entrypoint-initdb.d",
