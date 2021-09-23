@@ -8,4 +8,4 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/api/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
