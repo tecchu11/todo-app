@@ -9,8 +9,8 @@ mybatis:
 
 todo-app:
   key:
-    admin-key: ${admin_key}
-    user-key: ${user_key}
+    admin-key: ${ADMIN_KEY}
+    user-key: ${USER_KEY}
 
 app:
   logging:
