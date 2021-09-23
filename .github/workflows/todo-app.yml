@@ -17,4 +17,4 @@ jobs:
           java-version: '11'
           cache: 'gradle'
       - name: Build with Gradle  
-        run: ./gradlew api:build
+        run: ./gradlew api:build --info
