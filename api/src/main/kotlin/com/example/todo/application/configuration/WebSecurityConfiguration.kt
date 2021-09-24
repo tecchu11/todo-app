@@ -14,27 +14,26 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 
 @Configuration
 @EnableWebSecurity
-class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
+class WebSecurityConfiguration(
+    private val todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService,
+) : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
         http
             ?.httpBasic()?.disable()
             ?.csrf()?.disable()
             ?.authorizeRequests()
-            ?.antMatchers("/health")?.permitAll()
-            ?.antMatchers("v1/todo**")?.hasAnyRole(UserRole.USER.name, UserRole.ADMIN.name)
-            ?.antMatchers("v1/admin**")?.hasRole(UserRole.ADMIN.name)
+            ?.mvcMatchers("/actuator/health")?.permitAll()
+            ?.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
+            ?.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
             ?.anyRequest()?.authenticated()
             ?.and()
             ?.addFilter(preAuthenticatedProcessingFilter())
             ?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
     }
 
     @Bean
-    fun preAuthenticationProvider(
-        todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService
-    ): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
+    fun preAuthenticationProvider(): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
         .apply {
             setPreAuthenticatedUserDetailsService(todoAuthenticationUserDetailService)
             setUserDetailsChecker(AccountStatusUserDetailsChecker())
