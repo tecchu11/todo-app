@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Component
-class DefaultAccessDeniedHandler: AccessDeniedHandler {
+class DefaultAccessDeniedHandler : AccessDeniedHandler {
     override fun handle(
         request: HttpServletRequest?,
         response: HttpServletResponse?,
         accessDeniedException: AccessDeniedException?
     ) {
-        response?.sendError(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.reasonPhrase);
+        response?.sendError(HttpStatus.FORBIDDEN.value(), HttpStatus.FORBIDDEN.reasonPhrase)
     }
 }

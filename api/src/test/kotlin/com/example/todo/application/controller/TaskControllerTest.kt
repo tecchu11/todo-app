@@ -2,7 +2,6 @@ package com.example.todo.application.controller
 
 import com.example.todo.application.form.TaskRegistrationForm
 import com.example.todo.application.form.TaskUpdateForm
-import com.example.todo.application.handler.TodoExceptionHandler
 import com.example.todo.domain.entity.TaskEntity
 import com.example.todo.domain.enumration.TaskStatus
 import com.example.todo.domain.exception.NotFoundException
