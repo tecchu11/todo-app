@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.preauth.PreAuthenticatedA
 @EnableWebSecurity
 class WebSecurityConfiguration(
     private val todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService,
+    private val defaultAccessDeniedHandler: DefaultAccessDeniedHandler
 ) : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
@@ -27,6 +28,8 @@ class WebSecurityConfiguration(
             ?.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
             ?.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
             ?.anyRequest()?.authenticated()
+            ?.and()
+            ?.exceptionHandling()?.accessDeniedHandler(defaultAccessDeniedHandler)
             ?.and()
             ?.addFilter(preAuthenticatedProcessingFilter())
             ?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
