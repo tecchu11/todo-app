@@ -7,6 +7,11 @@ mybatis:
     map-underscore-to-camel-case: true
   type-handlers-package: com.example.todo.infrastructure.configuration.typehandler
 
+todo-app:
+  key:
+    admin-key: ${ADMIN_KEY}
+    user-key: ${USER_KEY}
+
 app:
   logging:
     log-dir: ${user.home}/logs/app/

@@ -1,4 +1,4 @@
-package com.example.todo.application.handler
+package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.extentions.httpStatus
@@ -24,7 +24,7 @@ class DefaultErrorHandleController : ErrorController {
         val message = when (httpStatus) {
             HttpStatus.NOT_FOUND, HttpStatus.BAD_REQUEST
             -> "Request is not correct. Please confirm request method and parameter, body"
-            HttpStatus.UNAUTHORIZED -> "Request is not allowed. Please check your credentials."
+            HttpStatus.UNAUTHORIZED, HttpStatus.FORBIDDEN -> "Request is not allowed. Please check your credentials."
             else -> "Something happened on the server. Please retry to request after few minute."
         }
         log.warn(
