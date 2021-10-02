@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <included>
-    <springProperty scope="context" name="LOG_DIR" source="app.logging.log-dir"/>
-    <springProperty scope="context" name="LOG_NAME" source="app.logging.log-name"/>
-
-    <property name="OUTPUT_DIR" value="${LOG_DIR:-${java.io.tmpdir:-/tmp}}"/>
-    <property name="LOG_PATH" value="${OUTPUT_DIR}/${LOG_NAME:-app.log}"/>
-
-    <appender name="FILE_WITH_JSON" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_PATH}</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.gz</fileNamePattern>
-            <maxHistory>31</maxHistory>
-        </rollingPolicy>
+    <appender name="CONSOLE_WITH_JSON" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <timestamp>
@@ -41,11 +30,5 @@
                 <stackTrace/>
             </providers>
         </encoder>
-    </appender>
-
-    <appender name="FILE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
-        <param name="IncludeCallerData" value="true"/>
-        <queueSize>1024</queueSize>
-        <appender-ref ref="FILE_WITH_JSON"/>
     </appender>
 </included>

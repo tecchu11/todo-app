@@ -3,6 +3,7 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <include resource="logback/logback-json-appender.xml"/>
 
     <springProfile name="local">
         <root level="INFO">
@@ -14,7 +15,7 @@
     <springProfile name="">
         <include resource="logback/logback-file.xml"/>
         <root level="INFO">
-            <appender-ref ref="FILE_ASYNC"/>
+            <appender-ref ref="CONSOLE_WITH_JSON"/>
         </root>
     </springProfile>
 </configuration>
