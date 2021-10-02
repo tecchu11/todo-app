@@ -11,9 +11,3 @@ todo-app:
   key:
     admin-key: ${ADMIN_KEY}
     user-key: ${USER_KEY}
-
-app:
-  logging:
-    log-dir: ${user.home}/logs/app/
-    log-name: todo-api.log
-    max-history: 31
