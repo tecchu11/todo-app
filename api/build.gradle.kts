@@ -4,8 +4,6 @@ plugins {
     id("todo.kotlin-spring-conventions")
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_11
-
 jib {
     from.platforms {
         platform {
