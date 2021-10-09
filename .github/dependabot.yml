@@ -6,6 +6,18 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/api/" # Location of package manifests
+    directory: "/buildSrc/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "gradle"
+    directory: "/buildSrc/src/main/kotlin/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "gradle"
+    directory: "/api/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "gradle"
+    directory: "/web/"
     schedule:
       interval: "weekly"
