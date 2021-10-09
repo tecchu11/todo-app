@@ -1,17 +1,7 @@
 plugins {
-    id("com.google.cloud.tools.jib") version "3.1.4"
     id("todo.kotlin-conventions")
     id("todo.kotlin-spring-conventions")
-}
-
-jib {
-    from.platforms {
-        platform {
-            architecture = "arm64"
-            os = "linux"
-        }
-    }
-    to.image = "tecchu11/todo-app"
+    id("todo.jib-conventions")
 }
 
 repositories {

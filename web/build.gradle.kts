@@ -1,6 +1,7 @@
 plugins {
 	id("todo.kotlin-conventions")
 	id("todo.kotlin-spring-conventions")
+	id("todo.jib-conventions")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
