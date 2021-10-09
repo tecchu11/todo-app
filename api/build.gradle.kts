@@ -1,11 +1,7 @@
-
-
 plugins {
-    id("org.springframework.boot") version "2.5.5"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("com.google.cloud.tools.jib") version "3.1.4"
     id("todo.kotlin-conventions")
-    kotlin("plugin.spring") version "1.5.31"
+    id("todo.kotlin-spring-conventions")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -46,5 +42,3 @@ dependencies {
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.16.0"))
     testImplementation("org.testcontainers:mysql")
 }
-
-
