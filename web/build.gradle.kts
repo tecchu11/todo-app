@@ -1,5 +1,6 @@
 plugins {
     id("todo.kotlin-spring-conventions")
+    id("todo.spring-boot-conventions")
     id("todo.jib-conventions")
 }
 
