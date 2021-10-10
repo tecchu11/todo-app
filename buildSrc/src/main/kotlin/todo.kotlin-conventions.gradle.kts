@@ -32,7 +32,6 @@ detekt {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
 }
 
 tasks.withType<Detekt>().configureEach {
