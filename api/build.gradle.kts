@@ -1,6 +1,6 @@
 plugins {
-    id("todo.spring-dependency-conventions")
-    id("todo.spring-boot-conventions")
+    id("todo.kotlin-conventions")
+    id("todo.spring-boot-application-conventions")
     id("todo.jib-conventions")
 }
 
@@ -11,20 +11,16 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
-
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-
     implementation("com.github.guepardoapps:kulid:2.0.0.0")
     implementation("net.logstash.logback:logstash-logback-encoder:6.6")
 
     runtimeOnly("mysql:mysql-connector-java")
 
     testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.0")
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
     testImplementation(platform("org.testcontainers:testcontainers-bom:1.16.0"))
     testImplementation("org.testcontainers:mysql")
 }
