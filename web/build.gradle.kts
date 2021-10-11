@@ -1,6 +1,6 @@
 plugins {
-    id("todo.spring-dependency-conventions")
-    id("todo.spring-boot-conventions")
+    id("todo.kotlin-conventions")
+    id("todo.spring-boot-application-conventions")
     id("todo.jib-conventions")
 }
 
@@ -10,10 +10,8 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
-
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    testImplementation("com.ninja-squad:springmockk:3.0.1")
 }
