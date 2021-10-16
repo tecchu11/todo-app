@@ -9,7 +9,7 @@
                     <timeZone>UTC</timeZone>
                 </timestamp>
                 <loggerName>
-                    <fieldName>logger</fieldName>
+                    <fieldName>com.example.todo.extentions.logger</fieldName>
                 </loggerName>
                 <callerData>
                     <classFieldName>class</classFieldName>
