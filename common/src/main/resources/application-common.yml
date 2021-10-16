@@ -1,0 +1,4 @@
+todo-app:
+  key:
+    admin-key: ${ADMIN_KEY}
+    user-key: ${USER_KEY}
