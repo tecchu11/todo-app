@@ -1,4 +1,4 @@
-package com.example.todo.domain.configuration
+package com.example.todo.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding

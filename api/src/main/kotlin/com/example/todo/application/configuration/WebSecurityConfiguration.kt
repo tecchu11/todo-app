@@ -1,7 +1,7 @@
 package com.example.todo.application.configuration
 
-import com.example.todo.domain.enumration.UserRole
 import com.example.todo.domain.service.TodoAuthenticationUserDetailService
+import com.example.todo.enums.UserRole
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AccountStatusUserDetailsChecker

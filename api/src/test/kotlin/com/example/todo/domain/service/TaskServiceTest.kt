@@ -2,8 +2,8 @@ package com.example.todo.domain.service
 
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.entity.TaskEntity
-import com.example.todo.domain.enumration.TaskStatus
-import com.example.todo.domain.exception.NotFoundException
+import com.example.todo.enums.TaskStatus
+import com.example.todo.exceptions.NotFoundException
 import com.example.todo.infrastructure.mapper.TaskMapper
 import io.mockk.MockKAnnotations
 import io.mockk.every

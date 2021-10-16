@@ -1,7 +1,7 @@
 package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
-import com.example.todo.domain.exception.NotFoundException
+import com.example.todo.exceptions.NotFoundException
 import com.example.todo.extentions.LogExtension
 import com.example.todo.extentions.logger
 import org.springframework.http.HttpStatus

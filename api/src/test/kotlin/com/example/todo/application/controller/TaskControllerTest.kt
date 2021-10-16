@@ -1,11 +1,11 @@
 package com.example.todo.application.controller
 
-import com.example.todo.application.form.TaskRegistrationForm
-import com.example.todo.application.form.TaskUpdateForm
 import com.example.todo.domain.entity.TaskEntity
-import com.example.todo.domain.enumration.TaskStatus
-import com.example.todo.domain.exception.NotFoundException
 import com.example.todo.domain.service.TaskService
+import com.example.todo.dto.TaskRegistrationDto
+import com.example.todo.dto.TaskUpdateDto
+import com.example.todo.enums.TaskStatus
+import com.example.todo.exceptions.NotFoundException
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -46,14 +46,14 @@ internal class TaskControllerTest {
             ZonedDateTime.now()
         )
 
-        private val taskRegistrationForm = TaskRegistrationForm(
+        private val taskRegistrationForm = TaskRegistrationDto(
             "this is summary",
             "this is description",
             USER_ID,
             TaskStatus.OPEN
         )
 
-        private val taskUpdateForm = TaskUpdateForm(
+        private val taskUpdateForm = TaskUpdateDto(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
             "this is summary",
             "this is description",

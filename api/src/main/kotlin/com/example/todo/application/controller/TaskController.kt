@@ -1,11 +1,13 @@
 package com.example.todo.application.controller
 
-import com.example.todo.application.form.TaskForm
-import com.example.todo.application.form.TaskRegistrationForm
-import com.example.todo.application.form.TaskResponseForm
-import com.example.todo.application.form.TaskUpdateForm
 import com.example.todo.application.reponse.ResponseData
+import com.example.todo.domain.entity.Task
 import com.example.todo.domain.service.TaskService
+import com.example.todo.dto.TaskDto
+import com.example.todo.dto.TaskRegistrationDto
+import com.example.todo.dto.TaskResponseDto
+import com.example.todo.dto.TaskUpdateDto
+import com.github.guepardoapps.kulid.ULID
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,31 +23,62 @@ class TaskController(
 ) {
 
     @GetMapping("/{userId}")
-    fun findAll(@PathVariable userId: Int): ResponseData<List<TaskForm>> {
-        return taskService
-            .findAll(userId)
-            .run {
-                ResponseData("Success", this.map { TaskForm(it) })
+    fun findAll(@PathVariable userId: Int): ResponseData<List<TaskDto>> {
+        val tasks = taskService.findAll(userId).run {
+            this.map {
+                TaskDto(
+                    it.taskId, it.taskSummary, it.taskDescription, it.userId, it.status, it.registeredAt, it.updatedAt
+                )
             }
+        }
+        return ResponseData("message", tasks)
     }
 
     @PostMapping("/")
-    fun register(@RequestBody taskRegistrationForm: TaskRegistrationForm): ResponseData<TaskResponseForm> {
-        return TaskRegistrationForm
-            .toTask(taskRegistrationForm)
-            .run {
-                taskService.register(this)
-                ResponseData("Register Success", TaskResponseForm.fromTask(this))
-            }
+    fun register(@RequestBody taskRegistrationDto: TaskRegistrationDto): ResponseData<TaskResponseDto> {
+        val registrationTask = Task(
+            ULID.random(),
+            taskRegistrationDto.taskSummary,
+            taskRegistrationDto.taskSummary,
+            taskRegistrationDto.userId,
+            taskRegistrationDto.status
+        )
+        return registrationTask.run {
+            taskService.register(this)
+            ResponseData(
+                "register success",
+                TaskResponseDto(
+                    registrationTask.taskId,
+                    registrationTask.taskSummary,
+                    registrationTask.taskDescription,
+                    registrationTask.userId,
+                    registrationTask.status
+                )
+            )
+        }
     }
 
     @PutMapping("/")
-    fun update(@RequestBody taskUpdateForm: TaskUpdateForm): ResponseData<TaskResponseForm> {
-        return TaskUpdateForm
-            .toTask(taskUpdateForm)
-            .run {
-                taskService.update(this)
-                ResponseData("Update Success", TaskResponseForm.fromTask(this))
-            }
+    fun update(@RequestBody taskUpdateDto: TaskUpdateDto): ResponseData<TaskResponseDto> {
+        val updateTask = Task(
+            taskUpdateDto.taskId,
+            taskUpdateDto.taskSummary,
+            taskUpdateDto.taskDescription,
+            taskUpdateDto.userId,
+            taskUpdateDto.status
+        )
+        return updateTask.run {
+            taskService.update(this)
+            ResponseData(
+                "update success",
+                TaskResponseDto(
+                    updateTask.taskId,
+                    updateTask.taskSummary,
+                    updateTask.taskDescription,
+                    updateTask.userId,
+                    updateTask.status
+                )
+            )
+        }
     }
 }

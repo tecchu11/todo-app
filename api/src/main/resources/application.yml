@@ -1,13 +1,11 @@
 spring:
   profiles:
     active: local
+    group:
+      local:
+       - common
 
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
   type-handlers-package: com.example.todo.infrastructure.configuration.typehandler
-
-todo-app:
-  key:
-    admin-key: ${ADMIN_KEY}
-    user-key: ${USER_KEY}
