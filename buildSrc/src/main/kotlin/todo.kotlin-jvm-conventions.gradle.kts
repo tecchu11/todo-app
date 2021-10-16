@@ -3,6 +3,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     kotlin("jvm")
+    kotlin("kapt")
     id("org.jlleitschuh.gradle.ktlint")
     id("io.gitlab.arturbosch.detekt")
 }
