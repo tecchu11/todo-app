@@ -1,8 +1,9 @@
 package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
+import com.example.todo.extentions.LogExtension
 import com.example.todo.extentions.httpStatus
-import mu.KotlinLogging
+import com.example.todo.extentions.logger
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,11 +13,13 @@ import javax.servlet.RequestDispatcher.ERROR_REQUEST_URI
 import javax.servlet.RequestDispatcher.ERROR_STATUS_CODE
 import javax.servlet.http.HttpServletRequest
 
-private val log = KotlinLogging.logger { }
-
 @RestController
 @RequestMapping("/error")
 class DefaultErrorHandleController : ErrorController {
+
+    companion object : LogExtension {
+        private val log = logger()
+    }
 
     @RequestMapping
     fun handleError(request: HttpServletRequest): ResponseEntity<ResponseData<String>> {
