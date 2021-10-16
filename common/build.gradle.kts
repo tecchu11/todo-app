@@ -1,5 +1,5 @@
 plugins {
-    id("todo.kotlin-conventions")
+    id("todo.kotlin-jvm-conventions")
     id("todo.spring-dependency-conventions")
 }
 
