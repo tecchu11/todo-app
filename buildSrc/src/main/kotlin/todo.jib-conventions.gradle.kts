@@ -14,4 +14,5 @@ jib {
         }
     }
     to.image = "tecchu11/todo-${project.name}"
+    container.creationTime = "USE_CURRENT_TIMESTAMP"
 }
