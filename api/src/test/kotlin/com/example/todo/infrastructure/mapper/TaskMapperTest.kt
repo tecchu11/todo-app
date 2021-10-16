@@ -2,7 +2,7 @@ package com.example.todo.infrastructure.mapper
 
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.entity.TaskEntity
-import com.example.todo.domain.enumration.TaskStatus
+import com.example.todo.enums.TaskStatus
 import com.example.todo.infrastructure.configuration.MysqlContainerExtensions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName

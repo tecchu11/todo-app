@@ -3,8 +3,8 @@ package com.example.todo.application.controller
 import com.example.todo.application.form.TaskRegistrationForm
 import com.example.todo.application.form.TaskUpdateForm
 import com.example.todo.domain.entity.TaskEntity
-import com.example.todo.domain.enumration.TaskStatus
 import com.example.todo.domain.service.TaskService
+import com.example.todo.enums.TaskStatus
 import com.example.todo.exceptions.NotFoundException
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.MockKAnnotations

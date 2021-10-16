@@ -1,4 +1,4 @@
-package com.example.todo.domain.enumration
+package com.example.todo.enums
 
 import kotlin.IllegalArgumentException
 

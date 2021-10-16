@@ -2,7 +2,7 @@ package com.example.todo.application.form
 
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.entity.TaskEntity
-import com.example.todo.domain.enumration.TaskStatus
+import com.example.todo.enums.TaskStatus
 import com.github.guepardoapps.kulid.ULID
 import java.time.ZonedDateTime
 

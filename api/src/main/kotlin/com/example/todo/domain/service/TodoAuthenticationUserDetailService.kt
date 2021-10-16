@@ -1,7 +1,7 @@
 package com.example.todo.domain.service
 
 import com.example.todo.domain.configuration.TodoAppApiKey
-import com.example.todo.domain.enumration.UserRole
+import com.example.todo.enums.UserRole
 import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService
 import org.springframework.security.core.userdetails.User
