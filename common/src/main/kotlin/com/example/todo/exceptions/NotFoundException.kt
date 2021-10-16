@@ -1,4 +1,4 @@
-package com.example.todo.domain.exception
+package com.example.todo.exceptions
 
 import kotlin.RuntimeException
 
