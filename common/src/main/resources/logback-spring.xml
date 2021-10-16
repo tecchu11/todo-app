@@ -13,7 +13,7 @@
     </springProfile>
 
     <springProfile name="">
-        <include resource="logback/logback-file.xml"/>
+        <include resource="logback/logback-json-appender.xml"/>
         <root level="INFO">
             <appender-ref ref="CONSOLE_WITH_JSON"/>
         </root>
