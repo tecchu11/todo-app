@@ -10,10 +10,8 @@ import java.time.ZoneId
 
 class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
 
-    private lateinit var mysql: MySQLContainer<Nothing>
-
-    override fun beforeAll(context: ExtensionContext) {
-        mysql = MySQLContainer<Nothing>(DockerImageName.parse("mysql:5.7"))
+    companion object {
+        private val MYSQL: MySQLContainer<Nothing> = MySQLContainer<Nothing>(DockerImageName.parse("mysql:5.7"))
             .apply {
                 withDatabaseName("testdb")
                 withUsername("test")
@@ -24,15 +22,17 @@ class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
                     "/docker-entrypoint-initdb.d",
                     BindMode.READ_WRITE
                 )
-                start()
             }
+    }
 
-        System.setProperty("spring.datasource.url", mysql.jdbcUrl)
-        System.setProperty("spring.datasource.username", mysql.username)
-        System.setProperty("spring.datasource.password", mysql.password)
+    override fun beforeAll(context: ExtensionContext) {
+        MYSQL.start()
+        System.setProperty("spring.datasource.url", MYSQL.jdbcUrl)
+        System.setProperty("spring.datasource.username", MYSQL.username)
+        System.setProperty("spring.datasource.password", MYSQL.password)
     }
 
     override fun afterAll(context: ExtensionContext) {
-        mysql.stop()
+        MYSQL.stop()
     }
 }
