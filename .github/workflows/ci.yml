@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  setup:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: checkout source
@@ -16,18 +16,20 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
           cache: 'gradle'
-
-  lint:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: run kotlint
         run: ./gradlew ktlintCheck
 
   static-analisys:
-    needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: checkout source
+        uses: actions/checkout@v2
+      - name: setup java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          cache: 'gradle'
       - name: run kotlint
         run: ./gradlew detekt
 
