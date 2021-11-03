@@ -40,11 +40,11 @@ internal class TaskRepositoryImplTest {
     private lateinit var taskRepository: TaskRepositoryImpl
 
     private lateinit var mockRestServiceServer: MockRestServiceServer
-    private val objectMapper = ObjectMapper().apply { this.registerModule(JavaTimeModule()) }
 
     companion object {
         private const val USER_ID = 1
         private const val BASE_URI = "http://localhost:8080/v1/todo/"
+        private val objectMapper = ObjectMapper().apply { this.registerModule(JavaTimeModule()) }
         private val defaultZoneId = ZoneId.of("Asia/Tokyo")
         private val task = TaskModel(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",

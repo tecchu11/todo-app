@@ -27,7 +27,7 @@ internal class TaskServiceTest {
     private lateinit var taskService: TaskService
 
     companion object {
-        private const val userId = 1
+        private const val USER_ID = 1
         private val defaultZoneId = ZoneId.of("Asia/Tokyo")
         private val task = Task(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -55,11 +55,11 @@ internal class TaskServiceTest {
     @Test
     @DisplayName("Test that can get tasks and whether handled exception")
     fun findAll() {
-        every { taskMapper.selectAll(userId) }.returns(listOf(taskEntity1))
-        assertThat(taskService.findAll(userId)).isNotEmpty
+        every { taskMapper.selectAll(USER_ID) }.returns(listOf(taskEntity1))
+        assertThat(taskService.findAll(USER_ID)).isNotEmpty
 
-        every { taskMapper.selectAll(userId) }.returns(emptyList())
-        assertThatThrownBy { taskService.findAll(userId) }
+        every { taskMapper.selectAll(USER_ID) }.returns(emptyList())
+        assertThatThrownBy { taskService.findAll(USER_ID) }
             .isInstanceOf(NotFoundException::class.java)
     }
 
