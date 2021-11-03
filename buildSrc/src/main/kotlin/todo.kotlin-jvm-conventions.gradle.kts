@@ -22,7 +22,7 @@ detekt {
     reports {
         html {
             enabled = true
-            destination = file("$rootDir/reports/${project.name}/detekt/detekt.html")
+            destination = file("$buildDir/reports/detekt/detekt.html")
         }
         xml.enabled = false
         txt.enabled = false
