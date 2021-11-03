@@ -7,7 +7,5 @@ import org.springframework.context.annotation.Configuration
 class TypeHandlerConfig {
 
     @Bean
-    fun taskStatusTypeHandler(): TaskStatusTypeHandler {
-        return TaskStatusTypeHandler()
-    }
+    fun taskStatusTypeHandler(): TaskStatusTypeHandler = TaskStatusTypeHandler()
 }

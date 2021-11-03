@@ -17,16 +17,13 @@ repositories {
 }
 
 detekt {
-    buildUponDefaultConfig = true
     allRules = true
     config = files("$rootDir/config/detekt/detekt.yml")
     reports {
-        html {
-            enabled = true
-            destination = file("$buildDir/reports/detekt/detekt.html")
-        }
-        xml.enabled = false
+        html.enabled = false
+        sarif.enabled = false
         txt.enabled = false
+        xml.enabled = false
     }
 }
 

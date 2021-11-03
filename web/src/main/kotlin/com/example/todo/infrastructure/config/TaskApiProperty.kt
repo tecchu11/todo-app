@@ -6,6 +6,6 @@ import java.net.URI
 
 @ConfigurationProperties("todo.api")
 @ConstructorBinding
-class TaskApiProperty(
+data class TaskApiProperty(
     val uri: URI
 )

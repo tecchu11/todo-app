@@ -5,3 +5,21 @@ performance:
 empty-blocks:
   EmptyFunctionBlock:
     excludes: ['**/TodoApplicationTests.kt']
+
+comments:
+  UndocumentedPublicClass:
+    active: false
+  UndocumentedPublicFunction:
+    active: false
+  UndocumentedPublicProperty:
+    active: false
+
+naming:
+  FunctionMaxLength:
+    active: false
+  FunctionMinLength:
+    active: false
+
+style:
+  ClassOrdering:
+    active: false

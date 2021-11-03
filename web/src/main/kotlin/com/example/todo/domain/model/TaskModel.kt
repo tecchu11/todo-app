@@ -4,7 +4,7 @@ import com.example.todo.enums.TaskStatus
 import java.time.OffsetDateTime
 
 data class TaskModel(
-    var taskId: String,
+    val taskId: String,
     val taskSummary: String,
     val taskDescription: String?,
     val userId: Int,
