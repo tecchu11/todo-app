@@ -48,14 +48,14 @@ internal class TaskControllerTest {
             OffsetDateTime.now(defaultZoneId)
         )
 
-        private val taskRegistrationForm = TaskRegistrationDto(
+        private val taskRegistrationDto = TaskRegistrationDto(
             "this is summary",
             "this is description",
             USER_ID,
             TaskStatus.OPEN
         )
 
-        private val taskUpdateForm = TaskUpdateDto(
+        private val taskUpdateDto = TaskUpdateDto(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
             "this is summary",
             "this is description",
@@ -110,7 +110,7 @@ internal class TaskControllerTest {
     private fun postTask(): ResultActions = mockMvc.perform(
         MockMvcRequestBuilders
             .post("$BASE_PATH/")
-            .content(objectMapper.writeValueAsString(taskRegistrationForm))
+            .content(objectMapper.writeValueAsString(taskRegistrationDto))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON)
     )
@@ -118,7 +118,7 @@ internal class TaskControllerTest {
     private fun putTask(): ResultActions = mockMvc.perform(
         MockMvcRequestBuilders
             .put("$BASE_PATH/")
-            .content(objectMapper.writeValueAsString(taskUpdateForm))
+            .content(objectMapper.writeValueAsString(taskUpdateDto))
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.APPLICATION_JSON)
     )
