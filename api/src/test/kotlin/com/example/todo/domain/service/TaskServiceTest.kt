@@ -16,6 +16,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import java.time.OffsetDateTime
+import java.time.ZoneId
 
 internal class TaskServiceTest {
 
@@ -27,6 +28,7 @@ internal class TaskServiceTest {
 
     companion object {
         private const val userId = 1
+        private val defaultZoneId = ZoneId.of("Asia/Tokyo")
         private val task = Task(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
             "this is summary",
@@ -40,8 +42,8 @@ internal class TaskServiceTest {
             "this is description",
             1,
             TaskStatus.OPEN,
-            OffsetDateTime.now(),
-            OffsetDateTime.now()
+            OffsetDateTime.now(defaultZoneId),
+            OffsetDateTime.now(defaultZoneId)
         )
     }
 

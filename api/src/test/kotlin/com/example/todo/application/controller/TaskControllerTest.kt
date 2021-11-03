@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import java.time.OffsetDateTime
+import java.time.ZoneId
 
 internal class TaskControllerTest {
 
@@ -36,14 +37,15 @@ internal class TaskControllerTest {
         private const val USER_ID = 1
         private const val BASE_PATH = "/v1/todo"
         private val objectMapper = ObjectMapper()
+        private val defaultZoneId = ZoneId.of("Asia/Tokyo")
         private val taskEntity = TaskEntity(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
             "this is summary",
             "this is description",
             USER_ID,
             TaskStatus.OPEN,
-            OffsetDateTime.now(),
-            OffsetDateTime.now()
+            OffsetDateTime.now(defaultZoneId),
+            OffsetDateTime.now(defaultZoneId)
         )
 
         private val taskRegistrationForm = TaskRegistrationDto(
