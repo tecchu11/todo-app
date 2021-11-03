@@ -1,13 +1,14 @@
-name: Todo api CI
+name: CI
 
 on:
   pull_request:
     branches: [ main ]
 
 jobs:
-  build:
+  gradle-check:
     runs-on: ubuntu-latest
-
+    env:
+      TZ: 'Asia/Tokyo'
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
