@@ -4,3 +4,7 @@ spring:
     group:
       local:
         - common
+  rest-template:
+    default:
+      read-timeout: 5000
+      connect-timeout: 5000
