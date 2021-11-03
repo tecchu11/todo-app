@@ -15,7 +15,7 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import java.time.ZonedDateTime
+import java.time.OffsetDateTime
 
 internal class TaskServiceTest {
 
@@ -40,8 +40,8 @@ internal class TaskServiceTest {
             "this is description",
             1,
             TaskStatus.OPEN,
-            ZonedDateTime.now(),
-            ZonedDateTime.now()
+            OffsetDateTime.now(),
+            OffsetDateTime.now()
         )
     }
 

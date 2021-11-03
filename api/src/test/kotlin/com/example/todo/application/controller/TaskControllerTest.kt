@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.ResultActions
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
-import java.time.ZonedDateTime
+import java.time.OffsetDateTime
 
 internal class TaskControllerTest {
 
@@ -42,8 +42,8 @@ internal class TaskControllerTest {
             "this is description",
             USER_ID,
             TaskStatus.OPEN,
-            ZonedDateTime.now(),
-            ZonedDateTime.now()
+            OffsetDateTime.now(),
+            OffsetDateTime.now()
         )
 
         private val taskRegistrationForm = TaskRegistrationDto(
