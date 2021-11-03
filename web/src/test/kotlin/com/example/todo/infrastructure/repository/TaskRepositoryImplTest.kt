@@ -25,7 +25,7 @@ import org.springframework.test.web.client.match.MockRestRequestMatchers
 import org.springframework.test.web.client.response.MockRestResponseCreators
 import org.springframework.web.client.RestTemplate
 import java.net.URI
-import java.time.ZonedDateTime
+import java.time.OffsetDateTime
 
 internal class TaskRepositoryImplTest {
 
@@ -50,8 +50,8 @@ internal class TaskRepositoryImplTest {
             "this is description",
             1,
             TaskStatus.OPEN,
-            ZonedDateTime.now(),
-            ZonedDateTime.now()
+            OffsetDateTime.now(),
+            OffsetDateTime.now()
         )
     }
 
