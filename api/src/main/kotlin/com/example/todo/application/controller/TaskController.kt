@@ -39,7 +39,7 @@ class TaskController(
         val registrationTask = Task(
             ULID.random(),
             taskRegistrationDto.taskSummary,
-            taskRegistrationDto.taskSummary,
+            taskRegistrationDto.taskDescription,
             taskRegistrationDto.userId,
             taskRegistrationDto.status
         )
