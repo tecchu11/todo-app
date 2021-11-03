@@ -17,5 +17,5 @@ jobs:
           distribution: 'adopt'
           java-version: '11'
           cache: 'gradle'
-      - name: Build with Gradle  
+      - name: Check with Gradle  
         run: ./gradlew check
