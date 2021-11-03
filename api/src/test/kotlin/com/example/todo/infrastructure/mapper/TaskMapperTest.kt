@@ -14,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
-import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
 @MybatisTest
@@ -28,8 +27,7 @@ internal class TaskMapperTest {
     companion object {
         private const val USER_ID = 1
         private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
-        private val defaultZoneId = ZoneId.of("Asia/Tokyo")
-        private val defaultZoneOffSet = ZoneOffset.of("+09:00")
+        private val systemZoneOffSet = ZoneId.systemDefault().rules.getOffset(LocalDateTime.now())
 
         private val initialData = TaskEntity(
             "AAAAAAAAAAAAABBBBBBBBBBBBB",
@@ -37,8 +35,8 @@ internal class TaskMapperTest {
             null,
             1,
             TaskStatus.OPEN,
-            OffsetDateTime.of(LocalDateTime.parse("2021-01-01 12:00:00", formatter), defaultZoneOffSet),
-            OffsetDateTime.of(LocalDateTime.parse("2021-01-01 13:00:00", formatter), defaultZoneOffSet)
+            OffsetDateTime.of(LocalDateTime.parse("2021-01-01 12:00:00", formatter), systemZoneOffSet),
+            OffsetDateTime.of(LocalDateTime.parse("2021-01-01 13:00:00", formatter), systemZoneOffSet)
         )
 
         private val task1 = Task(
@@ -89,7 +87,7 @@ internal class TaskMapperTest {
         this.taskDescription,
         this.userId,
         this.status,
-        OffsetDateTime.now(defaultZoneId),
-        OffsetDateTime.now(defaultZoneId)
+        OffsetDateTime.now(),
+        OffsetDateTime.now()
     )
 }

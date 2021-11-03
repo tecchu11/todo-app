@@ -26,7 +26,6 @@ import org.springframework.test.web.client.response.MockRestResponseCreators
 import org.springframework.web.client.RestTemplate
 import java.net.URI
 import java.time.OffsetDateTime
-import java.time.ZoneId
 
 internal class TaskRepositoryImplTest {
 
@@ -45,15 +44,14 @@ internal class TaskRepositoryImplTest {
         private const val USER_ID = 1
         private const val BASE_URI = "http://localhost:8080/v1/todo/"
         private val objectMapper = ObjectMapper().apply { this.registerModule(JavaTimeModule()) }
-        private val defaultZoneId = ZoneId.of("Asia/Tokyo")
         private val task = TaskModel(
             "AAAAAAAAAAAAAAAAAAAAAAAAAA",
             "this is summary",
             "this is description",
             1,
             TaskStatus.OPEN,
-            OffsetDateTime.now(defaultZoneId),
-            OffsetDateTime.now(defaultZoneId)
+            OffsetDateTime.now(),
+            OffsetDateTime.now()
         )
     }
 
