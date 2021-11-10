@@ -9,7 +9,7 @@ on:
         default: 'hello world'
 
 jobs:
-  gralde-jibDockerBuild:
+  sample-flow:
     runs-on: ubuntu-latest
     env:
       TZ: 'Asia/Tokyo'
