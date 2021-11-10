@@ -3,10 +3,10 @@ name: Manualy test
 on:
   workflow_dispatch:
     inputs:
-      target-branch:
-        description: 'build target branch'
+      message:
+        description: 'message finished'
         required: true
-        default: 'main'
+        default: 'hello world'
 
 jobs:
   gralde-jibDockerBuild:
@@ -16,25 +16,7 @@ jobs:
       TZ: 'Asia/Tokyo'
     steps:
       - name: checkout source
-        run: echo checout from ${{ inputs.target-branch }}
         uses: actions/checkout@v2
-        with:
-          ref: ${{ inputs.target-branch }}
 
-      - name: set up jdk 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-
-      - name: cache gradle
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/cache
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle
-
-      - name: gradle jibDockerBuild
-        run: ./gradlew jibDockerBuild
+     - name: print message
+       run: echo ${{ inputs.message }}
