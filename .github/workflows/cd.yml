@@ -2,11 +2,6 @@ name: Manualy test
 
 on:
   workflow_dispatch:
-    inputs:
-      message:
-        description: 'message finished'
-        required: true
-        default: 'hello world'
 
 jobs:
   build-docker-image:
@@ -33,4 +28,4 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
 
       - name: gradle jibDockerBuild
-        run: ./gradlew check
+        run: ./gradlew jibDockerBuild
