@@ -18,5 +18,5 @@ jobs:
       - name: checkout source
         uses: actions/checkout@v2
 
-     - name: print message
-       run: echo ${{ inputs.message }}
+      - name: print message
+        run: echo ${{ inputs.message }}
