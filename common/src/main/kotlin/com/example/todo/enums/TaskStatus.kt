@@ -1,13 +1,8 @@
 package com.example.todo.enums
 
-import kotlin.IllegalArgumentException
-
-enum class TaskStatus(val statusId: String?) {
+enum class TaskStatus(private val statusId: String) : GenericEnum {
 
     OPEN("1"), WIP("2"), CLOSE("3");
 
-    companion object {
-        fun of(result: String?): TaskStatus = values().find { it.statusId == result }
-            ?: throw IllegalArgumentException("statusId = $result is not defined")
-    }
+    override fun code(): String = statusId
 }
