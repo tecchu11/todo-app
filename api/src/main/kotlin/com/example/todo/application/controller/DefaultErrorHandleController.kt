@@ -1,9 +1,8 @@
 package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
-import com.example.todo.extentions.LogExtension
 import com.example.todo.extentions.httpStatus
-import com.example.todo.extentions.logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletRequest
 @RequestMapping("/error")
 class DefaultErrorHandleController : ErrorController {
 
-    companion object : LogExtension {
-        private val log = logger()
+    companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
     }
 
     @RequestMapping

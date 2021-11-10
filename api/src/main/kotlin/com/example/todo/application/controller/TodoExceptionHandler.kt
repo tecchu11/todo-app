@@ -2,8 +2,7 @@ package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.exceptions.NotFoundException
-import com.example.todo.extentions.LogExtension
-import com.example.todo.extentions.logger
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class TodoExceptionHandler {
 
-    companion object : LogExtension {
-        private val log = logger()
+    companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
     }
 
     @ExceptionHandler(Exception::class)
