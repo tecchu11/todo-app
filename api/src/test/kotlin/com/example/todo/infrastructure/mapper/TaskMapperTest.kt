@@ -3,6 +3,7 @@ package com.example.todo.infrastructure.mapper
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.entity.TaskEntity
 import com.example.todo.enums.TaskStatus
+import com.example.todo.infrastructure.configuration.MybatisConfig
 import com.example.todo.infrastructure.configuration.MysqlContainerExtensions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
@@ -11,12 +12,14 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.context.annotation.Import
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 @MybatisTest
+@Import(MybatisConfig::class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ExtendWith(MysqlContainerExtensions::class)
 internal class TaskMapperTest {
