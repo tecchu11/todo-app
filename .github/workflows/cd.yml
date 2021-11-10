@@ -11,6 +11,7 @@ on:
 jobs:
   sample-flow:
     runs-on: ubuntu-latest
+    environment: dev
     env:
       TZ: 'Asia/Tokyo'
     steps:
