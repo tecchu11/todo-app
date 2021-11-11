@@ -36,5 +36,5 @@ jobs:
 
       - name: gradle jibDockerBuild
         run: |
-        echo build ${{github.event.inputs.project}} docker image
-        ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
+          echo build ${{github.event.inputs.project}} docker image
+          ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
