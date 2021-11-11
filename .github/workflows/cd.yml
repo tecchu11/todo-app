@@ -7,8 +7,8 @@ on:
         type: choice
         description: select target project
         options:
-        - web
-        - api
+          - web
+          - api
 
 jobs:
   build-docker-image:
