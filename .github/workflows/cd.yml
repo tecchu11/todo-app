@@ -35,4 +35,6 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
 
       - name: gradle jibDockerBuild
-        run: ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
+        run: |
+        echo build ${{github.event.inputs.project}} docker image
+        ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
