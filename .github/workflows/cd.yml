@@ -38,3 +38,11 @@ jobs:
         run: |
           echo build ${{github.event.inputs.project}} docker image
           ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
+
+      - name: echo success
+        if: success()
+        run: echo success
+
+      - name: echo failure
+        if: failure()
+        run: echo failure
