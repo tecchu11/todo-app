@@ -70,7 +70,7 @@ internal class TaskMapperTest {
     fun insert() {
         taskMapper.insert(task1)
         assertThat(taskMapper.selectAll(task1.userId))
-            .usingElementComparatorIgnoringFields("registeredAt", "updatedAt")
+            .usingRecursiveFieldByFieldElementComparatorIgnoringFields("registeredAt", "updatedAt")
             .contains(task1.toEntity(), initialData)
     }
 
@@ -79,7 +79,7 @@ internal class TaskMapperTest {
     fun update() {
         taskMapper.update(task2)
         assertThat(taskMapper.selectAll(task2.userId))
-            .usingElementComparatorIgnoringFields("registeredAt", "updatedAt")
+            .usingRecursiveFieldByFieldElementComparatorIgnoringFields("registeredAt", "updatedAt")
             .contains(task2.toEntity())
             .doesNotContain(initialData)
     }

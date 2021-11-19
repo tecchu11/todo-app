@@ -76,7 +76,7 @@ internal class TaskRepositoryImplTest {
             )
 
         assertThat(taskRepository.findAll(USER_ID))
-            .usingElementComparatorIgnoringFields("registeredAt", "updatedAt")
+            .usingRecursiveFieldByFieldElementComparatorIgnoringFields("registeredAt", "updatedAt")
             .contains(task)
         mockRestServiceServer.verify()
     }
