@@ -17,7 +17,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-allopen:1.6.0")
 
     // spring-boot-conventions
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.5.6")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:2.6.0")
 
     // google-container-tools/jib conventions
     implementation("gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:3.1.4")
