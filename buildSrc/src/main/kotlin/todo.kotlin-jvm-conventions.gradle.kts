@@ -35,7 +35,7 @@ tasks.withType<Detekt>().configureEach {
     jvmTarget = "11"
 }
 
-tasks.withType<KotlinCompile> {
+tasks.withType<KotlinCompile>().configureEach() {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
