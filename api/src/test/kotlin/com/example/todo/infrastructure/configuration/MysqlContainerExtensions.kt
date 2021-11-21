@@ -13,14 +13,19 @@ class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
     companion object {
         private val MYSQL: MySQLContainer<Nothing> = MySQLContainer<Nothing>(DockerImageName.parse("mysql:8.0"))
             .apply {
-                withDatabaseName("testdb")
+                withDatabaseName("todo")
                 withUsername("test")
                 withPassword("test")
                 withEnv("TZ", ZoneId.systemDefault().id)
                 withClasspathResourceMapping(
-                    "docker-entrypoint-initdb.d",
+                    "db/mysql/conf",
+                    "/etc/mysql/conf.d",
+                    BindMode.READ_ONLY
+                )
+                withClasspathResourceMapping(
+                    "db/mysql/data",
                     "/docker-entrypoint-initdb.d",
-                    BindMode.READ_WRITE
+                    BindMode.READ_ONLY
                 )
             }
     }
