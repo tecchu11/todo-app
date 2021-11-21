@@ -11,7 +11,7 @@ import java.time.ZoneId
 class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
 
     companion object {
-        private val MYSQL: MySQLContainer<Nothing> = MySQLContainer<Nothing>(DockerImageName.parse("mysql:5.7"))
+        private val MYSQL: MySQLContainer<Nothing> = MySQLContainer<Nothing>(DockerImageName.parse("mysql:8.0"))
             .apply {
                 withDatabaseName("testdb")
                 withUsername("test")
