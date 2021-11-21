@@ -7,14 +7,14 @@ CREATE TABLE `users` (
   `registered_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Registered DateTime',
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Whether user has been deleted or not',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `task_status`;
 CREATE TABLE `task_status` (
   `status_id` int(1) NOT NULL COMMENT 'Status Id',
   `status` varchar(10) NOT NULL COMMENT 'Task Status',
   PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
@@ -28,4 +28,4 @@ CREATE TABLE `tasks` (
   PRIMARY KEY (`task_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   FOREIGN KEY (`status_id`) REFERENCES `task_status` (`status_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
