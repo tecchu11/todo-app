@@ -13,6 +13,7 @@ import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.context.annotation.Import
+import org.springframework.test.context.jdbc.Sql
 import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZoneId
@@ -22,6 +23,7 @@ import java.time.format.DateTimeFormatter
 @Import(MybatisConfig::class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ExtendWith(MysqlContainerExtensions::class)
+@Sql("/db/mysql/test/taskMapperTest.sql")
 internal class TaskMapperTest {
 
     @Autowired
