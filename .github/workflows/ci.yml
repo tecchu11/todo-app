@@ -18,15 +18,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-
-      - name: cache gradle
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/cache
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle
+          cache: 'gradle'
 
       - name: gradle check
-        run: ./gradlew check
+        run: ./gradlew check --no-daemon
