@@ -24,17 +24,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
+          cache: 'gradle'
 
-      - name: cache gradle
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/cache
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: ${{ runner.os }}-gradle
-
-      - name: gradle jibDockerBuild
+      - name: gradle jibDockerBuild --no-daemon
         run: |
           echo build ${{github.event.inputs.project}} docker image
           ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
