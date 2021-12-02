@@ -18,12 +18,6 @@ repositories {
 detekt {
     allRules = true
     config = files("$rootDir/config/detekt/detekt.yml")
-    reports {
-        html.enabled = false
-        sarif.enabled = false
-        txt.enabled = false
-        xml.enabled = false
-    }
 }
 
 dependencies {
@@ -33,6 +27,12 @@ dependencies {
 
 tasks.withType<Detekt>().configureEach {
     jvmTarget = "11"
+    reports {
+        html.required.set(false)
+        xml.required.set(false)
+        txt.required.set(false)
+        sarif.required.set(false)
+    }
 }
 
 tasks.withType<KotlinCompile> {
