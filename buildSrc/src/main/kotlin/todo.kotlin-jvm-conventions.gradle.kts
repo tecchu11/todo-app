@@ -18,6 +18,7 @@ repositories {
 detekt {
     allRules = true
     config = files("$rootDir/config/detekt/detekt.yml")
+    parallel = true
 }
 
 dependencies {
