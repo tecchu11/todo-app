@@ -14,7 +14,6 @@ dependencies {
     val springBoot = "2.6.1"
     val jib = "3.1.4"
 
-
     // kotlin-conventions
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
     implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlint")
