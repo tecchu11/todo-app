@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     implementation(libs.logstash.logback.encoder)
+
+    testImplementation(libs.spring.mockk)
 }

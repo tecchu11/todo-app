@@ -14,6 +14,7 @@ dependencies {
 
     runtimeOnly("mysql:mysql-connector-java")
 
+    testImplementation(libs.spring.mockk)
     testImplementation(libs.spring.mybatis.test)
     testImplementation(libs.testcontainers.mysql)
 }
