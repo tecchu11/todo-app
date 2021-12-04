@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation("net.logstash.logback:logstash-logback-encoder:7.0.1")
+    implementation(libs.logstash.logback.encoder)
 }
