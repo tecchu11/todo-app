@@ -22,11 +22,6 @@ detekt {
     parallel = true
 }
 
-dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-}
-
 tasks.withType<Detekt>().configureEach {
     jvmTarget = "11"
     reports {
