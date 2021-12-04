@@ -1,5 +1,3 @@
-import gradle.kotlin.dsl.accessors._16693e74f3f3ae29bdaaa4ee64564d23.implementation
-
 plugins {
     id("todo.kotlin-jvm-conventions")
     id("io.spring.dependency-management")
