@@ -3,15 +3,8 @@ plugins {
     id("todo.jib-conventions")
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation(project(":common"))
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-
-    testImplementation("com.ninja-squad:springmockk:3.0.1")
 }
