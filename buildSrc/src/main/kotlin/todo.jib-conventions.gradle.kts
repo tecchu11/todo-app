@@ -2,10 +2,6 @@ plugins {
     id("com.google.cloud.tools.jib")
 }
 
-repositories {
-    mavenCentral()
-}
-
 jib {
     from.platforms {
         platform {
