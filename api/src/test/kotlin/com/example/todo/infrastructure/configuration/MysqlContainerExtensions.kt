@@ -11,23 +11,21 @@ import java.time.ZoneId
 class MysqlContainerExtensions : BeforeAllCallback, AfterAllCallback {
 
     companion object {
-        private val MYSQL: MySQLContainer<Nothing> = MySQLContainer<Nothing>(DockerImageName.parse("mysql:8.0"))
-            .apply {
-                withDatabaseName("todo")
-                withUsername("test")
-                withPassword("test")
-                withEnv("TZ", ZoneId.systemDefault().id)
-                withClasspathResourceMapping(
-                    "db/mysql/conf",
-                    "/etc/mysql/conf.d",
-                    BindMode.READ_ONLY
-                )
-                withClasspathResourceMapping(
-                    "db/mysql/data",
-                    "/docker-entrypoint-initdb.d",
-                    BindMode.READ_ONLY
-                )
-            }
+        private val MYSQL = MySQLContainer(DockerImageName.parse("mysql:8.0"))
+            .withDatabaseName("todo")
+            .withUsername("todo")
+            .withPassword("test")
+            .withEnv("TZ", ZoneId.systemDefault().id)
+            .withClasspathResourceMapping(
+                "db/mysql/conf",
+                "/etc/mysql/conf.d",
+                BindMode.READ_ONLY
+            )
+            .withClasspathResourceMapping(
+                "db/mysql/data",
+                "/docker-entrypoint-initdb.d",
+                BindMode.READ_ONLY
+            )
     }
 
     override fun beforeAll(context: ExtensionContext) {
