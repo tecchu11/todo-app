@@ -12,6 +12,10 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
+configurations.all {
+    exclude(group = "org.apache.logging.log4j", module = "log4j-to-slf4j")
+}
+
 detekt {
     allRules = true
     config = files("$rootDir/config/detekt/detekt.yml")
