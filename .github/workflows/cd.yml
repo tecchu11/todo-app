@@ -26,10 +26,14 @@ jobs:
           java-version: '11'
           cache: 'gradle'
 
-      - name: gradle jibDockerBuild --no-daemon
+      - name: login ghcr
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: gradle jib --no-daemon
         run: |
           echo build ${{github.event.inputs.project}} docker image
-          ./gradlew ${{ github.event.inputs.project }}:jibDockerBuild
+          ./gradlew ${{ github.event.inputs.project }}:jib --no-daemon
 
       - name: echo success
         if: success()
