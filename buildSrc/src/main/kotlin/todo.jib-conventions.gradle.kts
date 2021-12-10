@@ -9,6 +9,6 @@ jib {
             os = "linux"
         }
     }
-    to.image = "tecchu11/todo-${project.name}"
+    to.image = "ghcr.io/tecchu11/todo-${project.name}"
     container.creationTime = "USE_CURRENT_TIMESTAMP"
 }
