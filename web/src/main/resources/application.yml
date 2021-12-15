@@ -8,3 +8,8 @@ spring:
     default:
       read-timeout: 5000
       connect-timeout: 5000
+
+management:
+  server:
+    port: 8881
+    address: "127.0.0.1"

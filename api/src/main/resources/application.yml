@@ -3,7 +3,12 @@ spring:
     active: local
     group:
       local:
-       - common
+        - common
+
+management:
+  server:
+    port: 8880
+    address: "127.0.0.1"
 
 mybatis:
   configuration:
