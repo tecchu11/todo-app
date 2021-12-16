@@ -24,7 +24,6 @@ class WebSecurityConfiguration(
             ?.httpBasic()?.disable()
             ?.csrf()?.disable()
             ?.authorizeRequests()
-            ?.mvcMatchers("/actuator/health")?.permitAll()
             ?.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
             ?.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
             ?.mvcMatchers("**", "*")?.denyAll()
