@@ -5,7 +5,19 @@ spring:
       local:
         - common
 
+server:
+  shutdown: graceful
+
 management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - shutdown
+          - health
   server:
     port: 8880
     address: "127.0.0.1"
