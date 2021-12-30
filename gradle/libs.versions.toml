@@ -1,5 +1,5 @@
 [versions]
-mybatis = "2.2.0"
+mybatis = "2.2.1"
 
 [libraries]
 spring-mybatis = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
