@@ -14,6 +14,10 @@ dependencyManagement {
     }
 }
 
+val versionCatalog = extensions
+    .getByType<VersionCatalogsExtension>()
+    .named("libs")
+
 dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
@@ -26,4 +30,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
     }
+    addProvider(
+        "testImplementation",
+        versionCatalog.findLibrary("spring-mockk").orElseThrow()
+    )
 }
