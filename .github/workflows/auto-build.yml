@@ -1,0 +1,23 @@
+name: Auto Build Image
+
+on:
+  pull_request:
+    branches:
+      - main
+#    paths:
+#      - 'api'
+#      - 'web'
+#      - 'common'
+
+jobs:
+  build-image:
+    strategy:
+      matrix:
+        module: [ 'api', 'web' ]
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Tokyo
+    steps:
+      - run: |
+          echo ${{ toJson(github) }}
+          echo ${{ matrix.module }}
