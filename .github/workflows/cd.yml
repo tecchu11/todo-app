@@ -6,6 +6,7 @@ on:
       project:
         type: choice
         description: select target project
+        required: true
         options:
           - web
           - api
