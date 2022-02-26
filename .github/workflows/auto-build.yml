@@ -19,5 +19,5 @@ jobs:
       TZ: Asia/Tokyo
     steps:
       - run: |
-          echo ${{ toJson(github) }}
-          echo ${{ matrix.module }}
+          echo '${{ toJson(github) }}'
+          echo '${{ matrix.module }}'
