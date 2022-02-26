@@ -1,0 +1,16 @@
+name: Notify
+
+on:
+  workflow_run:
+    workflows:
+      - ci
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do notif some platform(this is sample workflow)
+        run: |
+          echo "${{ github.event.workflow_run }}"
