@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Do notif some platform(this is sample workflow)
         run: |
-          echo "${{ github.event.workflow_run }}"
+          echo '${{ toJson(github.event.workflow_run) }}'
