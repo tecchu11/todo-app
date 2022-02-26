@@ -25,4 +25,4 @@ runs:
     - name: Build Image
       shell: bash
       run: |
-        ./gradlew ${{ inputs.build-target-module }}:jib --no-daemon -Djib.to.tags=${{ github.sha }}
+        ./gradlew ${{ inputs.build-target-module }}:jib --no-daemon -PgitHash=${{ github.sha }}
