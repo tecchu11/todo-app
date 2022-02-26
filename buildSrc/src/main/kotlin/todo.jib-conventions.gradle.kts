@@ -9,6 +9,7 @@ jib {
             os = "linux"
         }
     }
-    to.image = "ghcr.io/tecchu11/todo-${project.name}"
+    val gitHash: String? by project
+    to.image = "ghcr.io/tecchu11/todo-${project.name}:$gitHash"
     container.creationTime = "USE_CURRENT_TIMESTAMP"
 }
