@@ -32,8 +32,7 @@ jobs:
 
       - name: gradle jib --no-daemon
         run: |
-          echo build ${{github.event.inputs.project}} docker image
-          ./gradlew ${{ github.event.inputs.project }}:jib --no-daemon
+          ./gradlew ${{ github.event.inputs.project }}:jib --no-daemon -Djib.to.tags=${{ github.sha }}
 
       - name: echo success
         if: success()
