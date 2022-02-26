@@ -18,6 +18,6 @@ jobs:
     env:
       TZ: Asia/Tokyo
     steps:
-      - uses: .github/workflows/composite/build-image
+      - uses: ./.github/workflows/composite/build-image
         with:
           build-target-module: ${{ matrix.module }}
