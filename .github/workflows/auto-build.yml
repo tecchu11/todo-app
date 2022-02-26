@@ -1,13 +1,9 @@
 name: Auto Build Image
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-#    paths:
-#      - 'api'
-#      - 'web'
-#      - 'common'
 
 jobs:
   build-image:

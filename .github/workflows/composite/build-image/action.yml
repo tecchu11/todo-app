@@ -2,7 +2,7 @@ name: Build Image
 
 inputs:
   github-token:
-    description: Github token
+    description: Login token for ghcr
     required: true
   build-target-module:
     description: Build target module name
@@ -25,4 +25,4 @@ runs:
     - name: Build Image
       shell: bash
       run: |
-        echo ${{ inputs.build-target-module}}
+        ./gradlew ${{ github.event.inputs.project }}:jib --no-daemon -Djib.to.tags=${{ github.sha }}
