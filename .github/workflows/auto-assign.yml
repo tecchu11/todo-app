@@ -8,4 +8,4 @@ jobs:
   auto-assign:
     runs-on: ubuntu-latest
     steps:
-      - uses: tecchu11/github-actions-sandbox/.github/auto-assign.yml@main
+      - uses: tecchu11/github-actions-sandbox/.github/workflows/auto-assign.yml@main
