@@ -1,0 +1,11 @@
+name: Auto assign
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tecchu11/github-actions-sandbox/.github/auto-assign.yml@main
