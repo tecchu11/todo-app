@@ -7,11 +7,11 @@ repositories {
 }
 
 dependencies {
-    val kotlin = "1.6.20"
+    val kotlin = "1.6.21"
     val ktlint = "10.2.1"
     val detekt = "1.19.0"
     val springDependency = "1.0.11.RELEASE"
-    val springBoot = "2.6.6"
+    val springBoot = "2.6.7"
     val jib = "3.2.1"
 
     // kotlin-conventions
