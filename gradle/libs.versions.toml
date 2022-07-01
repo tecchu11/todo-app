@@ -6,5 +6,5 @@ spring-mybatis = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter
 spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter-test", version.ref = "mybatis" }
 spring-mockk = "com.ninja-squad:springmockk:3.1.1"
 kulid = "com.github.guepardoapps:kulid:2.0.0.0"
-logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.1.1"
+logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.2"
 testcontainers-mysql = "org.testcontainers:mysql:1.17.1"
