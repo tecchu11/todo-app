@@ -23,3 +23,5 @@ naming:
 style:
   ClassOrdering:
     active: false
+  CascadingCallWrapping:
+    active: false
