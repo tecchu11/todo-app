@@ -11,7 +11,7 @@ dependencies {
     val ktlint = "10.3.0"
     val detekt = "1.21.0"
     val springDependency = "1.0.12.RELEASE"
-    val springBoot = "2.7.1"
+    val springBoot = "2.7.2"
     val jib = "3.2.1"
 
     // kotlin-conventions
