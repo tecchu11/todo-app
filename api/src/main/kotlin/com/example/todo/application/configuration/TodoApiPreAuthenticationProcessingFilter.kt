@@ -8,6 +8,12 @@ class TodoApiPreAuthenticationProcessingFilter : AbstractPreAuthenticatedProcess
 
     override fun getPreAuthenticatedPrincipal(request: HttpServletRequest?): Any = ""
 
-    override fun getPreAuthenticatedCredentials(request: HttpServletRequest?): Any =
-        request?.getHeader(HttpHeaders.AUTHORIZATION) ?: ""
+    override fun getPreAuthenticatedCredentials(request: HttpServletRequest?): Any? {
+        val authorizationHeader: String? = request?.getHeader(HttpHeaders.AUTHORIZATION)
+        if (authorizationHeader.isNullOrEmpty()) {
+            logger.info("Authorization header is null or empty, so denied access")
+            return null
+        }
+        return request.getHeader(HttpHeaders.AUTHORIZATION)
+    }
 }
