@@ -16,12 +16,12 @@ class DefaultAccessDeniedHandler : AccessDeniedHandler {
         response: HttpServletResponse?,
         accessDeniedException: AccessDeniedException?
     ) {
-        response?.sendError(HttpStatus.UNAUTHORIZED.value(),"Not allowed to perform")
+        response?.sendError(HttpStatus.UNAUTHORIZED.value(), "Not allowed to perform")
     }
 }
 
 @Component
-class DefaultAuthenticationEntryPont: AuthenticationEntryPoint {
+class DefaultAuthenticationEntryPont : AuthenticationEntryPoint {
     override fun commence(
         request: HttpServletRequest?,
         response: HttpServletResponse?,

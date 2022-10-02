@@ -22,13 +22,13 @@ class WebSecurityConfiguration {
         preAuthenticatedProcessingFilter: AbstractPreAuthenticatedProcessingFilter
     ): SecurityFilterChain {
         http
-            .httpBasic{
+            .httpBasic {
                 it.disable()
             }
-            .csrf{
+            .csrf {
                 it.disable()
             }
-            .authorizeHttpRequests{
+            .authorizeHttpRequests {
                 it.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
                 it.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
                 it.mvcMatchers("**", "*")?.denyAll()
