@@ -4,7 +4,7 @@ mybatis = "2.2.2"
 [libraries]
 # kotlin jvm
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
-kotlin-stdlib8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
 kotlin-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
 
 # main lib for spring
@@ -36,6 +36,7 @@ logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.2"
 testcontainers-mysql = "org.testcontainers:mysql:1.17.4"
 
 [bundles]
-rest-base = ["spring-web", "spring-actuator", "spring-security", "kotlin-reflect", "kotlin-stdlib8", "kotlin-jackson"]
-libs-base = ["spring-starter", "kotlin-reflect", "kotlin-stdlib8", "kotlin-jackson"]
+kotlin-base = ["kotlin-reflect", "kotlin-stdlib"]
+rest-base = ["spring-web", "spring-actuator", "spring-security", "kotlin-jackson"]
+libs-base = ["spring-starter", "kotlin-jackson"]
 test-base = ["spring-boot-test", "spring-mockk"]
