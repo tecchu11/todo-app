@@ -14,6 +14,6 @@ class TodoApiPreAuthenticationProcessingFilter : AbstractPreAuthenticatedProcess
             logger.info("Authorization header is null or empty, so denied access")
             return null
         }
-        return request.getHeader(HttpHeaders.AUTHORIZATION)
+        return authorizationHeader
     }
 }
