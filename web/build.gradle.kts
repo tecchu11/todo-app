@@ -4,7 +4,12 @@ plugins {
 }
 
 dependencies {
+    kapt(libs.spring.config.processor)
+
     implementation(project(":common"))
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation(libs.bundles.rest.base)
+    implementation(libs.jackson.datetype)
+    implementation(libs.spring.thymeleaf)
+
+    testImplementation(libs.bundles.test.base)
 }

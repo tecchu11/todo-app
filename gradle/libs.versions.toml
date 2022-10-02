@@ -2,9 +2,41 @@
 mybatis = "2.2.2"
 
 [libraries]
+# kotlin jvm
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlin-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
+
+# main lib for spring
+## bellow libs is contained bundles
+spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-security = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-starter = { module = "org.springframework.boot:spring-boot-starter" }
+spring-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+## additionanl spriing libs
+spring-config-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 spring-mybatis = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
-spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter-test", version.ref = "mybatis" }
+spring-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
+## other lib for spring
+jackson-datetype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" }
+
+# test lib for spring basement
+## bellow libs is contained bundles
+spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-mockk = "com.ninja-squad:springmockk:3.1.1"
+## other test lib for spring
+spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter-test", version.ref = "mybatis" }
+
+# other libs
+mysql-java = { module = "mysql:mysql-connector-java" }
 kulid = "com.github.guepardoapps:kulid:2.0.0.0"
 logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.2"
+
+# other test lib
 testcontainers-mysql = "org.testcontainers:mysql:1.17.4"
+
+[bundles]
+kotlin-base = ["kotlin-reflect", "kotlin-stdlib"]
+rest-base = ["spring-web", "spring-actuator", "spring-security", "kotlin-jackson"]
+libs-base = ["spring-starter", "kotlin-jackson"]
+test-base = ["spring-boot-test", "spring-mockk"]
