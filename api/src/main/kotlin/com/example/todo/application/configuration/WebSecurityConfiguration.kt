@@ -1,9 +1,7 @@
 package com.example.todo.application.configuration
 
-import com.example.todo.domain.service.TodoAuthenticationUserDetailService
 import com.example.todo.enums.UserRole
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authentication.AccountStatusUserDetailsChecker
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
@@ -14,45 +12,58 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider
 
 @EnableWebSecurity
-class WebSecurityConfiguration(
-    private val todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService,
-    private val defaultAccessDeniedHandler: DefaultAccessDeniedHandler,
-    private val authenticationConfiguration: AuthenticationConfiguration
-) {
+class WebSecurityConfiguration {
 
     @Bean
-    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
+    fun securityFilterChain(
+        http: HttpSecurity,
+        defaultAccessDeniedHandler: DefaultAccessDeniedHandler,
+        defaultAuthenticationEntryPont: DefaultAuthenticationEntryPont,
+        preAuthenticatedProcessingFilter: AbstractPreAuthenticatedProcessingFilter
+    ): SecurityFilterChain {
         http
-            .httpBasic().disable()
-            .csrf().disable()
-            .authorizeHttpRequests()
-            .mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
-            ?.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
-            ?.mvcMatchers("**", "*")?.denyAll()
-            ?.anyRequest()?.authenticated()
-            ?.and()
-            ?.exceptionHandling()?.accessDeniedHandler(defaultAccessDeniedHandler)
-            ?.and()
-            ?.addFilter(preAuthenticatedProcessingFilter())
-            ?.sessionManagement()?.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .httpBasic{
+                it.disable()
+            }
+            .csrf{
+                it.disable()
+            }
+            .authorizeHttpRequests{
+                it.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
+                it.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
+                it.mvcMatchers("**", "*")?.denyAll()
+                it.anyRequest()?.authenticated()
+            }
+            ?.exceptionHandling {
+                it.accessDeniedHandler(defaultAccessDeniedHandler)
+                it.authenticationEntryPoint(defaultAuthenticationEntryPont)
+            }
+            ?.addFilter(preAuthenticatedProcessingFilter)
+            ?.sessionManagement {
+                it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            }
 
         return http.build()
     }
 
     @Bean
-    fun preAuthenticationProvider(): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
+    fun preAuthenticationProvider(
+        todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService
+    ): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
         .apply {
             setPreAuthenticatedUserDetailsService(todoAuthenticationUserDetailService)
-            setUserDetailsChecker(AccountStatusUserDetailsChecker())
         }
 
     @Bean
-    fun authenticationManager(): AuthenticationManager? = authenticationConfiguration.authenticationManager
+    fun authenticationManager(
+        authenticationConfiguration: AuthenticationConfiguration
+    ): AuthenticationManager? = authenticationConfiguration.authenticationManager
 
     @Bean
-    fun preAuthenticatedProcessingFilter(): AbstractPreAuthenticatedProcessingFilter =
-        TodoApiPreAuthenticationProcessingFilter()
-            .apply {
-                setAuthenticationManager(authenticationManager())
-            }
+    fun preAuthenticatedProcessingFilter(
+        authenticationManager: AuthenticationManager
+    ): AbstractPreAuthenticatedProcessingFilter = TodoApiPreAuthenticationProcessingFilter()
+        .apply {
+            setAuthenticationManager(authenticationManager)
+        }
 }
