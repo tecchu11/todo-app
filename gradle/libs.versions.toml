@@ -33,7 +33,7 @@ kulid = "com.github.guepardoapps:kulid:2.0.0.0"
 logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.2"
 
 # other test lib
-testcontainers-mysql = "org.testcontainers:mysql:1.17.4"
+testcontainers-mysql = "org.testcontainers:mysql:1.17.5"
 
 [bundles]
 kotlin-base = ["kotlin-reflect", "kotlin-stdlib"]
