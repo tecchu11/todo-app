@@ -14,7 +14,10 @@ import java.sql.ResultSet
 class MybatisConfig {
     @Bean
     fun configurationCustomizer(): ConfigurationCustomizer = ConfigurationCustomizer {
-        it.typeHandlerRegistry.register(GenericEnum::class.java, GenericTypeHandler::class.java)
+        it.typeHandlerRegistry.register(
+            GenericEnum::class.java,
+            GenericTypeHandler::class.java
+        )
     }
 }
 
@@ -22,7 +25,7 @@ class GenericTypeHandler<E>(private val clazz: Class<E>) : BaseTypeHandler<E>()
         where E : Enum<*>,
               E : GenericEnum {
 
-    private fun enumOf(code: String): E = clazz.enumConstants?.firstOrNull() { it.code() == code }
+    private fun enumOf(code: String): E = clazz.enumConstants?.firstOrNull { it.code() == code }
         ?: throw IllegalArgumentException("enum constant isn't defined in $clazz by code = $code")
 
     override fun setNonNullParameter(ps: PreparedStatement, i: Int, parameter: E, jdbcType: JdbcType?) =
