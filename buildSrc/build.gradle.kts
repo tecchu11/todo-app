@@ -12,7 +12,7 @@ dependencies {
     val detekt = "1.21.0"
     val springDependency = "1.0.14.RELEASE"
     val springBoot = "2.7.4"
-    val jib = "3.2.1"
+    val jib = "3.3.0"
 
     // kotlin-conventions
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
@@ -24,5 +24,5 @@ dependencies {
     // spring-boot-conventions
     implementation("org.springframework.boot:spring-boot-gradle-plugin:$springBoot")
     // google-container-tools/jib conventions
-    implementation("gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:$jib")
+    implementation("com.google.cloud.tools:jib-gradle-plugin:$jib")
 }
