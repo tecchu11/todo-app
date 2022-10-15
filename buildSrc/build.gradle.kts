@@ -24,5 +24,5 @@ dependencies {
     // spring-boot-conventions
     implementation("org.springframework.boot:spring-boot-gradle-plugin:$springBoot")
     // google-container-tools/jib conventions
-    implementation("gradle.plugin.com.google.cloud.tools:jib-gradle-plugin:$jib")
+    implementation("com.google.cloud.tools:jib-gradle-plugin:$jib")
 }
