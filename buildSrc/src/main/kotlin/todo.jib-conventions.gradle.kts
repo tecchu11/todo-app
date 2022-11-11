@@ -11,5 +11,5 @@ jib {
     }
     val gitHash: String? by project
     to.image = "ghcr.io/tecchu11/todo-${project.name}:$gitHash"
-    container.creationTime = "USE_CURRENT_TIMESTAMP"
+    container.creationTime.set("USE_CURRENT_TIMESTAMP")
 }
