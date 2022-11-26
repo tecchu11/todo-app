@@ -23,7 +23,7 @@ jackson-datetype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-j
 # test lib for spring basement
 ## bellow libs is contained bundles
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
-spring-mockk = "com.ninja-squad:springmockk:3.1.1"
+spring-mockk = "com.ninja-squad:springmockk:3.1.2"
 ## other test lib for spring
 spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter-test", version.ref = "mybatis" }
 
