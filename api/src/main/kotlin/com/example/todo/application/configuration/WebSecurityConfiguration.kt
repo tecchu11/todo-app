@@ -29,9 +29,9 @@ class WebSecurityConfiguration {
                 it.disable()
             }
             .authorizeHttpRequests {
-                it.mvcMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
-                it.mvcMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
-                it.mvcMatchers("**", "*")?.denyAll()
+                it.requestMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
+                it.requestMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
+                it.requestMatchers("**", "*")?.denyAll()
                 it.anyRequest()?.authenticated()
             }
             ?.exceptionHandling {
