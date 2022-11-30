@@ -2,7 +2,7 @@ package com.example.todo.application.configuration
 
 import com.example.todo.enums.UserRole
 import org.springframework.context.annotation.Bean
-import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -11,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider
 
+@Configuration
 @EnableWebSecurity
 class WebSecurityConfiguration {
 
@@ -47,23 +48,18 @@ class WebSecurityConfiguration {
     }
 
     @Bean
+    fun preAuthenticatedProcessingFilter(
+        authenticationConfiguration: AuthenticationConfiguration
+    ): AbstractPreAuthenticatedProcessingFilter = TodoApiPreAuthenticationProcessingFilter()
+        .apply {
+            setAuthenticationManager(authenticationConfiguration.authenticationManager)
+        }
+
+    @Bean
     fun preAuthenticationProvider(
         todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService
     ): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
         .apply {
             setPreAuthenticatedUserDetailsService(todoAuthenticationUserDetailService)
-        }
-
-    @Bean
-    fun authenticationManager(
-        authenticationConfiguration: AuthenticationConfiguration
-    ): AuthenticationManager? = authenticationConfiguration.authenticationManager
-
-    @Bean
-    fun preAuthenticatedProcessingFilter(
-        authenticationManager: AuthenticationManager
-    ): AbstractPreAuthenticatedProcessingFilter = TodoApiPreAuthenticationProcessingFilter()
-        .apply {
-            setAuthenticationManager(authenticationManager)
         }
 }

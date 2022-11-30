@@ -1,8 +1,8 @@
 package com.example.todo.extentions
 
+import jakarta.servlet.RequestDispatcher
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpStatus
-import javax.servlet.RequestDispatcher
-import javax.servlet.http.HttpServletRequest
 
 fun HttpServletRequest.httpStatus(): HttpStatus {
     val code = this.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) as? Int?

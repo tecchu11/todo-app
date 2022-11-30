@@ -1,8 +1,8 @@
 package com.example.todo.application.configuration
 
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpHeaders
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter
-import javax.servlet.http.HttpServletRequest
 
 class TodoApiPreAuthenticationProcessingFilter : AbstractPreAuthenticatedProcessingFilter() {
 

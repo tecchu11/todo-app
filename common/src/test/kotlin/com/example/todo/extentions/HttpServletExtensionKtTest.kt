@@ -3,13 +3,13 @@ package com.example.todo.extentions
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import jakarta.servlet.RequestDispatcher
+import jakarta.servlet.http.HttpServletRequest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import javax.servlet.RequestDispatcher
-import javax.servlet.http.HttpServletRequest
 
 internal class HttpServletExtensionKtTest {
 
