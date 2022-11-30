@@ -2,15 +2,15 @@ package com.example.todo.application.controller
 
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.extentions.httpStatus
+import jakarta.servlet.RequestDispatcher.ERROR_REQUEST_URI
+import jakarta.servlet.RequestDispatcher.ERROR_STATUS_CODE
+import jakarta.servlet.http.HttpServletRequest
 import org.slf4j.LoggerFactory
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import javax.servlet.RequestDispatcher.ERROR_REQUEST_URI
-import javax.servlet.RequestDispatcher.ERROR_STATUS_CODE
-import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/error")
