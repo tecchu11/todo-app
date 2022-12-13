@@ -1,31 +1,38 @@
 package com.example.todo.application.controller
 
-import com.example.todo.application.reponse.ResponseData
 import com.example.todo.exceptions.NotFoundException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
+import org.springframework.http.ProblemDetail
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @RestControllerAdvice
-class TodoExceptionHandler {
+class TodoExceptionHandler : ResponseEntityExceptionHandler() {
 
     companion object {
-        private val log = LoggerFactory.getLogger(this::class.java)
+        private val log = LoggerFactory.getLogger(TodoExceptionHandler::class.java)
     }
 
     @ExceptionHandler(Exception::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    fun defaultHandler(e: Exception): ResponseData<String> {
+    fun defaultHandler(e: Exception): ProblemDetail {
         log.error("Unexpected Exception is thrown", e)
-        return ResponseData(HttpStatus.INTERNAL_SERVER_ERROR.name, "Please retry request few minutes later")
+        return ProblemDetail.forStatusAndDetail(
+            HttpStatus.INTERNAL_SERVER_ERROR,
+            "Please retry request few minutes later"
+        )
     }
 
     @ExceptionHandler(NotFoundException::class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    fun notFoundHandler(e: NotFoundException): ResponseData<String> {
+    fun notFoundHandler(e: NotFoundException): ProblemDetail {
         log.info("not found exception is thrown", e)
-        return ResponseData(HttpStatus.NOT_FOUND.name, "Please check request parameter is correct.")
+        return ProblemDetail.forStatusAndDetail(
+            HttpStatus.NOT_FOUND,
+            "Please check request whether parameter is correct"
+        )
     }
 }

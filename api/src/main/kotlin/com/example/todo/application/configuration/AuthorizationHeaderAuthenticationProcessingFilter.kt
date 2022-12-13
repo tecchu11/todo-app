@@ -4,7 +4,7 @@ import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpHeaders
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter
 
-class TodoApiPreAuthenticationProcessingFilter : AbstractPreAuthenticatedProcessingFilter() {
+class AuthorizationHeaderAuthenticationProcessingFilter : AbstractPreAuthenticatedProcessingFilter() {
 
     override fun getPreAuthenticatedPrincipal(request: HttpServletRequest?): Any = ""
 

@@ -1,6 +1,7 @@
 package com.example.todo.application.configuration
 
 import com.example.todo.enums.UserRole
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
@@ -8,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider
 
 @Configuration
@@ -18,28 +18,24 @@ class WebSecurityConfiguration {
     @Bean
     fun securityFilterChain(
         http: HttpSecurity,
-        defaultAccessDeniedHandler: DefaultAccessDeniedHandler,
-        defaultAuthenticationEntryPont: DefaultAuthenticationEntryPont,
-        preAuthenticatedProcessingFilter: AbstractPreAuthenticatedProcessingFilter
+        customAccessDeniedHandler: CustomAccessDeniedHandler,
+        customAuthenticationEntryPoint: CustomAuthenticationEntryPoint,
+        authorizationHeaderAuthenticationProcessingFilter: AuthorizationHeaderAuthenticationProcessingFilter
     ): SecurityFilterChain {
         http
-            .httpBasic {
-                it.disable()
-            }
-            .csrf {
-                it.disable()
-            }
-            .authorizeHttpRequests {
+            .httpBasic().disable()
+            .csrf().disable()
+            ?.addFilter(authorizationHeaderAuthenticationProcessingFilter)
+            ?.authorizeHttpRequests {
                 it.requestMatchers("/v1/todo/**")?.hasAnyAuthority(UserRole.USER.name, UserRole.ADMIN.name)
                 it.requestMatchers("/v1/admin/**")?.hasAuthority(UserRole.ADMIN.name)
-                it.requestMatchers("**", "*")?.denyAll()
-                it.anyRequest()?.authenticated()
+                it.requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll() // actuator endpoint
+                it.anyRequest()?.denyAll()
             }
             ?.exceptionHandling {
-                it.accessDeniedHandler(defaultAccessDeniedHandler)
-                it.authenticationEntryPoint(defaultAuthenticationEntryPont)
+                it.authenticationEntryPoint(customAuthenticationEntryPoint) // handle 401
+                it.accessDeniedHandler(customAccessDeniedHandler) // handle 403
             }
-            ?.addFilter(preAuthenticatedProcessingFilter)
             ?.sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             }
@@ -49,17 +45,18 @@ class WebSecurityConfiguration {
 
     @Bean
     fun preAuthenticatedProcessingFilter(
-        authenticationConfiguration: AuthenticationConfiguration
-    ): AbstractPreAuthenticatedProcessingFilter = TodoApiPreAuthenticationProcessingFilter()
+        authenticationConfiguration: AuthenticationConfiguration,
+    ): AuthorizationHeaderAuthenticationProcessingFilter = AuthorizationHeaderAuthenticationProcessingFilter()
         .apply {
-            setAuthenticationManager(authenticationConfiguration.authenticationManager)
+            this.setAuthenticationManager(authenticationConfiguration.authenticationManager)
         }
 
     @Bean
-    fun preAuthenticationProvider(
-        todoAuthenticationUserDetailService: TodoAuthenticationUserDetailService
+    fun preAuthenticatedAuthenticationProvider(
+        authorizationHeaderAuthenticationUserDetailService: AuthorizationHeaderAuthenticationUserDetailService,
     ): PreAuthenticatedAuthenticationProvider = PreAuthenticatedAuthenticationProvider()
         .apply {
-            setPreAuthenticatedUserDetailsService(todoAuthenticationUserDetailService)
+            this.setThrowExceptionWhenTokenRejected(true)
+            this.setPreAuthenticatedUserDetailsService(authorizationHeaderAuthenticationUserDetailService)
         }
 }
