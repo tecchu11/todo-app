@@ -1,5 +1,5 @@
 [versions]
-mybatis = "3.0.0"
+mybatis = "3.0.1"
 
 [libraries]
 # kotlin jvm
