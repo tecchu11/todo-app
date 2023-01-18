@@ -14,6 +14,7 @@ dependencies {
     implementation(libs.bundles.rest.base)
     implementation(libs.spring.mybatis)
     implementation(libs.kulid)
+    implementation(libs.logstash.logback.encoder)
 
     runtimeOnly(libs.mysql.java)
 
