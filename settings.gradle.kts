@@ -1,3 +1,3 @@
 rootProject.name = "todo"
 
-include("api", "web", "common")
+include("api", "common")
