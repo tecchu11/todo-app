@@ -9,7 +9,7 @@ jobs:
   build-image:
     runs-on: ubuntu-latest
     env:
-      TZ: Asia/Tokyo
+      TZ: "Asia/Tokyo"
     steps:
       - uses: actions/checkout@v3
 
