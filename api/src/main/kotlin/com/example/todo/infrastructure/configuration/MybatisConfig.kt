@@ -1,6 +1,6 @@
 package com.example.todo.infrastructure.configuration
 
-import com.example.todo.enums.GenericEnum
+import com.example.todo.domain.enumration.GenericEnum
 import org.apache.ibatis.type.BaseTypeHandler
 import org.apache.ibatis.type.JdbcType
 import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer

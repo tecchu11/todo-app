@@ -10,10 +10,10 @@ repositories {
 dependencies {
     kapt(libs.spring.config.processor)
 
-    implementation(project(":common"))
     implementation(libs.bundles.rest.base)
     implementation(libs.spring.mybatis)
     implementation(libs.kulid)
+    implementation(libs.logstash.logback.encoder)
 
     runtimeOnly(libs.mysql.java)
 

@@ -1,6 +1,6 @@
-package com.example.todo.dto
+package com.example.todo.application.dto
 
-import com.example.todo.enums.TaskStatus
+import com.example.todo.domain.enumration.TaskStatus
 import java.time.OffsetDateTime
 
 data class TaskDto(

@@ -1,4 +1,4 @@
-package com.example.todo.enums
+package com.example.todo.domain.enumration
 
 enum class TaskStatus(private val statusId: String) : GenericEnum {
 

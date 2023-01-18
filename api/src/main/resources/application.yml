@@ -1,9 +1,6 @@
 spring:
   profiles:
     active: local
-    group:
-      local:
-        - common
 
 server:
   shutdown: graceful
@@ -25,3 +22,8 @@ management:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+
+todo-app:
+  key:
+    admin-key: ${ADMIN_KEY}
+    user-key: ${USER_KEY}

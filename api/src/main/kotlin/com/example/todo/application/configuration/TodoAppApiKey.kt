@@ -1,4 +1,4 @@
-package com.example.todo.properties
+package com.example.todo.application.configuration
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 
