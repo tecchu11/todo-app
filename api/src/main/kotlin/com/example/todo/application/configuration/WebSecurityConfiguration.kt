@@ -1,6 +1,6 @@
 package com.example.todo.application.configuration
 
-import com.example.todo.enums.UserRole
+import com.example.todo.domain.enumration.UserRole
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

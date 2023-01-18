@@ -1,12 +1,12 @@
 package com.example.todo.application.controller
 
+import com.example.todo.application.dto.TaskDto
+import com.example.todo.application.dto.TaskRegistrationDto
+import com.example.todo.application.dto.TaskResponseDto
+import com.example.todo.application.dto.TaskUpdateDto
 import com.example.todo.application.reponse.ResponseData
 import com.example.todo.domain.entity.Task
 import com.example.todo.domain.service.TaskService
-import com.example.todo.dto.TaskDto
-import com.example.todo.dto.TaskRegistrationDto
-import com.example.todo.dto.TaskResponseDto
-import com.example.todo.dto.TaskUpdateDto
 import com.github.guepardoapps.kulid.ULID
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
