@@ -1,4 +1,5 @@
 name: Build Image
+description: Login ghcr and push built image
 
 inputs:
   github-token:
@@ -13,9 +14,9 @@ runs:
   steps:
     - uses: actions/setup-java@v3
       with:
-        distribution: 'temurin'
-        java-version: '17'
-        cache: 'gradle'
+        distribution: "temurin"
+        java-version: "17"
+        cache: "gradle"
 
     - name: Login ghcr
       shell: bash
