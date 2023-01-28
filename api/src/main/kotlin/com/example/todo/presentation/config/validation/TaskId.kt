@@ -23,4 +23,3 @@ class TaskIdValidator : ConstraintValidator<TaskID, String> {
         context: ConstraintValidatorContext?
     ): Boolean = ULID.isValid(value)
 }
-

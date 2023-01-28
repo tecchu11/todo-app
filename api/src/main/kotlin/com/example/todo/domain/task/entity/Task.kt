@@ -83,5 +83,4 @@ data class Task(
         status = newStatus
         lastEditedTime = Instant.now()
     }
-
 }
