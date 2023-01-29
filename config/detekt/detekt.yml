@@ -1,27 +1,18 @@
-performance:
-  SpreadOperator:
-    excludes: ['**/TodoApplication.kt']
+complexity:
+  LongParameterList:
+    active: true
+    functionThreshold: 10
+    constructorThreshold: 10
+    ignoreDefaultParameters: false
+    ignoreDataClasses: true
+    ignoreAnnotatedParameter: []
 
 empty-blocks:
   EmptyFunctionBlock:
-    excludes: ['**/TodoApplicationTests.kt']
+    active: true
+    excludes: ["**/test/**"]
 
-comments:
-  UndocumentedPublicClass:
-    active: false
-  UndocumentedPublicFunction:
-    active: false
-  UndocumentedPublicProperty:
-    active: false
-
-naming:
-  FunctionMaxLength:
-    active: false
-  FunctionMinLength:
-    active: false
-
-style:
-  ClassOrdering:
-    active: false
-  CascadingCallWrapping:
-    active: false
+performance:
+  SpreadOperator:
+    active: true
+    excludes: ["**/TodoApplication.kt"]
