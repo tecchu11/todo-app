@@ -9,6 +9,7 @@ import com.example.todo.presentation.dto.request.TaskEdit
 import com.example.todo.presentation.dto.response.TaskResponse
 import com.example.todo.presentation.exception.ClientException
 import com.example.todo.presentation.exception.ResourceNotFoundException
+import com.example.todo.presentation.exception.ServerException
 import jakarta.validation.constraints.Positive
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
@@ -57,7 +58,7 @@ class TaskController(
         }.onFailure {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
-                message = "Failed instantiation task domain model by $taskId",
+                message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
         }.getOrThrow()
@@ -84,8 +85,9 @@ class TaskController(
             description = taskCreation.description
         )?.run {
             TaskResponse.from(this)
-        } ?: throw RuntimeException(
-            "when issuing task, issue use case was return null result. But, null result was unexpected"
+        } ?: throw ServerException(
+            response = "Unexpected error was happened, please retry to request later",
+            message = "When issuing task, issue use case was return null result. But, null result was unexpected",
         )
     }
 
@@ -100,7 +102,7 @@ class TaskController(
         }.onFailure {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
-                message = "Failed instantiation task domain model by $taskId",
+                message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
         }.getOrThrow()
@@ -138,7 +140,7 @@ class TaskController(
         }.onFailure {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
-                message = "Failed instantiation task domain model by $taskId",
+                message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
         }.getOrThrow()
