@@ -15,6 +15,7 @@ spring-starter = { module = "org.springframework.boot:spring-boot-starter" }
 spring-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 ## additionanl spriing libs
 spring-config-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+spring-logging = { module = "org.springframework.boot:spring-boot-starter-logging" }
 spring-mybatis = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
 spring-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
 spring-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
