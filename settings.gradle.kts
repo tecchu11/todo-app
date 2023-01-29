@@ -5,6 +5,10 @@ val rootProjectPaths = listOf(
     "libs",
 )
 val nestedProjectsPaths = listOf(
+    "api:presentation",
+    "api:application",
+    "api:domain",
+    "api:infrastructure",
     "libs:logging",
 )
 
