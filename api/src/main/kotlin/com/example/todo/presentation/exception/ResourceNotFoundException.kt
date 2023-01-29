@@ -6,9 +6,9 @@ import org.springframework.http.ProblemDetail
 import org.springframework.web.ErrorResponse
 
 /**
- * Indicate resource not found.(HttpStatus 404 will be return client)
+ * Indicate resource not found.(HttpStatus 404 will be return client).
  *
- * response is used for RFC 7807 field *detail*, message is used logger message
+ * response is used for RFC 7807 field *detail*, message is used logger message.
  */
 class ResourceNotFoundException(
     private val response: String,

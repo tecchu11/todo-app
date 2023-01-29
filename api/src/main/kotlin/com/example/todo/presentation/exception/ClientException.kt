@@ -6,9 +6,9 @@ import org.springframework.http.ProblemDetail
 import org.springframework.web.ErrorResponse
 
 /**
- * Indicate client error.(HttpStatus 400 will be return client)
+ * Indicate client error.(HttpStatus 400 will be return client).
  *
- * response is used for RFC 7807 field *detail*, message is used logger message
+ * response is used for RFC 7807 field *detail*, message is used logger message.
  */
 class ClientException(
     private val response: String,

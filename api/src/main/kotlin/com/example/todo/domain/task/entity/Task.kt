@@ -5,26 +5,26 @@ import com.example.todo.domain.task.vo.TaskId
 import java.time.Instant
 
 /**
-Indicate user owns task
+Indicate user owns task.
  */
 data class Task(
-    /** User owns this task */
+    /** User owns this task. */
     val userId: Int,
-    /** Indicate unique id of this task */
+    /** Indicate unique id of this task. */
     val id: TaskId,
-    /** Summary of this task */
+    /** Summary of this task. */
     var summary: String,
-    /** Description of task. Description is not required */
+    /** Description of task. Description is not required. */
     var description: String?,
-    /** Indicate status of task */
+    /** Indicate status of task. */
     var status: Status,
-    /** Issued time of this task */
+    /** Issued time of this task. */
     val issuedTime: Instant,
-    /** Last edited time of this task */
+    /** Last edited time of this task. */
     var lastEditedTime: Instant,
 ) {
     companion object {
-        /** Create new task */
+        /** Create new task. */
         fun create(
             userId: Int,
             summary: String,
@@ -40,7 +40,7 @@ data class Task(
         )
 
         /**
-         Create existed task
+         Create existed task.
          */
         fun from(
             id: TaskId,
@@ -62,7 +62,7 @@ data class Task(
     }
 
     /**
-     * Edit summary
+     * Edit summary.
      */
     fun editSummary(newSummary: String) {
         summary = newSummary
@@ -70,15 +70,18 @@ data class Task(
     }
 
     /**
-     * Edit description
+     * Edit description.
      *
-     * *NOTE:* If you call with null argument, the description is cleared
+     * *NOTE:* If you call with null argument, the description is cleared.
      */
     fun editDescription(newDescription: String?) {
         description = newDescription
         lastEditedTime = Instant.now()
     }
 
+    /**
+     * Edit status of task.
+     */
     fun editStatus(newStatus: Status) {
         status = newStatus
         lastEditedTime = Instant.now()

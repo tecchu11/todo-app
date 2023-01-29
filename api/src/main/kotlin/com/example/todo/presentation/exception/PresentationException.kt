@@ -1,7 +1,7 @@
 package com.example.todo.presentation.exception
 
 /**
- * Base exception class for presentation layer
+ * Base exception class for presentation layer.
  */
 open class PresentationException(
     message: String,

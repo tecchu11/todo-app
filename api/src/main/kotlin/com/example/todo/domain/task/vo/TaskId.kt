@@ -13,19 +13,19 @@ value class TaskId(
     }
 
     /**
-     return literal task id
+     * Return literal task id.
      */
     val literal: String
         get() = value
 
     companion object {
         /**
-         Create new task id
+         * Create new task id.
          */
         fun create() = TaskId(ULID.random())
 
         /**
-         Create task id instance from literal
+         * Create task id instance from literal.
          */
         fun from(literal: String): TaskId = TaskId(ULID.fromString(literal))
     }

@@ -12,7 +12,7 @@ class TaskUseCase(
 ) {
 
     /**
-     * Find user all task
+     * Find user all task.
      */
     fun findTasks(
         userId: Int,
@@ -21,7 +21,7 @@ class TaskUseCase(
     }
 
     /**
-     * Find specific user task by task id
+     * Find specific user task by task id.
      */
     fun findTask(
         userId: Int,
@@ -31,7 +31,7 @@ class TaskUseCase(
     }
 
     /**
-     * Issue new user task by passed arguments
+     * Issue new user task by passed arguments.
      */
     fun issueNewTask(
         userId: Int,
@@ -43,9 +43,9 @@ class TaskUseCase(
     }
 
     /**
-     * Edit task (summary, description)
+     * Edit task (summary, description).
      *
-     * No update by null
+     * No update by null.
      */
     fun editTask(
         userId: Int,
@@ -62,7 +62,7 @@ class TaskUseCase(
     }
 
     /**
-     * Delete user all tasks
+     * Delete user all tasks.
      */
     fun deleteTasks(
         userId: Int,
@@ -71,7 +71,7 @@ class TaskUseCase(
     }
 
     /**
-     * Delete specific user task by task id
+     * Delete specific user task by task id.
      */
     fun deleteTask(
         userId: Int,
