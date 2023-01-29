@@ -9,8 +9,8 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       TZ: 'Asia/Tokyo'
     volumes:
-      - ./docker/volumes/mysql/todo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./docker/volumes/mysql/conf.d:/etc/mysql/conf.d
-      - ./docker/volumes/mysql/todo/data:/var/lib/mysql
+      - ./volumes/mysql/todo/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./volumes/mysql/conf.d:/etc/mysql/conf.d
+      - ./volumes/mysql/todo/data:/var/lib/mysql
     ports:
       - "13306:3306"
