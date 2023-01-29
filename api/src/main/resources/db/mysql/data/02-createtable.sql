@@ -1,1 +1,0 @@
-../../../../../../../docker/volumes/mysql/todo/docker-entrypoint-initdb.d/02-createtable.sql

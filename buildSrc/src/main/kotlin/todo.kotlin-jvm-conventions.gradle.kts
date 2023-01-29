@@ -10,6 +10,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 group = "com.example"
@@ -17,8 +18,8 @@ version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 detekt {
-    allRules = true
     config = files("$rootDir/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
     parallel = true
 }
 

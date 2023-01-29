@@ -1,6 +1,0 @@
-server:
-  port: 8081
-
-todo:
-  api:
-    uri: http://localhost:8081/v1/todo

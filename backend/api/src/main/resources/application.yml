@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - base
+        - usecase-base
+        - usecase-local
+        - domain-base
+        - domain-local
+        - infrastructure-base
+        - infrastructure-local
