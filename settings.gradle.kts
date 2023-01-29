@@ -1,14 +1,14 @@
 rootProject.name = "todo"
 
 val rootProjectPaths = listOf(
-    "api",
+    "backend",
 )
 val nestedProjectsPaths = listOf(
-    "api:presentation",
-    "api:application",
-    "api:domain",
-    "api:infrastructure",
-    "api:libs:logging",
+    "backend:api",
+    "backend:application",
+    "backend:domain",
+    "backend:infrastructure",
+    "backend:libs:logging",
 )
 
 include(listOf(rootProjectPaths, nestedProjectsPaths).flatten())

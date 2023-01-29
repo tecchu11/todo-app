@@ -6,11 +6,11 @@ plugins {
 dependencies {
     kapt(libs.spring.config.processor)
 
-    implementation(project(":api:application"))
-    implementation(project(":api:domain"))
-    runtimeOnly(project(":api:infrastructure"))
+    implementation(project(":backend:application"))
+    implementation(project(":backend:domain"))
+    runtimeOnly(project(":backend:infrastructure"))
 
-    implementation(project(":api:libs:logging"))
+    implementation(project(":backend:libs:logging"))
 
     implementation(libs.bundles.kotlin.base)
     implementation(libs.bundles.rest.base)
