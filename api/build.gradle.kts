@@ -3,10 +3,6 @@ plugins {
     id("todo.jib-conventions")
 }
 
-repositories {
-    maven { url = uri("https://jitpack.io") }
-}
-
 dependencies {
     kapt(libs.spring.config.processor)
 
