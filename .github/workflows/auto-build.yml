@@ -17,4 +17,4 @@ jobs:
         uses: ./.github/workflows/composite/build-image
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          build-target-module: "api"
+          build-target-module: "backend:api"
