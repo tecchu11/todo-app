@@ -1,29 +1,12 @@
 spring:
   profiles:
     active: local
-
-server:
-  shutdown: graceful
-
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include:
-          - shutdown
-          - health
-  server:
-    port: 8880
-    address: "127.0.0.1"
-
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-
-todo-app:
-  key:
-    admin-key: ${ADMIN_KEY}
-    user-key: ${USER_KEY}
+    group:
+      local:
+        - base
+        - usecase-base
+        - usecase-local
+        - domain-base
+        - domain-local
+        - infrastructure-base
+        - infrastructure-local
