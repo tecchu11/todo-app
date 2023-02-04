@@ -7,6 +7,12 @@ data class UserCredential(
     var email: String,
     var password: String,
 ) {
+    init {
+        require(email.isNotBlank() && password.isNotBlank()) {
+            "Email and password are not allowed to be blank."
+        }
+    }
+
     companion object {
 
         /**
