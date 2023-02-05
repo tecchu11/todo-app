@@ -37,9 +37,10 @@ jwt-auth0 = "com.auth0:java-jwt:4.2.2"
 
 # other test lib
 testcontainers-mysql = "org.testcontainers:mysql:1.17.6"
+kluent = "org.amshove.kluent:kluent:1.72"
 
 [bundles]
 kotlin-base = ["kotlin-reflect", "kotlin-stdlib"]
 rest-base = ["spring-web", "spring-actuator", "spring-security", "kotlin-jackson", "spring-validation"]
 libs-base = ["spring-starter", "kotlin-jackson"]
-test-base = ["spring-boot-test", "spring-mockk"]
+test-base = ["spring-boot-test", "spring-mockk", "kluent"]
