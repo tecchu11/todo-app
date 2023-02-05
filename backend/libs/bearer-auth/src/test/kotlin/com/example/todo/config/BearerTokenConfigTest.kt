@@ -1,6 +1,6 @@
 package com.example.todo.config
 
-import org.assertj.core.api.Assertions.assertThat
+import org.amshove.kluent.`should be equal to`
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringBootConfiguration
@@ -21,12 +21,10 @@ class BearerTokenConfigTest {
 
     @Test
     fun `verify configuration binding`() {
-        assertThat(bearerTokenConfig).isEqualTo(
-            BearerTokenConfig(
-                issuer = "tecchu11",
-                expireAfter = Duration.of(60 * 60 * 24, ChronoUnit.SECONDS),
-                secretKey = "test",
-            )
+        bearerTokenConfig `should be equal to` BearerTokenConfig(
+            issuer = "tecchu11",
+            expireAfter = Duration.of(60 * 60 * 24, ChronoUnit.SECONDS),
+            secretKey = "test",
         )
     }
 }

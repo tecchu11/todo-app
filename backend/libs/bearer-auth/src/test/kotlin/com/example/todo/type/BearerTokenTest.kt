@@ -1,52 +1,33 @@
 package com.example.todo.type
 
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.catchThrowable
+import org.amshove.kluent.invoking
+import org.amshove.kluent.`should be equal to`
+import org.amshove.kluent.`should throw`
+import org.amshove.kluent.`with message`
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 
 class BearerTokenTest {
-
-    data class Fixture(
-        val data: String,
-        val expected: Any,
-        val assertion: (Any, Any) -> Unit,
-    )
-
     companion object {
-        @JvmStatic
-        @Suppress("UnusedPrivateMember")
-        private fun verifyInstantiationParam() = listOf(
-            Arguments.of(
-                Fixture(
-                    data = "${BearerToken.PREFIX}token",
-                    expected = "token",
-                    assertion = { a, e ->
-                        assertThat(a).isEqualTo(e)
-                    }
-                )
-            ),
-            Arguments.of(
-                Fixture(
-                    data = "NOT Bearer",
-                    expected = IllegalArgumentException::class.java,
-                    assertion = { a, e ->
-                        assertThat(a as Throwable)
-                            .isInstanceOf(e as Class<*>)
-                            .hasMessage("This is not bearer format.")
-                    }
-                )
-            )
-        )
+        private const val VALID_FORMAT_TOKEN_VALUE = "Bearer token"
+        private const val EXPECTED_JWS = "token"
+        private val EXPECTED_EXCEPTION = IllegalArgumentException::class
+        private const val EXPECTED_MESSAGE = "This is not bearer format."
+    }
+
+    @Test
+    fun `Verify success instantiation via from method with valid token format and expected jws`() {
+        val actual = BearerToken.from(VALID_FORMAT_TOKEN_VALUE)
+
+        actual.jws `should be equal to` EXPECTED_JWS
     }
 
     @ParameterizedTest
-    @MethodSource("verifyInstantiationParam")
-    fun `Verify instantiation`(fixture: Fixture) {
-        val actual = catchThrowable {
-            BearerToken.from(fixture.data)
-        } ?: BearerToken.from(fixture.data).jws
-        fixture.assertion(actual, fixture.expected)
+    @ValueSource(strings = ["Bearer", ""])
+    fun `Verify from method throw IllegalArgumentsException with invalid token format`(tokenValue: String) {
+        invoking {
+            BearerToken.from(tokenValue)
+        } `should throw` EXPECTED_EXCEPTION `with message` EXPECTED_MESSAGE
     }
 }

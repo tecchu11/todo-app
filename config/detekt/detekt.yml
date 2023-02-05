@@ -16,7 +16,7 @@ empty-blocks:
 performance:
   SpreadOperator:
     active: true
-    excludes: ["**/TodoApplication.kt"]
+    excludes: ["**/TodoApplication.kt", "**/test/**"]
 
 style:
   UnusedPrivateMember:
