@@ -8,7 +8,7 @@ value class UserId private constructor(
     val value: Int
 ) {
     init {
-        require(value > 0)
+        require(value > 0) { "Invalid user id." }
     }
 
     companion object {

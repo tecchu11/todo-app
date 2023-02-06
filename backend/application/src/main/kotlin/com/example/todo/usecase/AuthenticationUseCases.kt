@@ -21,20 +21,22 @@ class AuthenticationUseCase(
 ) {
 
     /**
-     * Authenticate user by email and password.
+     * User attempt login with email and password.
      *
      * If user was authenticated, returning access token.
      */
-    fun authenticate(email: String, password: String): String? {
+    fun attemptLogin(email: String, password: String): String? {
         val auth = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(email, password)
-        ).principal as User // returning User class. see UserDetailUseCase
+        ).principal as? User // returning User class. See UserDetailUseCase
 
-        return bearerTokenService.generate(
-            sub = auth.username,
-            // User can only have one roll.
-            role = auth.authorities.first().toString(),
-        ).value
+        return auth?.let {
+            bearerTokenService.generate(
+                sub = it.username,
+                // User can only have one roll.
+                role = it.authorities.first().toString(),
+            ).value
+        }
     }
 }
 

@@ -19,11 +19,11 @@ class UserAuthenticationController(
     }
 
     /**
-     * Attempt to login with user email and password.
+     * Attempt login with user email and password.
      */
     @PostMapping("$BASE_PATH/login")
     fun login(@Validated @RequestBody userLogin: UserLogin): AuthenticatedResponse {
-        val token = authenticationUseCase.authenticate(
+        val token = authenticationUseCase.attemptLogin(
             email = userLogin.email,
             password = userLogin.password,
         ) ?: throw ResourceNotFoundException(

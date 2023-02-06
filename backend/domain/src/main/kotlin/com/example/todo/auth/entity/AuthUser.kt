@@ -16,7 +16,7 @@ data class AuthUser(
         /**
          * Create from AuthUser.
          *
-         * If passed invalid userId or role, throw [IllegalArgumentException].
+         * If passed invalid user parameters, throw [IllegalArgumentException].
          */
         fun from(userId: Int, email: String, password: String, role: String) = AuthUser(
             userId = UserId.from(userId),
