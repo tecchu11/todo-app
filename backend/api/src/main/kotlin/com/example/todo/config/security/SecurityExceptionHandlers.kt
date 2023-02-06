@@ -12,6 +12,9 @@ import org.springframework.security.web.AuthenticationEntryPoint
 import org.springframework.security.web.access.AccessDeniedHandler
 import org.springframework.stereotype.Component
 
+/**
+ * Handling authorize exception.
+ */
 @Component
 class CustomAccessDeniedHandler(
     private val objectMapper: ObjectMapper
@@ -36,6 +39,9 @@ class CustomAccessDeniedHandler(
     }
 }
 
+/**
+ * Handling authentication exception.
+ */
 @Component
 class CustomAuthenticationEntryPoint(
     private val objectMapper: ObjectMapper

@@ -2,4 +2,4 @@ libs:
   bearer-token:
     issuer: tecchu11
     expire-after: PT24H
-    secret-key: 404E635266556A586E3272357538782F
+    secret-key: test

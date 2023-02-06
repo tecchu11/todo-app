@@ -4,6 +4,7 @@ import com.example.todo.mysql.table.TaskTable
 import org.apache.ibatis.annotations.Delete
 import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
+import org.apache.ibatis.annotations.Param
 import org.apache.ibatis.annotations.Select
 
 @Mapper
@@ -44,7 +45,7 @@ interface TaskMapper {
                 and id = #{taskId}
         """
     )
-    fun selectSingle(userId: Int, taskId: String): TaskTable?
+    fun selectSingle(@Param("userId") userId: Int, @Param("taskId") taskId: String): TaskTable?
 
     @Insert(
         """

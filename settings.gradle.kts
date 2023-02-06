@@ -9,6 +9,7 @@ val nestedProjectsPaths = listOf(
     "backend:domain",
     "backend:infrastructure",
     "backend:libs:logging",
+    "backend:libs:bearer-auth",
 )
 
 include(listOf(rootProjectPaths, nestedProjectsPaths).flatten())

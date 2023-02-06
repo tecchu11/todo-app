@@ -6,7 +6,8 @@ complexity:
     ignoreDefaultParameters: false
     ignoreDataClasses: true
     ignoreAnnotatedParameter: []
-
+  LongMethod:
+    excludes: ["**/test/**"]
 empty-blocks:
   EmptyFunctionBlock:
     active: true
@@ -15,4 +16,8 @@ empty-blocks:
 performance:
   SpreadOperator:
     active: true
-    excludes: ["**/TodoApplication.kt"]
+    excludes: ["**/TodoApplication.kt", "**/test/**"]
+
+style:
+  UnusedPrivateMember:
+    excludes: ["**/test/**"]
