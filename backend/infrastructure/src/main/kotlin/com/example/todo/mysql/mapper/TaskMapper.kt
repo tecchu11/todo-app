@@ -95,5 +95,5 @@ interface TaskMapper {
                 and id = #{taskId}
         """
     )
-    fun deleteSingle(userId: Int, taskId: String)
+    fun deleteSingle(@Param("userId") userId: Int, @Param("taskId")taskId: String)
 }
