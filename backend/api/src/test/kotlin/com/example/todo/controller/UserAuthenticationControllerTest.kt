@@ -3,7 +3,7 @@ package com.example.todo.controller
 import com.example.todo.controller.advice.TodoExceptionHandler
 import com.example.todo.dto.request.UserLogin
 import com.example.todo.dto.response.AuthenticatedResponse
-import com.example.todo.usecase.AuthenticationUseCase
+import com.example.todo.usecase.UserAuthUseCase
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.MockKAnnotations
@@ -29,7 +29,7 @@ import kotlin.reflect.KClass
 class UserAuthenticationControllerTest {
 
     @MockK
-    private lateinit var authenticationUseCase: AuthenticationUseCase
+    private lateinit var userAuthUseCase: UserAuthUseCase
 
     @InjectMockKs
     private lateinit var userAuthenticationController: UserAuthenticationController
@@ -125,11 +125,11 @@ class UserAuthenticationControllerTest {
         if (useCaseWillThrow.first) {
             val constructor = useCaseWillThrow.second.constructors.first()
             every {
-                authenticationUseCase.attemptLogin(userLogin.email, userLogin.password)
+                userAuthUseCase.attemptLogin(userLogin.email, userLogin.password)
             } throws constructor.call("Mock exception was thrown")
         } else {
             every {
-                authenticationUseCase.attemptLogin(userLogin.email, userLogin.password)
+                userAuthUseCase.attemptLogin(userLogin.email, userLogin.password)
             } returns token
         }
         println(objectMapper.writeValueAsString(expected.second))

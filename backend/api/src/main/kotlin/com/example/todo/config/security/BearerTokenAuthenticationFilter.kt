@@ -1,5 +1,6 @@
 package com.example.todo.config.security
 
+import com.example.todo.dto.AuthUserDetails
 import com.example.todo.service.BearerTokenService
 import com.example.todo.type.BearerToken
 import jakarta.servlet.FilterChain
@@ -8,9 +9,7 @@ import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpHeaders
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
@@ -41,15 +40,15 @@ class BearerTokenAuthenticationFilter(
             }.getOrThrow()
         if (SecurityContextHolder.getContext().authentication == null) {
             val payload = bearerTokenService.verify(bearerToken)
-            val authUser = User(
-                payload.sub,
-                "",
-                AuthorityUtils.createAuthorityList(payload.role)
+            val authUserDetails = AuthUserDetails(
+                id = payload.sub,
+                password = "",
+                role = payload.role,
             )
             val authentication = UsernamePasswordAuthenticationToken(
-                authUser,
+                authUserDetails,
                 null,
-                authUser.authorities
+                authUserDetails.authorities
             ).apply {
                 details = WebAuthenticationDetailsSource().buildDetails(request)
             }

@@ -3,7 +3,7 @@ package com.example.todo.controller
 import com.example.todo.dto.request.UserLogin
 import com.example.todo.dto.response.AuthenticatedResponse
 import com.example.todo.exception.ResourceNotFoundException
-import com.example.todo.usecase.AuthenticationUseCase
+import com.example.todo.usecase.UserAuthUseCase
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class UserAuthenticationController(
-    private val authenticationUseCase: AuthenticationUseCase,
+    private val userAuthUseCase: UserAuthUseCase,
 ) {
 
     companion object {
@@ -23,7 +23,7 @@ class UserAuthenticationController(
      */
     @PostMapping("$BASE_PATH/login")
     fun login(@Validated @RequestBody userLogin: UserLogin): AuthenticatedResponse {
-        val token = authenticationUseCase.attemptLogin(
+        val token = userAuthUseCase.attemptLogin(
             email = userLogin.email,
             password = userLogin.password,
         ) ?: throw ResourceNotFoundException(

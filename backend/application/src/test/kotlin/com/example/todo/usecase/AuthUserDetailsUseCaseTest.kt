@@ -2,6 +2,7 @@ package com.example.todo.usecase
 
 import com.example.todo.auth.AuthUserRepository
 import com.example.todo.auth.entity.AuthUser
+import com.example.todo.dto.AuthUserDetails
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
@@ -14,18 +15,16 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import org.springframework.security.core.authority.AuthorityUtils
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import kotlin.reflect.KClass
 
-class AuthUserDetailUseCaseTest {
+class AuthUserDetailsUseCaseTest {
 
     @MockK
     private lateinit var authUserRepository: AuthUserRepository
 
     @InjectMockKs
-    private lateinit var authUserDetailUseCase: AuthUserDetailUseCase
+    private lateinit var authUserDetailsUseCase: AuthUserDetailsUseCase
 
     companion object {
         private const val VALID_EMAIL = "test@example.com"
@@ -35,19 +34,19 @@ class AuthUserDetailUseCaseTest {
             password = "test-password",
             role = "USER",
         )
-        private val EXPECTED_USERDETAILS = User(
-            "1", "test-password", AuthorityUtils.createAuthorityList("USER"),
-        )
-
+        private val EXPECTED_USERDETAILS = AuthUserDetails("1", "test-password", "USER",)
         private const val INVALID_EMAIL = "invalid@example.com"
+
         @JvmStatic
         private fun verificationExpectedException() = listOf(
-            Arguments.of( // scenario of not found auth user
+            Arguments.of(
+                // scenario of not found auth user
                 INVALID_EMAIL,
                 null,
                 UsernameNotFoundException::class,
             ),
-            Arguments.of( // scenario email is null
+            Arguments.of(
+                // scenario email is null
                 null,
                 null,
                 UsernameNotFoundException::class,
@@ -64,7 +63,7 @@ class AuthUserDetailUseCaseTest {
     fun `Verify object returned loadUserByUsername method is expected`() {
         every { authUserRepository.find(VALID_EMAIL) } returns MOCK_VALID_AUTH_USER
 
-        val actual = authUserDetailUseCase.loadUserByUsername(VALID_EMAIL)
+        val actual = authUserDetailsUseCase.loadUserByUsername(VALID_EMAIL)
 
         actual `should be equal to` EXPECTED_USERDETAILS
     }
@@ -80,6 +79,6 @@ class AuthUserDetailUseCaseTest {
             every { authUserRepository.find(it) } returns mockAuthUser
         }
 
-        invoking { authUserDetailUseCase.loadUserByUsername(email) } `should throw` expected
+        invoking { authUserDetailsUseCase.loadUserByUsername(email) } `should throw` expected
     }
 }

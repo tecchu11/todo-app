@@ -2,11 +2,10 @@ package com.example.todo.usecase
 
 import com.example.todo.annnotation.UseCase
 import com.example.todo.auth.AuthUserRepository
+import com.example.todo.dto.AuthUserDetails
 import com.example.todo.service.BearerTokenService
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.authority.AuthorityUtils
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
@@ -15,7 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
  * Usecase for authenticating user.
  */
 @UseCase
-class AuthenticationUseCase(
+class UserAuthUseCase(
     private val authenticationManager: AuthenticationManager,
     private val bearerTokenService: BearerTokenService,
 ) {
@@ -28,7 +27,7 @@ class AuthenticationUseCase(
     fun attemptLogin(email: String, password: String): String? {
         val auth = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(email, password)
-        ).principal as? User // returning User class. See UserDetailUseCase
+        ).principal as? AuthUserDetails // returning User class. See UserDetailUseCase
 
         return auth?.let {
             bearerTokenService.generate(
@@ -46,7 +45,7 @@ class AuthenticationUseCase(
  * This class used by spring security.
  */
 @UseCase
-class AuthUserDetailUseCase(
+class AuthUserDetailsUseCase(
     private val authUserRepository: AuthUserRepository,
 ) : UserDetailsService {
 
@@ -58,10 +57,10 @@ class AuthUserDetailUseCase(
     override fun loadUserByUsername(email: String?): UserDetails {
         return email?.let {
             authUserRepository.find(it)?.let { authUser ->
-                User(
-                    authUser.userId.literal,
-                    authUser.userCredential.password,
-                    AuthorityUtils.createAuthorityList(authUser.role.name)
+                AuthUserDetails(
+                    id = authUser.userId.literal,
+                    password = authUser.userCredential.password,
+                    role = authUser.role.name,
                 )
             }
         } ?: throw UsernameNotFoundException("Authenticated user does not found by passed email")
