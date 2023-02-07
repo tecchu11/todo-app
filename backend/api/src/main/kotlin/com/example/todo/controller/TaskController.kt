@@ -10,7 +10,6 @@ import com.example.todo.exception.ServerException
 import com.example.todo.task.vo.Status
 import com.example.todo.task.vo.TaskId
 import com.example.todo.usecase.TaskUseCase
-import jakarta.validation.constraints.Positive
 import org.springframework.http.HttpStatus
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -26,15 +25,13 @@ import org.springframework.web.bind.annotation.RestController
 @Validated
 class TaskController(
     private val taskUseCase: TaskUseCase,
-) {
+) : BaseAuthenticatedController() {
     companion object {
-        private const val BASE_PATH = "/v1/users/{userId}"
+        private const val BASE_PATH = "/v1/users/tasks"
     }
 
-    @GetMapping("$BASE_PATH/tasks")
-    fun findAll(
-        @PathVariable @Positive userId: Int
-    ): List<TaskResponse> {
+    @GetMapping(BASE_PATH)
+    fun findAll(): List<TaskResponse> {
         val tasks = taskUseCase.findTasks(userId).map {
             TaskResponse.from(it)
         }
@@ -48,11 +45,8 @@ class TaskController(
         return tasks
     }
 
-    @GetMapping("$BASE_PATH/tasks/{taskId}")
-    fun find(
-        @PathVariable @Positive userId: Int,
-        @PathVariable @TaskID taskId: String
-    ): TaskResponse {
+    @GetMapping("$BASE_PATH/{taskId}")
+    fun find(@PathVariable @TaskID taskId: String): TaskResponse {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
         }.onFailure {
@@ -73,10 +67,9 @@ class TaskController(
         )
     }
 
-    @PostMapping("$BASE_PATH/tasks")
+    @PostMapping(BASE_PATH)
     @ResponseStatus(HttpStatus.CREATED)
     fun issue(
-        @PathVariable @Positive userId: Int,
         @RequestBody @Validated taskCreation: TaskCreation,
     ): TaskResponse {
         return taskUseCase.issueNewTask(
@@ -91,9 +84,8 @@ class TaskController(
         )
     }
 
-    @PutMapping("$BASE_PATH/tasks/{taskId}")
+    @PutMapping("$BASE_PATH/{taskId}")
     fun edit(
-        @PathVariable userId: Int,
         @PathVariable @TaskID taskId: String,
         @RequestBody @Validated taskEdit: TaskEdit,
     ): TaskResponse {
@@ -121,20 +113,15 @@ class TaskController(
         )
     }
 
-    @DeleteMapping("$BASE_PATH/tasks")
+    @DeleteMapping(BASE_PATH)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun deleteAll(
-        @PathVariable @Positive userId: Int,
-    ) {
+    fun deleteAll() {
         taskUseCase.deleteTasks(userId)
     }
 
-    @DeleteMapping("$BASE_PATH/tasks/{taskId}")
+    @DeleteMapping("$BASE_PATH/{taskId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(
-        @PathVariable @Positive userId: Int,
-        @PathVariable @TaskID taskId: String,
-    ) {
+    fun delete(@PathVariable @TaskID taskId: String) {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
         }.onFailure {
