@@ -13,7 +13,7 @@ import org.springframework.web.ErrorResponse
 class ClientException(
     private val response: String,
     message: String,
-    cause: Throwable
+    cause: Throwable? = null,
 ) : ErrorResponse, PresentationException(message, cause) {
     override fun getStatusCode(): HttpStatusCode = HttpStatus.BAD_REQUEST
 
