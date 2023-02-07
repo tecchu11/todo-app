@@ -1,5 +1,6 @@
 package com.example.todo.usecase
 
+import com.example.todo.dto.AuthUserDetails
 import com.example.todo.service.BearerTokenService
 import com.example.todo.type.BearerToken
 import io.mockk.MockKAnnotations
@@ -13,10 +14,8 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.authority.AuthorityUtils
-import org.springframework.security.core.userdetails.User
 
-class AuthenticationUseCaseTest {
+class UserAuthUseCaseTest {
 
     @MockK
     private lateinit var authenticationManager: AuthenticationManager
@@ -25,15 +24,17 @@ class AuthenticationUseCaseTest {
     private lateinit var bearerTokenService: BearerTokenService
 
     @InjectMockKs
-    private lateinit var authenticationUseCase: AuthenticationUseCase
+    private lateinit var userAuthUseCase: UserAuthUseCase
 
     companion object {
         private val VALID_USER = "test@example.com" to "test-password"
         private const val MOCKED_USER_ID = "1"
         private const val MOCKED_USER_ROLE = "USER"
         private const val MOCKED_USER_PASSWORD = "test-password"
-        private val EXPECTED_USERDETAILS = User(
-            MOCKED_USER_ID, MOCKED_USER_PASSWORD, AuthorityUtils.createAuthorityList(MOCKED_USER_ROLE)
+        private val EXPECTED_USERDETAILS = AuthUserDetails(
+            id = MOCKED_USER_ID,
+            password = MOCKED_USER_PASSWORD,
+            role = MOCKED_USER_ROLE,
         )
         private val MOCK_BEARER_TOKEN = BearerToken.from("Bearer token")
         private const val EXPECTED_TOKEN = "Bearer token"
@@ -68,7 +69,7 @@ class AuthenticationUseCaseTest {
     @MethodSource("verificationGenerateExactly")
     fun `Verify success attemptLogin with valid user`(
         user: Pair<String, String>,
-        expectedUserDetails: User?,
+        expectedUserDetails: AuthUserDetails?,
         mockBearerToken: String,
         expectedGeneratedToken: String?,
     ) {
@@ -81,7 +82,7 @@ class AuthenticationUseCaseTest {
             bearerTokenService.generate(any(), any())
         } returns BearerToken.from(mockBearerToken)
 
-        val actual = authenticationUseCase.attemptLogin(user.first, user.second)
+        val actual = userAuthUseCase.attemptLogin(user.first, user.second)
 
         actual `should be equal to` expectedGeneratedToken
     }

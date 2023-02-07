@@ -1,7 +1,7 @@
 package com.example.todo.config.security
 
 import com.example.todo.auth.vo.UserRole
-import com.example.todo.usecase.AuthUserDetailUseCase
+import com.example.todo.usecase.AuthUserDetailsUseCase
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -65,10 +65,10 @@ class SecurityConfig {
 
     @Bean
     fun authenticationProvider(
-        authUserDetailUseCase: AuthUserDetailUseCase,
+        authUserDetailsUseCase: AuthUserDetailsUseCase,
         passwordEncoder: PasswordEncoder,
     ): AuthenticationProvider = DaoAuthenticationProvider().apply {
-        this.setUserDetailsService(authUserDetailUseCase)
+        this.setUserDetailsService(authUserDetailsUseCase)
         this.setPasswordEncoder(passwordEncoder)
     }
 }
