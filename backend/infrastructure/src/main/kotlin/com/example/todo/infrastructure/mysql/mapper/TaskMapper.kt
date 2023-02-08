@@ -1,6 +1,6 @@
-package com.example.todo.mysql.mapper
+package com.example.todo.infrastructure.mysql.mapper
 
-import com.example.todo.mysql.table.TaskTable
+import com.example.todo.infrastructure.mysql.table.TaskTable
 import org.apache.ibatis.annotations.Delete
 import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper

@@ -1,4 +1,4 @@
-package com.example.todo.mysql.table
+package com.example.todo.infrastructure.mysql.table
 
 data class UserTable(
     val userId: Int,

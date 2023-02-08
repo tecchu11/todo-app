@@ -1,8 +1,8 @@
-package com.example.todo.repository
+package com.example.todo.infrastructure.repository
 
 import com.example.todo.domain.auth.entity.AuthUser
-import com.example.todo.mysql.mapper.UserAccountMapper
-import com.example.todo.mysql.table.UserTable
+import com.example.todo.infrastructure.mysql.mapper.UserAccountMapper
+import com.example.todo.infrastructure.mysql.table.UserTable
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

@@ -1,4 +1,4 @@
-package com.example.todo.mysql.configuration
+package com.example.todo.infrastructure.mysql.configuration
 
 import org.apache.ibatis.type.BaseTypeHandler
 import org.apache.ibatis.type.JdbcType

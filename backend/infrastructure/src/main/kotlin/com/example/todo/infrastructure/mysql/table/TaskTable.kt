@@ -1,4 +1,4 @@
-package com.example.todo.mysql.table
+package com.example.todo.infrastructure.mysql.table
 
 import com.example.todo.domain.task.entity.Task
 import com.example.todo.domain.task.vo.TaskId

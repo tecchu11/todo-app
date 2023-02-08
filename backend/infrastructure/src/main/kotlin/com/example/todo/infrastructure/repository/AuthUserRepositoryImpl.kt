@@ -1,9 +1,9 @@
-package com.example.todo.repository
+package com.example.todo.infrastructure.repository
 
 import com.example.todo.domain.auth.AuthUserRepository
 import com.example.todo.domain.auth.entity.AuthUser
 import com.example.todo.domain.auth.vo.UserRole
-import com.example.todo.mysql.mapper.UserAccountMapper
+import com.example.todo.infrastructure.mysql.mapper.UserAccountMapper
 import org.springframework.stereotype.Repository
 
 /**

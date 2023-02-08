@@ -1,6 +1,6 @@
-package com.example.todo.mysql.mapper
+package com.example.todo.infrastructure.mysql.mapper
 
-import com.example.todo.mysql.table.UserTable
+import com.example.todo.infrastructure.mysql.table.UserTable
 import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Select
 
