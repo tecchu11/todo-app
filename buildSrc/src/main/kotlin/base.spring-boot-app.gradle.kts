@@ -1,4 +1,4 @@
 plugins {
-    id("todo.spring-dependency-conventions")
+    id("base.spring-dependency")
     id("org.springframework.boot")
 }
