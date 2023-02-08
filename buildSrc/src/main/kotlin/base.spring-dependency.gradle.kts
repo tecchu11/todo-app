@@ -1,7 +1,9 @@
 plugins {
-    id("todo.kotlin-jvm-conventions")
+    id("base.kotlin-jvm")
     id("io.spring.dependency-management")
+    kotlin("kapt")
     kotlin("plugin.spring")
+
 }
 
 dependencyManagement {

@@ -1,5 +1,5 @@
 plugins {
-    id("todo.spring-dependency-conventions")
+    id("base.spring-dependency")
 }
 
 dependencies {

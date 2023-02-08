@@ -1,6 +1,6 @@
 plugins {
-    id("todo.spring-boot-application-conventions")
-    id("todo.jib-conventions")
+    id("base.spring-boot-app")
+    id("base.jib")
 }
 
 dependencies {
