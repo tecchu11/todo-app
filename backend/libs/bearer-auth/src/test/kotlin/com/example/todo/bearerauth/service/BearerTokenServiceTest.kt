@@ -1,10 +1,10 @@
-package com.example.todo.service
+package com.example.todo.bearerauth.service
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.example.todo.config.BearerTokenConfig
-import com.example.todo.type.BearerToken
-import com.example.todo.type.Payload
+import com.example.todo.bearerauth.config.BearerTokenConfig
+import com.example.todo.bearerauth.type.BearerToken
+import com.example.todo.bearerauth.type.Payload
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

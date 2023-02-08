@@ -1,8 +1,8 @@
 package com.example.todo.application.usecase
 
 import com.example.todo.application.dto.AuthUserDetails
-import com.example.todo.service.BearerTokenService
-import com.example.todo.type.BearerToken
+import com.example.todo.bearerauth.service.BearerTokenService
+import com.example.todo.bearerauth.type.BearerToken
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

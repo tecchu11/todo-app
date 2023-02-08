@@ -1,4 +1,4 @@
-package com.example.todo.type
+package com.example.todo.bearerauth.type
 
 import org.amshove.kluent.invoking
 import org.amshove.kluent.`should be equal to`

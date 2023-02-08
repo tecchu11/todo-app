@@ -1,4 +1,4 @@
-package com.example.todo.type
+package com.example.todo.bearerauth.type
 
 @JvmInline
 value class BearerToken private constructor(
@@ -8,7 +8,7 @@ value class BearerToken private constructor(
         internal const val PREFIX = "Bearer "
         private const val INDEX = PREFIX.length
 
-        internal fun create(jws: String) = BearerToken("${PREFIX}$jws")
+        internal fun create(jws: String) = BearerToken("$PREFIX$jws")
 
         /**
          * Create from raw bearer token.
@@ -25,7 +25,7 @@ value class BearerToken private constructor(
     /**
      * Return jws(jwt token).
      *
-     * You must verify jws with [com.example.todo.service.BearerTokenService].
+     * You must verify jws with [com.example.todo.bearerauth.service.BearerTokenService].
      */
     internal val jws: String
         get() = value.substring(INDEX)

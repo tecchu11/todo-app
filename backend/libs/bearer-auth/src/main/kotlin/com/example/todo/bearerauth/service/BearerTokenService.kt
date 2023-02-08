@@ -1,10 +1,10 @@
-package com.example.todo.service
+package com.example.todo.bearerauth.service
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.example.todo.config.BearerTokenConfig
-import com.example.todo.type.BearerToken
-import com.example.todo.type.Payload
+import com.example.todo.bearerauth.config.BearerTokenConfig
+import com.example.todo.bearerauth.type.BearerToken
+import com.example.todo.bearerauth.type.Payload
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.stereotype.Component
 import java.time.Instant
@@ -48,7 +48,7 @@ class BearerTokenService(
     }
 
     /**
-     * Verify bearer token and return client detail with [com.example.todo.type.Payload].
+     * Verify bearer token and return client detail with [com.example.todo.bearerauth.type.Payload].
      *
      * When token is invalid, thrown [org.springframework.security.authentication.BadCredentialsException].
      */

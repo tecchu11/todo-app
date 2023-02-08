@@ -2,8 +2,8 @@ package com.example.todo.application.usecase
 
 import com.example.todo.application.annnotation.UseCase
 import com.example.todo.application.dto.AuthUserDetails
+import com.example.todo.bearerauth.service.BearerTokenService
 import com.example.todo.domain.auth.AuthUserRepository
-import com.example.todo.service.BearerTokenService
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetails

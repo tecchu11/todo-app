@@ -1,4 +1,4 @@
-package com.example.todo.config
+package com.example.todo.bearerauth.config
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.convert.DurationUnit

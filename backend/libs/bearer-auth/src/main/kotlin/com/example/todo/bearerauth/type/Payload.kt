@@ -1,4 +1,4 @@
-package com.example.todo.type
+package com.example.todo.bearerauth.type
 
 /**
  * Available jwt payload.
