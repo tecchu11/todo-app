@@ -5,11 +5,7 @@ plugins {
     kotlin("jvm")
     id("org.jlleitschuh.gradle.ktlint")
     id("io.gitlab.arturbosch.detekt")
-}
-
-repositories {
-    mavenCentral()
-    maven { url = uri("https://jitpack.io") }
+    id("base.maven")
 }
 
 group = "com.example"
