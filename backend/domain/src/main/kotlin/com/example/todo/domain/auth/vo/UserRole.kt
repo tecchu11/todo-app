@@ -1,4 +1,4 @@
-package com.example.todo.auth.vo
+package com.example.todo.domain.auth.vo
 
 /**
  * User role.

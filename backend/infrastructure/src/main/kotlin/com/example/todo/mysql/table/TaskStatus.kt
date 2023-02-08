@@ -1,7 +1,7 @@
 package com.example.todo.mysql.table
 
+import com.example.todo.domain.task.vo.Status
 import com.example.todo.mysql.configuration.GenericEnum
-import com.example.todo.task.vo.Status
 
 enum class TaskStatus(private val statusId: String) : GenericEnum {
 

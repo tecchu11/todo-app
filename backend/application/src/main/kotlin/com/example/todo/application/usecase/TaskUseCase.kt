@@ -1,10 +1,10 @@
 package com.example.todo.application.usecase
 
 import com.example.todo.application.annnotation.UseCase
-import com.example.todo.task.TaskRepository
-import com.example.todo.task.entity.Task
-import com.example.todo.task.vo.Status
-import com.example.todo.task.vo.TaskId
+import com.example.todo.domain.task.TaskRepository
+import com.example.todo.domain.task.entity.Task
+import com.example.todo.domain.task.vo.Status
+import com.example.todo.domain.task.vo.TaskId
 
 @UseCase
 class TaskUseCase(

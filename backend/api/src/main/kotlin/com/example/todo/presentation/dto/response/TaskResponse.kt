@@ -1,8 +1,8 @@
 package com.example.todo.presentation.dto.response
 
+import com.example.todo.domain.task.entity.Task
 import com.example.todo.presentation.config.extension.JavaTime
 import com.example.todo.presentation.config.extension.toLocalDateTime
-import com.example.todo.task.entity.Task
 import java.time.LocalDateTime
 
 /**

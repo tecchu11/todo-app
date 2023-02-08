@@ -1,7 +1,7 @@
-package com.example.todo.auth.entity
+package com.example.todo.domain.auth.entity
 
-import com.example.todo.auth.vo.UserRole
-import com.example.todo.shared.vo.UserId
+import com.example.todo.domain.auth.vo.UserRole
+import com.example.todo.domain.shared.vo.UserId
 
 /**
  * Indicate auth user for this project.

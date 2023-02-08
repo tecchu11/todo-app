@@ -1,6 +1,6 @@
-package com.example.com.auth.shared.vo
+package com.example.com.domain.shared.vo
 
-import com.example.todo.shared.vo.UserId
+import com.example.todo.domain.shared.vo.UserId
 import org.amshove.kluent.invoking
 import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should throw`

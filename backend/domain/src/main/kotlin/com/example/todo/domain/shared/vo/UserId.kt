@@ -1,4 +1,4 @@
-package com.example.todo.shared.vo
+package com.example.todo.domain.shared.vo
 
 /**
  * Indicate user id.

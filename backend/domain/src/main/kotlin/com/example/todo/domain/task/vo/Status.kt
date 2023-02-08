@@ -1,4 +1,4 @@
-package com.example.todo.task.vo
+package com.example.todo.domain.task.vo
 
 /**
 Indicate task status.

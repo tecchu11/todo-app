@@ -1,9 +1,9 @@
-package com.example.com.auth.entity
+package com.example.com.domain.auth.entity
 
-import com.example.todo.auth.entity.AuthUser
-import com.example.todo.auth.entity.UserCredential
-import com.example.todo.auth.vo.UserRole
-import com.example.todo.shared.vo.UserId
+import com.example.todo.domain.auth.entity.AuthUser
+import com.example.todo.domain.auth.entity.UserCredential
+import com.example.todo.domain.auth.vo.UserRole
+import com.example.todo.domain.shared.vo.UserId
 import org.amshove.kluent.invoking
 import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.`should throw`

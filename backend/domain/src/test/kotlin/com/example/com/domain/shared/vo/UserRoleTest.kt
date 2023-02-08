@@ -1,6 +1,6 @@
-package com.example.com.auth.shared.vo
+package com.example.com.domain.shared.vo
 
-import com.example.todo.auth.vo.UserRole
+import com.example.todo.domain.auth.vo.UserRole
 import org.amshove.kluent.shouldContainSame
 import org.junit.jupiter.api.Test
 

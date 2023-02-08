@@ -1,7 +1,7 @@
 package com.example.todo.mysql.table
 
-import com.example.todo.task.entity.Task
-import com.example.todo.task.vo.TaskId
+import com.example.todo.domain.task.entity.Task
+import com.example.todo.domain.task.vo.TaskId
 import java.time.Instant
 
 data class TaskTable(

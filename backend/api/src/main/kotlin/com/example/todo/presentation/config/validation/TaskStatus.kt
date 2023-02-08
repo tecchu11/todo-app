@@ -1,6 +1,6 @@
 package com.example.todo.presentation.config.validation
 
-import com.example.todo.task.vo.Status
+import com.example.todo.domain.task.vo.Status
 import jakarta.validation.Constraint
 import jakarta.validation.ConstraintValidator
 import jakarta.validation.ConstraintValidatorContext

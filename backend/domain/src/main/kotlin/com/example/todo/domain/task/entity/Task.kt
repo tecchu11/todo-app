@@ -1,7 +1,7 @@
-package com.example.todo.task.entity
+package com.example.todo.domain.task.entity
 
-import com.example.todo.task.vo.Status
-import com.example.todo.task.vo.TaskId
+import com.example.todo.domain.task.vo.Status
+import com.example.todo.domain.task.vo.TaskId
 import java.time.Instant
 
 /**

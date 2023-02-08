@@ -1,11 +1,11 @@
 package com.example.todo.repository
 
+import com.example.todo.domain.task.TaskRepository
+import com.example.todo.domain.task.entity.Task
+import com.example.todo.domain.task.vo.TaskId
 import com.example.todo.mysql.mapper.TaskMapper
 import com.example.todo.mysql.table.TaskStatus
 import com.example.todo.mysql.table.TaskTable
-import com.example.todo.task.TaskRepository
-import com.example.todo.task.entity.Task
-import com.example.todo.task.vo.TaskId
 import org.springframework.stereotype.Repository
 
 @Repository

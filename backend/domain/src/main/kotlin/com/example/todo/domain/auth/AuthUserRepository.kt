@@ -1,6 +1,6 @@
-package com.example.todo.auth
+package com.example.todo.domain.auth
 
-import com.example.todo.auth.entity.AuthUser
+import com.example.todo.domain.auth.entity.AuthUser
 
 /**
  * CRUD for auth user.

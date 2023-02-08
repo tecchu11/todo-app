@@ -1,4 +1,4 @@
-package com.example.todo.auth.entity
+package com.example.todo.domain.auth.entity
 
 /**
  * Indicate credentials.

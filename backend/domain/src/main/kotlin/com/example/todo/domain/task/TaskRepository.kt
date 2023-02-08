@@ -1,7 +1,7 @@
-package com.example.todo.task
+package com.example.todo.domain.task
 
-import com.example.todo.task.entity.Task
-import com.example.todo.task.vo.TaskId
+import com.example.todo.domain.task.entity.Task
+import com.example.todo.domain.task.vo.TaskId
 
 /**
  * CRUD for domain entity of task.
