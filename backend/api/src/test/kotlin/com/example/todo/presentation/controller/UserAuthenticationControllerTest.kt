@@ -1,9 +1,9 @@
 package com.example.todo.presentation.controller
 
+import com.example.todo.application.usecase.UserAuthUseCase
 import com.example.todo.presentation.controller.advice.TodoExceptionHandler
 import com.example.todo.presentation.dto.request.UserLogin
 import com.example.todo.presentation.dto.response.AuthenticatedResponse
-import com.example.todo.usecase.UserAuthUseCase
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.ObjectMapper
 import io.mockk.MockKAnnotations

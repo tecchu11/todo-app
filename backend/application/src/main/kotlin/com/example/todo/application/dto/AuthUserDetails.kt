@@ -1,4 +1,4 @@
-package com.example.todo.dto
+package com.example.todo.application.dto
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.AuthorityUtils

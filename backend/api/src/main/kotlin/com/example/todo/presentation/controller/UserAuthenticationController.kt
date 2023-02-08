@@ -1,9 +1,9 @@
 package com.example.todo.presentation.controller
 
+import com.example.todo.application.usecase.UserAuthUseCase
 import com.example.todo.presentation.dto.request.UserLogin
 import com.example.todo.presentation.dto.response.AuthenticatedResponse
 import com.example.todo.presentation.exception.ResourceNotFoundException
-import com.example.todo.usecase.UserAuthUseCase
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

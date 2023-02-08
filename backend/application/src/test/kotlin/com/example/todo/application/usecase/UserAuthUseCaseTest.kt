@@ -1,6 +1,6 @@
-package com.example.todo.usecase
+package com.example.todo.application.usecase
 
-import com.example.todo.dto.AuthUserDetails
+import com.example.todo.application.dto.AuthUserDetails
 import com.example.todo.service.BearerTokenService
 import com.example.todo.type.BearerToken
 import io.mockk.MockKAnnotations

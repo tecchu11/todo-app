@@ -1,4 +1,4 @@
-package com.example.todo.dto
+package com.example.todo.application.dto
 
 import org.amshove.kluent.`should be equal to`
 import org.amshove.kluent.shouldBeTrue

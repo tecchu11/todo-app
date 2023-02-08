@@ -1,6 +1,6 @@
-package com.example.todo.usecase
+package com.example.todo.application.usecase
 
-import com.example.todo.annnotation.UseCase
+import com.example.todo.application.annnotation.UseCase
 import com.example.todo.task.TaskRepository
 import com.example.todo.task.entity.Task
 import com.example.todo.task.vo.Status

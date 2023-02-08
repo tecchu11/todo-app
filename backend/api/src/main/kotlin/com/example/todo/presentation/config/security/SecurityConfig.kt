@@ -1,7 +1,7 @@
 package com.example.todo.presentation.config.security
 
+import com.example.todo.application.usecase.AuthUserDetailsUseCase
 import com.example.todo.auth.vo.UserRole
-import com.example.todo.usecase.AuthUserDetailsUseCase
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

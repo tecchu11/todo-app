@@ -1,8 +1,8 @@
-package com.example.todo.usecase
+package com.example.todo.application.usecase
 
+import com.example.todo.application.dto.AuthUserDetails
 import com.example.todo.auth.AuthUserRepository
 import com.example.todo.auth.entity.AuthUser
-import com.example.todo.dto.AuthUserDetails
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

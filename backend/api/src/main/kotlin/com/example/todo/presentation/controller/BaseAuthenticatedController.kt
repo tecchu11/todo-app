@@ -1,6 +1,6 @@
 package com.example.todo.presentation.controller
 
-import com.example.todo.dto.AuthUserDetails
+import com.example.todo.application.dto.AuthUserDetails
 import com.example.todo.presentation.exception.ClientException
 import org.springframework.security.core.context.SecurityContextHolder
 
