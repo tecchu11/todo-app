@@ -7,7 +7,7 @@ import com.example.todo.domain.shared.vo.UserId
  * Indicate auth user for this project.
  */
 data class AuthUser(
-    var userId: UserId,
+    val userId: UserId,
     var userCredential: UserCredential,
     var role: UserRole,
 ) {
