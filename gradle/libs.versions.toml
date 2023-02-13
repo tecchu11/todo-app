@@ -33,7 +33,7 @@ spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-st
 mysql-java = { module = "mysql:mysql-connector-java" }
 kulid = "com.github.guepardoapps:kulid:2.0.0.0"
 logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.2"
-jwt-auth0 = "com.auth0:java-jwt:4.2.2"
+jwt-auth0 = "com.auth0:java-jwt:4.3.0"
 
 # other test lib
 testcontainers-mysql = "org.testcontainers:mysql:1.17.6"
