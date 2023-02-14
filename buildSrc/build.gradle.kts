@@ -8,7 +8,7 @@ repositories {
 
 dependencies {
     val kotlin = "1.8.10"
-    val ktlint = "11.1.0"
+    val ktlint = "11.2.0"
     val detekt = "1.22.0"
     val springDependency = "1.1.0"
     val springBoot = "3.0.2"
