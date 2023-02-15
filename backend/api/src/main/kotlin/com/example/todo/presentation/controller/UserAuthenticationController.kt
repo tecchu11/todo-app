@@ -22,7 +22,10 @@ class UserAuthenticationController(
      * Attempt login with user email and password.
      */
     @PostMapping("$BASE_PATH/login")
-    fun login(@Validated @RequestBody userLogin: UserLogin): AuthenticatedResponse {
+    fun login(
+        @Validated @RequestBody
+        userLogin: UserLogin
+    ): AuthenticatedResponse {
         val token = userAuthUseCase.attemptLogin(
             email = userLogin.email,
             password = userLogin.password,

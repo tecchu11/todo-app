@@ -46,7 +46,10 @@ class TaskController(
     }
 
     @GetMapping("$BASE_PATH/{taskId}")
-    fun find(@PathVariable @TaskID taskId: String): TaskResponse {
+    fun find(
+        @PathVariable @TaskID
+        taskId: String
+    ): TaskResponse {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
         }.onFailure {
@@ -70,7 +73,8 @@ class TaskController(
     @PostMapping(BASE_PATH)
     @ResponseStatus(HttpStatus.CREATED)
     fun issue(
-        @RequestBody @Validated taskCreation: TaskCreation,
+        @RequestBody @Validated
+        taskCreation: TaskCreation,
     ): TaskResponse {
         return taskUseCase.issueNewTask(
             userId = userId,
@@ -86,8 +90,10 @@ class TaskController(
 
     @PutMapping("$BASE_PATH/{taskId}")
     fun edit(
-        @PathVariable @TaskID taskId: String,
-        @RequestBody @Validated taskEdit: TaskEdit,
+        @PathVariable @TaskID
+        taskId: String,
+        @RequestBody @Validated
+        taskEdit: TaskEdit,
     ): TaskResponse {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
@@ -121,7 +127,10 @@ class TaskController(
 
     @DeleteMapping("$BASE_PATH/{taskId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(@PathVariable @TaskID taskId: String) {
+    fun delete(
+        @PathVariable @TaskID
+        taskId: String
+    ) {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
         }.onFailure {

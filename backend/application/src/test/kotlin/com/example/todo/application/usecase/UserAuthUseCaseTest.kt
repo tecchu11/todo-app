@@ -39,6 +39,7 @@ class UserAuthUseCaseTest {
         private val MOCK_BEARER_TOKEN = BearerToken.from("Bearer token")
         private const val EXPECTED_TOKEN = "Bearer token"
         private val INVALID_USER = "invalid@example.com" to "invalid-password"
+
         @JvmStatic
         private fun verificationGenerateExactly() = listOf(
             Arguments.of(

@@ -68,7 +68,8 @@ class TodoExceptionHandler : ResponseEntityExceptionHandler() {
     ): ProblemDetail {
         log.info("Client requested to ${request.requestURI} with invalid parameters, body or method", cause)
         return ProblemDetail.forStatusAndDetail(
-            HttpStatus.BAD_REQUEST, "Invalid request content."
+            HttpStatus.BAD_REQUEST,
+            "Invalid request content."
         )
     }
 }

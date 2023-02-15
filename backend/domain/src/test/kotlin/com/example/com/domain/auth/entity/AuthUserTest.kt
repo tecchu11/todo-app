@@ -61,7 +61,10 @@ class AuthUserTest {
     ) {
         invoking {
             AuthUser.from(
-                userId = id, email = email, password = password, role = role
+                userId = id,
+                email = email,
+                password = password,
+                role = role
             )
         } `should throw` expected
     }
