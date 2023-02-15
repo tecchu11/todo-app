@@ -18,6 +18,7 @@ class ServerException(
     override fun getStatusCode(): HttpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR
 
     override fun getBody(): ProblemDetail = ProblemDetail.forStatusAndDetail(
-        HttpStatus.INTERNAL_SERVER_ERROR, response
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        response
     )
 }

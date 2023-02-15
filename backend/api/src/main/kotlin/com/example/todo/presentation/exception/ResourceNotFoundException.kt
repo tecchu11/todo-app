@@ -18,6 +18,7 @@ class ResourceNotFoundException(
     override fun getStatusCode(): HttpStatusCode = HttpStatus.NOT_FOUND
 
     override fun getBody(): ProblemDetail = ProblemDetail.forStatusAndDetail(
-        HttpStatus.NOT_FOUND, response
+        HttpStatus.NOT_FOUND,
+        response
     )
 }

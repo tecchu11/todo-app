@@ -18,6 +18,7 @@ class ClientException(
     override fun getStatusCode(): HttpStatusCode = HttpStatus.BAD_REQUEST
 
     override fun getBody(): ProblemDetail = ProblemDetail.forStatusAndDetail(
-        HttpStatus.BAD_REQUEST, response
+        HttpStatus.BAD_REQUEST,
+        response
     )
 }

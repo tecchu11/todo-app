@@ -8,7 +8,6 @@ repositories {
 
 dependencies {
     val kotlin = "1.8.10"
-    val ktlint = "11.1.0"
     val detekt = "1.22.0"
     val springDependency = "1.1.0"
     val springBoot = "3.0.2"
@@ -16,7 +15,6 @@ dependencies {
 
     // kotlin-conventions
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
-    implementation("org.jlleitschuh.gradle:ktlint-gradle:$ktlint")
     implementation("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detekt")
     // spring-dependency-conventions
     implementation("io.spring.gradle:dependency-management-plugin:$springDependency")
