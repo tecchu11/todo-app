@@ -47,59 +47,71 @@ class UserAuthenticationControllerTest {
                 UserLogin("test@example.com", "test-password"),
                 "Bearer token",
                 false to NotImplementedError::class,
-                HttpStatus.OK to AuthenticatedResponse("Bearer token")
+                Triple(HttpStatus.OK, MediaType.APPLICATION_JSON, AuthenticatedResponse("Bearer token")),
             ),
             Arguments.of(
                 // scenario of invalid password.
                 UserLogin("test@example.com", " "),
                 "dummy",
                 false to NotImplementedError::class,
-                HttpStatus.BAD_REQUEST to ProblemDetail
-                    .forStatusAndDetail(
+                Triple(
+                    HttpStatus.BAD_REQUEST,
+                    MediaType.APPLICATION_PROBLEM_JSON,
+                    ProblemDetail.forStatusAndDetail(
                         HttpStatus.BAD_REQUEST,
                         "Invalid request content."
                     ).apply {
                         this.instance = INSTANCE
-                    },
+                    }
+                ),
             ),
             Arguments.of(
                 // scenario of invalid email.
                 UserLogin(" ", "test-password"),
                 "dummy",
                 false to NotImplementedError::class,
-                HttpStatus.BAD_REQUEST to ProblemDetail
-                    .forStatusAndDetail(
+                Triple(
+                    HttpStatus.BAD_REQUEST,
+                    MediaType.APPLICATION_PROBLEM_JSON,
+                    ProblemDetail.forStatusAndDetail(
                         HttpStatus.BAD_REQUEST,
                         "Invalid request content."
                     ).apply {
                         this.instance = INSTANCE
-                    },
+                    }
+                ),
             ),
             Arguments.of(
                 // scenario of user not found
                 UserLogin("notfound@example.com", "test-password"),
                 null,
                 false to NotImplementedError::class,
-                HttpStatus.NOT_FOUND to ProblemDetail
-                    .forStatusAndDetail(
+                Triple(
+                    HttpStatus.NOT_FOUND,
+                    MediaType.APPLICATION_PROBLEM_JSON,
+                    ProblemDetail.forStatusAndDetail(
                         HttpStatus.NOT_FOUND,
                         "Your account does not exist.",
                     ).apply {
                         this.instance = INSTANCE
-                    },
+                    }
+                ),
             ),
             Arguments.of(
                 // scenario of failure auth with BadCredentialsException.
                 UserLogin("test@example.com", "invalid-password"),
                 "dummy",
                 true to BadCredentialsException::class,
-                HttpStatus.BAD_REQUEST to ProblemDetail
-                    .forStatusAndDetail(
+                Triple(
+                    HttpStatus.BAD_REQUEST,
+                    MediaType.APPLICATION_PROBLEM_JSON,
+                    ProblemDetail.forStatusAndDetail(
                         HttpStatus.BAD_REQUEST,
                         "Invalid request content."
                     ).apply {
                         this.instance = INSTANCE
-                    },
+                    }
+                ),
             ),
         )
     }
@@ -120,7 +132,7 @@ class UserAuthenticationControllerTest {
         userLogin: UserLogin,
         token: String?,
         useCaseWillThrow: Pair<Boolean, KClass<Throwable>>,
-        expected: Pair<HttpStatus, Any>,
+        expected: Triple<HttpStatus, MediaType, Any>,
     ) {
         if (useCaseWillThrow.first) {
             val constructor = useCaseWillThrow.second.constructors.first()
@@ -132,7 +144,6 @@ class UserAuthenticationControllerTest {
                 userAuthUseCase.attemptLogin(userLogin.email, userLogin.password)
             } returns token
         }
-        println(objectMapper.writeValueAsString(expected.second))
         mockMvc.perform(
             MockMvcRequestBuilders
                 .post(INSTANCE)
@@ -141,7 +152,7 @@ class UserAuthenticationControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
         )
             .andExpect(status().`is`(expected.first.value()))
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(content().json(objectMapper.writeValueAsString(expected.second)))
+            .andExpect(content().contentType(expected.second))
+            .andExpect(content().json(objectMapper.writeValueAsString(expected.third)))
     }
 }
