@@ -1,5 +1,6 @@
 [versions]
 mybatis = "3.0.1"
+openapi = "2.0.2"
 
 [libraries]
 # kotlin jvm
@@ -19,6 +20,7 @@ spring-logging = { module = "org.springframework.boot:spring-boot-starter-loggin
 spring-mybatis = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis" }
 spring-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf" }
 spring-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-openapi-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "openapi" }
 ## other lib for spring
 jackson-datetype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" }
 

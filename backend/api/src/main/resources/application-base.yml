@@ -11,6 +11,8 @@ management:
         include:
           - shutdown
           - health
+          - openapi
+          - swagger-ui
   server:
     port: 8880
     address: "127.0.0.1"

@@ -2,6 +2,7 @@ package com.example.todo.presentation.controller.advice
 
 import com.example.todo.presentation.exception.ClientException
 import com.example.todo.presentation.exception.ResourceNotFoundException
+import io.swagger.v3.oas.annotations.Hidden
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.validation.ConstraintViolationException
 import org.slf4j.LoggerFactory
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  * Handling exception globally.
  */
 @RestControllerAdvice
+@Hidden
 class TodoExceptionHandler : ResponseEntityExceptionHandler() {
 
     companion object {

@@ -1,3 +1,17 @@
+springdoc:
+  api-docs:
+    enabled: true
+  default-consumes-media-type: application/json
+  show-actuator: false
+  swagger-ui:
+    enabled: true
+    supportedSubmitMethods:
+      - get
+      - post
+      - put
+      - delete
+  use-management-port: true
+
 libs:
   bearer-token:
     issuer: tecchu11
