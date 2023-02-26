@@ -1,7 +1,6 @@
 plugins {
     id("base.spring-boot-app")
     id("base.jib")
-    id("org.springdoc.openapi-gradle-plugin")
 }
 
 dependencies {
@@ -19,8 +18,4 @@ dependencies {
 
     testImplementation(libs.bundles.test.base)
     testImplementation(libs.bundles.test.base)
-}
-
-openApi {
-    apiDocsUrl.set("http://localhost:8880/actuator/openapi")
 }

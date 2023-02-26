@@ -12,7 +12,6 @@ dependencies {
     val springDependency = "1.1.0"
     val springBoot = "3.0.3"
     val jib = "3.3.1"
-    val openapi = "1.6.0"
 
     // kotlin-conventions
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
@@ -24,6 +23,4 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-gradle-plugin:$springBoot")
     // google-container-tools/jib conventions
     implementation("com.google.cloud.tools:jib-gradle-plugin:$jib")
-    // base.open-api
-    implementation("org.springdoc:springdoc-openapi-gradle-plugin:$openapi")
 }
