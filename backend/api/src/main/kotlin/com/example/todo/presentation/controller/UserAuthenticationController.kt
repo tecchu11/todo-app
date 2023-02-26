@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.springframework.http.MediaType
 import org.springframework.http.ProblemDetail
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController
     responseCode = "500",
     content = [
         Content(
-            mediaType = "application/json",
+            mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
             schema = Schema(implementation = ProblemDetail::class),
         )
     ]
@@ -52,7 +53,7 @@ class UserAuthenticationController(
                 responseCode = "200",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
                         schema = Schema(implementation = AuthenticatedResponse::class),
                     )
                 ],
@@ -62,7 +63,7 @@ class UserAuthenticationController(
                 responseCode = "400",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                         schema = Schema(implementation = ProblemDetail::class),
                     )
                 ]

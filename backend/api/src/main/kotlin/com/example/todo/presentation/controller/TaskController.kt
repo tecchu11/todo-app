@@ -18,6 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.HttpStatus
+import org.springframework.http.MediaType
 import org.springframework.http.ProblemDetail
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -42,7 +43,7 @@ import org.springframework.web.bind.annotation.RestController
             responseCode = "400",
             content = [
                 Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                     schema = Schema(implementation = ProblemDetail::class),
                 )
             ]
@@ -51,7 +52,7 @@ import org.springframework.web.bind.annotation.RestController
             responseCode = "401",
             content = [
                 Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                     schema = Schema(implementation = ProblemDetail::class),
                 )
             ]
@@ -60,7 +61,7 @@ import org.springframework.web.bind.annotation.RestController
             responseCode = "403",
             content = [
                 Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                     schema = Schema(implementation = ProblemDetail::class),
                 )
             ]
@@ -70,7 +71,7 @@ import org.springframework.web.bind.annotation.RestController
             responseCode = "500",
             content = [
                 Content(
-                    mediaType = "application/json",
+                    mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                     schema = Schema(implementation = ProblemDetail::class),
                 )
             ]
@@ -96,7 +97,7 @@ class TaskController(
                 responseCode = "200",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
                         array = ArraySchema(schema = Schema(implementation = TaskResponse::class)),
                     )
                 ]
@@ -106,7 +107,7 @@ class TaskController(
                 responseCode = "404",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                         schema = Schema(implementation = ProblemDetail::class)
                     )
                 ]
@@ -139,7 +140,7 @@ class TaskController(
                 responseCode = "200",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
                         schema = Schema(implementation = TaskResponse::class),
                     )
                 ]
@@ -149,7 +150,7 @@ class TaskController(
                 responseCode = "404",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                         schema = Schema(implementation = ProblemDetail::class)
                     )
                 ]
@@ -195,7 +196,7 @@ class TaskController(
                 responseCode = "201",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
                         schema = Schema(implementation = TaskResponse::class),
                     )
                 ]
@@ -230,7 +231,7 @@ class TaskController(
                 responseCode = "200",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_JSON_VALUE,
                         schema = Schema(implementation = TaskResponse::class),
                     )
                 ]
@@ -240,7 +241,7 @@ class TaskController(
                 responseCode = "404",
                 content = [
                     Content(
-                        mediaType = "application/json",
+                        mediaType = MediaType.APPLICATION_PROBLEM_JSON_VALUE,
                         schema = Schema(implementation = ProblemDetail::class)
                     )
                 ]
