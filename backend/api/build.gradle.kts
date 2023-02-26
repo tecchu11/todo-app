@@ -11,6 +11,7 @@ dependencies {
 
     implementation(libs.bundles.kotlin.base)
     implementation(libs.bundles.rest.base)
+    implementation(libs.spring.openapi.ui)
     implementation(libs.kulid)
 
     kapt(libs.spring.config.processor)

@@ -87,10 +87,10 @@ class UserAuthenticationControllerTest {
                 null,
                 false to NotImplementedError::class,
                 Triple(
-                    HttpStatus.NOT_FOUND,
+                    HttpStatus.BAD_REQUEST,
                     MediaType.APPLICATION_PROBLEM_JSON,
                     ProblemDetail.forStatusAndDetail(
-                        HttpStatus.NOT_FOUND,
+                        HttpStatus.BAD_REQUEST,
                         "Your account does not exist.",
                     ).apply {
                         this.instance = INSTANCE
