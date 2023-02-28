@@ -10,7 +10,7 @@ dependencies {
     runtimeOnly(project(":backend:infrastructure"))
 
     implementation(libs.bundles.kotlin.base)
-    implementation(libs.kotlin.jackson)
+    implementation(libs.bundles.jackson.base)
     implementation(libs.spring.actuator)
     implementation(libs.spring.openapi.ui)
     implementation(libs.spring.security)

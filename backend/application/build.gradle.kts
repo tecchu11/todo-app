@@ -7,7 +7,7 @@ dependencies {
     implementation(project(":backend:libs:bearer-auth"))
 
     implementation(libs.bundles.kotlin.base)
-    implementation(libs.kotlin.jackson)
+    implementation(libs.bundles.jackson.base)
     implementation(libs.spring.security)
     implementation(libs.spring.starter)
     implementation(libs.kulid)

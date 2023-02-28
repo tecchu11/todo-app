@@ -6,7 +6,7 @@ dependencies {
     implementation(project(":backend:domain"))
 
     implementation(libs.bundles.kotlin.base)
-    implementation(libs.kotlin.jackson)
+    implementation(libs.bundles.jackson.base)
     implementation(libs.spring.mybatis)
     implementation(libs.spring.starter)
 
