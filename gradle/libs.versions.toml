@@ -18,7 +18,7 @@ spring-web = {module = "org.springframework.boot:spring-boot-starter-web"}
 
 # other
 jackson-datetype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310" }
-jwt-auth0 = "com.auth0:java-jwt:4.3.0"
+jwt-auth0 = "com.auth0:java-jwt:4.4.0"
 kotlin-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
 kulid = "com.github.guepardoapps:kulid:2.0.0.0"
 logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.3"
