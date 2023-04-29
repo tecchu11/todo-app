@@ -28,7 +28,7 @@ mysql-java = { module = "com.mysql:mysql-connector-j" }
 spring-boot-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-mockk = "com.ninja-squad:springmockk:4.0.2"
 spring-mybatis-test = { module = "org.mybatis.spring.boot:mybatis-spring-boot-starter-test", version.ref = "mybatis" }
-kluent = "org.amshove.kluent:kluent:1.72"
+kluent = "org.amshove.kluent:kluent:1.73"
 testcontainers-mysql = "org.testcontainers:mysql:1.18.0"
 
 [bundles]
