@@ -11,7 +11,7 @@ dependencies {
     val detekt = "1.22.0"
     val springDependency = "1.1.0"
     val springBoot = "3.0.6"
-    val jib = "3.3.1"
+    val jib = "3.3.2"
 
     // kotlin-conventions
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
