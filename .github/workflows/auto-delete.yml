@@ -3,7 +3,7 @@ name: Auto Deletion for GHCR
 on:
   workflow_run:
     workflows:
-      - auto-build
+      - Auto Build Image
     types:
       - completed
 
