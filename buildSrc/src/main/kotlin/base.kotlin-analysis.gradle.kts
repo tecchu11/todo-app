@@ -10,7 +10,7 @@ dependencies {
 }
 
 detekt {
-    config = files("$rootDir/config/detekt/detekt.yml")
+    config.from("$rootDir/config/detekt/detekt.yml")
     buildUponDefaultConfig = true
     parallel = true
     autoCorrect = true
