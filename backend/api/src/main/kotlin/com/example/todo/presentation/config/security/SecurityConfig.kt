@@ -36,8 +36,12 @@ class SecurityConfig {
         customAuthenticationEntryPoint: CustomAuthenticationEntryPoint,
     ): SecurityFilterChain {
         return http
-            .httpBasic().disable()
-            .csrf().disable()
+            .httpBasic {
+                it.disable()
+            }
+            .csrf {
+                it.disable()
+            }
             .addFilterBefore(bearerTokenAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
             .authenticationProvider(authenticationProvider)
             .authorizeHttpRequests {
