@@ -1,9 +1,9 @@
-name: Notify
+name: Auto Deletion for GHCR
 
 on:
   workflow_run:
     workflows:
-      - ci
+      - auto-build
     types:
       - completed
 
@@ -11,6 +11,14 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Triggered by workflow completed
+      - name: Print on failure
+        shell: bash
         run: |
-          echo 'Workflow ${{ github.event.workflow_run.name }} is ${{ github.event.workflow_run.conclusion }}'
+          echo 'Triggering workflow ${{ github.event.workflow_run.name }} failed'
+      - name: Delete old image on success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        uses: actions/delete-package-versions@v4
+        with:
+          package-name: 'todo-api'
+          package-type: 'container'
+          num-old-versions-to-delete: 1
