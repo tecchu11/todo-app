@@ -22,4 +22,4 @@ jobs:
         with:
           package-name: 'todo-api'
           package-type: 'container'
-          num-old-versions-to-delete: 1
+          min-versions-to-keep: 2
