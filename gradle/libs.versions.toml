@@ -21,7 +21,7 @@ jackson-datetype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-j
 jwt-auth0 = "com.auth0:java-jwt:4.4.0"
 kotlin-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
 kulid = "com.github.guepardoapps:kulid:2.0.0.0"
-logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.3"
+logstash-logback-encoder = "net.logstash.logback:logstash-logback-encoder:7.4"
 mysql-java = { module = "com.mysql:mysql-connector-j" }
 
 # test
