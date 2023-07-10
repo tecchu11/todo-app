@@ -9,6 +9,14 @@ dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${detekt.toolVersion}")
 }
 
+project.afterEvaluate {
+    configurations["detekt"].resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin") {
+            useVersion("1.8.21")
+        }
+    }
+}
+
 detekt {
     config.from("$rootDir/config/detekt/detekt.yml")
     buildUponDefaultConfig = true
