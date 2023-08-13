@@ -11,6 +11,6 @@ enum class UserRole {
         /**
          * Map of name and enum.
          */
-        val roleMapping = UserRole.values().associateBy { it.name }
+        val roleMapping = entries.associateBy { it.name }
     }
 }
