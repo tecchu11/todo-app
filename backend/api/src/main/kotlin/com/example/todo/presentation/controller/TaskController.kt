@@ -165,13 +165,13 @@ class TaskController(
     ): TaskResponse {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
-        }.onFailure {
+        }.getOrElse {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
                 message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
-        }.getOrThrow()
+        }
 
         val task = taskUseCase.findTask(userId, id)?.let {
             TaskResponse.from(it)
@@ -258,13 +258,13 @@ class TaskController(
     ): TaskResponse {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
-        }.onFailure {
+        }.getOrElse {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
                 message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
-        }.getOrThrow()
+        }
 
         return taskUseCase.editTask(
             userId = userId,
@@ -318,14 +318,13 @@ class TaskController(
     ) {
         val id = kotlin.runCatching {
             TaskId.from(taskId)
-        }.onFailure {
+        }.getOrElse {
             throw ClientException(
                 response = "You requested invalid taskId with $taskId",
                 message = "Failed instantiation TaskId by $taskId",
                 cause = it,
             )
-        }.getOrThrow()
-
+        }
         taskUseCase.deleteTask(userId, id)
     }
 }
