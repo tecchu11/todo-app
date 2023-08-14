@@ -58,9 +58,7 @@ class BearerTokenService(
             .build()
         val decodedJWT = kotlin.runCatching {
             verifier.verify(token.jws)
-        }.onFailure {
-            throw BadCredentialsException("Client requested with invalid jws", it)
-        }.getOrThrow()
+        }.getOrElse { throw BadCredentialsException("Client requested with invalid jws", it) }
         val claimsByKeys = keys.associateWith { decodedJWT.getClaim(it).asString() }
         val role = decodedJWT.getClaim(ROLE_CLAIM_KEY).asString()
         return Payload(

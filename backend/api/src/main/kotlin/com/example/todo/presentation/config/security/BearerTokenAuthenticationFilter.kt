@@ -35,9 +35,7 @@ class BearerTokenAuthenticationFilter(
 
         val bearerToken = kotlin
             .runCatching { BearerToken.from(auth) }
-            .onFailure {
-                throw BadCredentialsException("User requested with invalid token", it)
-            }.getOrThrow()
+            .getOrElse { throw BadCredentialsException("User requested with invalid token", it) }
         if (SecurityContextHolder.getContext().authentication == null) {
             val payload = bearerTokenService.verify(bearerToken)
             val authUserDetails = AuthUserDetails(
