@@ -1,16 +1,8 @@
 springdoc:
   api-docs:
-    enabled: true
-  default-consumes-media-type: application/json
-  show-actuator: false
+    enabled: true # If you want to disable this feature, specify false
   swagger-ui:
-    enabled: true
-    supportedSubmitMethods:
-      - get
-      - post
-      - put
-      - delete
-  use-management-port: true
+    enabled: true # ditto
 
 libs:
   bearer-token:
