@@ -10,17 +10,10 @@ import org.springframework.context.annotation.Configuration
 class OpenApiConfig {
 
     @Bean
-    fun customOpenAPI(): OpenAPI {
-        return OpenAPI()
-            .components(
-                Components()
-                    .addSecuritySchemes(
-                        "bearer-key",
-                        SecurityScheme()
-                            .type(SecurityScheme.Type.HTTP)
-                            .scheme("bearer")
-                            .bearerFormat("JWT")
-                    )
-            )
-    }
+    fun openAPI(): OpenAPI = OpenAPI().components(
+        Components().addSecuritySchemes(
+            "bearer-key",
+            SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
+        )
+    )
 }

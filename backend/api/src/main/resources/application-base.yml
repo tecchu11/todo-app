@@ -1,15 +1,22 @@
 server:
   shutdown: graceful
 
+springdoc:
+  default-consumes-media-type: application/json
+  show-actuator: true
+  swagger-ui:
+    supportedSubmitMethods:
+      - get
+      - post
+      - put
+      - delete
+  use-management-port: true
+
 management:
-  endpoint:
-    shutdown:
-      enabled: true
   endpoints:
     web:
       exposure:
         include:
-          - shutdown
           - health
           - openapi
           - swagger-ui
