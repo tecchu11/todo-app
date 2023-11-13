@@ -1,4 +1,5 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.getSupportedKotlinVersion
 import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 
 plugins {
@@ -9,10 +10,11 @@ dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${detekt.toolVersion}")
 }
 
+// Uncomment the following to specify the version of kotlin as the compatible version of detekt.
 project.afterEvaluate {
     configurations["detekt"].resolutionStrategy.eachDependency {
         if (requested.group == "org.jetbrains.kotlin") {
-            useVersion("1.9.0")
+            useVersion(getSupportedKotlinVersion())
         }
     }
 }
