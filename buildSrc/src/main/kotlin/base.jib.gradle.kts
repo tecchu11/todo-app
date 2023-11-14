@@ -11,5 +11,13 @@ jib {
     }
     val gitHash: String? by project
     to.image = "ghcr.io/tecchu11/todo-${project.name}:$gitHash"
-    container.creationTime.set("USE_CURRENT_TIMESTAMP")
+    container {
+        this.creationTime.set("USE_CURRENT_TIMESTAMP")
+        this.jvmFlags = mutableListOf("-XX:MaxRAMPercentage=80", "-javaagent:opentelemetry-javaagent.jar")
+    }
+    extraDirectories.paths {
+        path {
+            this.setFrom("$rootDir/config/otel")
+        }
+    }
 }

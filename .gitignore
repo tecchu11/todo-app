@@ -40,3 +40,4 @@ docker/volumes/mysql/todo/data/
 
 ### misc ###
 .DS_Store
+.env
