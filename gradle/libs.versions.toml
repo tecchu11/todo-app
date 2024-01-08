@@ -10,7 +10,7 @@ kotlin-stdlib = {module = "org.jetbrains.kotlin:kotlin-stdlib"}
 spring-actuator = {module = "org.springframework.boot:spring-boot-starter-actuator"}
 spring-config-processor = {module = "org.springframework.boot:spring-boot-configuration-processor"}
 spring-mybatis = {module = "org.mybatis.spring.boot:mybatis-spring-boot-starter", version.ref = "mybatis"}
-spring-openapi-ui = "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0"
+spring-openapi-ui = "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0"
 spring-security = {module = "org.springframework.boot:spring-boot-starter-security"}
 spring-starter = {module = "org.springframework.boot:spring-boot-starter"}
 spring-validation = {module = "org.springframework.boot:spring-boot-starter-validation"}
