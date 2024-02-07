@@ -18,7 +18,7 @@ jobs:
           echo 'Triggering workflow ${{ github.event.workflow_run.name }} failed'
       - name: Delete old image on success
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        uses: actions/delete-package-versions@v4
+        uses: actions/delete-package-versions@v5
         with:
           package-name: 'todo-api'
           package-type: 'container'
